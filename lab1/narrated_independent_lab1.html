@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="The LASER Team">
+<meta name="dcterms.date" content="2023-06-22">
+
+<title>Narrated: Let’s prepare our document</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="narrated_independent_lab1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="narrated_independent_lab1_files/libs/quarto-html/quarto.js"></script>
+<script src="narrated_independent_lab1_files/libs/quarto-html/popper.min.js"></script>
+<script src="narrated_independent_lab1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="narrated_independent_lab1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="narrated_independent_lab1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="narrated_independent_lab1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="narrated_independent_lab1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="narrated_independent_lab1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="narrated_independent_lab1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">0. INTRODUCTION</a></li>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">1. PREPARE</a>
+  <ul class="collapse">
+  <li><a href="#a.-load-libraries" id="toc-a.-load-libraries" class="nav-link" data-scroll-target="#a.-load-libraries">1a. Load Libraries</a></li>
+  <li><a href="#b.-load-in-data" id="toc-b.-load-in-data" class="nav-link" data-scroll-target="#b.-load-in-data">1b. Load in Data</a></li>
+  </ul></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">2. WRANGLE</a>
+  <ul class="collapse">
+  <li><a href="#a.-tidy-data" id="toc-a.-tidy-data" class="nav-link" data-scroll-target="#a.-tidy-data">2a. Tidy data</a></li>
+  <li><a href="#b.-join-data" id="toc-b.-join-data" class="nav-link" data-scroll-target="#b.-join-data">2b. Join Data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Narrated: Let’s prepare our document</h1>
+<p class="subtitle lead">Independent/Group work</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>The LASER Team </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 22, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">0. INTRODUCTION</h2>
+<p>We will focus on online science classes provided through a state-wide online virtual school and conduct an analysis that help product students’ performance in these online courses. This case study is guided by a foundational study in Learning Analytics that illustrates how analyses like these can be used develop an early warning system for educators to identify students at risk of failing and intervene before that happens.</p>
+<p>Over the next labs we will dive into the Learning Analytics Workflow as follows:</p>
+<ol type="1">
+<li><strong>Prepare</strong>: Prior to analysis, it’s critical to understand the context and data sources you’re working with so you can formulate useful and answerable questions. You’ll also need to become familiar with and load essential packages for analysis, and learn to load and view the data for analysis.</li>
+<li><strong>Wrangle</strong>: Wrangling data entails the work of manipulating, cleaning, transforming, and merging data. In Part 2 we focus on importing CSV files, tidying and joining our data.</li>
+<li><strong>Explore</strong>: In Part 3, we use basic data visualization and calculate some summary statistics to explore our data and see what insight it provides in response to our questions.</li>
+<li><strong>Model:</strong> After identifying variables that may be related to student performance through exploratory analysis, we’ll look at correlations and create some simple models of our data using linear regression.</li>
+<li><strong>Communicate:</strong> To wrap up our case study, we’ll develop our first “data product” and share our analyses and findings by creating our first web page using R Markdown.</li>
+</ol>
+<hr>
+</section>
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1. PREPARE</h2>
+<p>This case study is guided by a well-cited publication from two authors that have made numerous contributions to the field of Learning Analytics over the years. This article is focused on “early warning systems” in higher education, and where adoption of learning management systems (LMS) like Moodle and Canvas gained a quicker foothold.</p>
+<p>Macfadyen, L. P., &amp; Dawson, S. (2010). <a href="https://www.sciencedirect.com/science/article/pii/S0360131509002486?via%3Dihub">Mining LMS data to develop an “early warning system” for educators: A proof of concept.</a> <em>Computers &amp; education</em>,&nbsp;<em>54</em>(2), 588-599.</p>
+<section id="about-the-study" class="level4">
+<h4 class="anchored" data-anchor-id="about-the-study">ABOUT the study</h4>
+<p>Previous research has indicated that universities and colleges could utilize Learning Management System (LMS) data to create reporting tools that identify students who are at risk and enable prompt pedagogical interventions. The present study validates and expands upon this idea by presenting data from an international research project that explores the specific online activities of students that reliably indicate their academic success. This paper confirms and extends this proposition by providing data from an international research project investigating <strong>which student online activities accurately predict academic achievement.</strong></p>
+<p>The <strong>data analyzed</strong> in this exploratory research was extracted from the <strong>course-based instructor tracking logs</strong> and the BB Vista production server.</p>
+<p>Data collected on each student included ‘whole term’ counts for frequency of usage of course materials and tools supporting content delivery, engagement and discussion, assessment and administration/management. In addition, tracking data indicating total time spent on certain tool-based activities (assessments, assignments, total time online) offered a total measure of individual student time on task.</p>
+<p>The authors used scatter plots for identifying potential relationships between variables under investigation, followed by a a simple correlation analysis of each variable to further interrogate the significance of selected variables as indicators of student achievement. Finally, a linear multiple regression analysis was conducted in order to develop a predictive model in which a student final grade was the continuous dependent variable.</p>
+</section>
+<section id="a.-load-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="a.-load-libraries">1a. Load Libraries</h3>
+<p>Tidyverse: Tidyverse is a collection of R packages designed for data manipulation, visualization, and analysis.</p>
+<p>Here: The <code>here package</code> provides a simple way to manage file paths in your R projects.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load Libraries below needed for analysis</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-load-in-data" class="level3">
+<h3 class="anchored" data-anchor-id="b.-load-in-data">1b. Load in Data</h3>
+<p>Load the file from data folder.</p>
+<ul>
+<li><code>log-data.csv</code> save object as <code>time-spent</code></li>
+<li>inspect the file</li>
+</ul>
+<section id="data-source-1-log-data" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-1-log-data">Data Source #1: Log Data</h4>
+<p>Log-trace data is data generated from our interactions with digital technologies, such as archived data from social media postings. In education, an increasingly common source of log-trace data is that generated from interactions with LMS and other digital tools.</p>
+<p>The data we will use has already been “wrangled” quite a bit and is a summary type of log-trace data: the number of minutes students spent on the course. While this data type is fairly straightforward, there are even more complex sources of log-trace data out there (e.g., time stamps associated with when students started and stopped accessing the course).</p>
+<p>Let’s use the <code>read_csv()</code> function from {readr} to import our <code>log-data.csv</code> file directly from our data folder and name this data set <code>time_spent</code>, to help us to quickly recollect what function it serves in this analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load log file from data folder</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>time_spent <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/log-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 716 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): course_id, gender, enrollment_reason, enrollment_status
+dbl (2): student_id, time_spent
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-source-2-academic-achievement-data" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-2-academic-achievement-data">Data Source #2: Academic Achievement Data</h4>
+<p>Load the file from data folder.</p>
+<ul>
+<li><code>gradebook-summary.csv</code> save object as <code>gradebook</code></li>
+<li>inspect the file</li>
+</ul>
+<p>We’ll load the data in the same way as earlier.</p>
+<p>Let’s use the <code>read_csv()</code> function from {readr} to import our <code>sci-online-classes.csv</code> file directly from our data folder and name this data set <code>time_spent</code>, to help us to quickly recollect what function it serves in this analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load grade book data from data folder</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-source-3-self-report-survey" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-3-self-report-survey">Data Source #3: Self-Report Survey</h4>
+<p>Load the file from data folder.</p>
+<ul>
+<li><code>survey.csv</code></li>
+<li>inspect the file</li>
+</ul>
+<p>The third data source is a self-report survey. This was data collected before the start of the course. The survey included ten items, each corresponding to one of three motivation measures: interest, utility value, and perceived competence. These were chosen for their alignment with one way to think about students’ motivation, to what extent they expect to do well (corresponding to their perceived competence) and their value for what they are learning (corresponding to their interest and utility value).</p>
+<ol type="1">
+<li>I think this course is an interesting subject. (Interest)</li>
+<li>What I am learning in this class is relevant to my life. (Utility value)</li>
+<li>I consider this topic to be one of my best subjects. (Perceived competence)</li>
+<li>I am not interested in this course. (Interest—reverse coded)</li>
+<li>I think I will like learning about this topic. (Interest)</li>
+<li>I think what we are studying in this course is useful for me to know. (Utility value)</li>
+<li>I don’t feel comfortable when it comes to answering questions in this area. (Perceived competence–reverse coded)</li>
+<li>I think this subject is interesting. (Interest)</li>
+<li>I find the content of this course to be personally meaningful. (Utility value)</li>
+<li>I’ve always wanted to learn more about this subject. (Interest)</li>
+</ol>
+<p>Let’s use the <code>read_csv()</code> function from {readr} to import our <code>survey.csv</code> file directly from our data folder and name this data set <code>time_spent</code>, to help us to quickly recollect what function it serves in this analysis:</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">2. WRANGLE</h2>
+<section id="a.-tidy-data" class="level3">
+<h3 class="anchored" data-anchor-id="a.-tidy-data">2a. Tidy data</h3>
+<section id="data-1-time-spent" class="level5">
+<h5 class="anchored" data-anchor-id="data-1-time-spent">Data 1: TIME SPENT</h5>
+<p>We will separate course_id variable in the time-spent.</p>
+<p>The <code>c()</code> function in R is used to get the output by giving parameters inside the function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>time_spent <span class="sc">%&gt;%</span>  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(course_id,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">"subject"</span>, <span class="st">"semester"</span>, <span class="st">"section"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 716 × 8
+   student_id subject semester section gender enrollment_reason                 
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;                             
+ 1      60186 AnPhA   S116     01      M      Course Unavailable at Local School
+ 2      66693 AnPhA   S116     01      M      Course Unavailable at Local School
+ 3      66811 AnPhA   S116     01      F      Course Unavailable at Local School
+ 4      66862 AnPhA   S116     01      F      Course Unavailable at Local School
+ 5      67508 AnPhA   S116     01      F      Scheduling Conflict               
+ 6      70532 AnPhA   S116     01      F      Learning Preference of the Student
+ 7      77010 AnPhA   S116     01      F      Learning Preference of the Student
+ 8      85249 AnPhA   S116     01      F      Course Unavailable at Local School
+ 9      85411 AnPhA   S116     01      F      Scheduling Conflict               
+10      85583 AnPhA   S116     01      F      Scheduling Conflict               
+# ℹ 706 more rows
+# ℹ 2 more variables: enrollment_status &lt;chr&gt;, time_spent &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>time_spent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 716 × 6
+   student_id course_id    gender enrollment_reason enrollment_status time_spent
+        &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt;
+ 1      60186 AnPhA-S116-… M      Course Unavailab… Approved/Enrolled      2087.
+ 2      66693 AnPhA-S116-… M      Course Unavailab… Approved/Enrolled      2309.
+ 3      66811 AnPhA-S116-… F      Course Unavailab… Approved/Enrolled      5299.
+ 4      66862 AnPhA-S116-… F      Course Unavailab… Approved/Enrolled      1747.
+ 5      67508 AnPhA-S116-… F      Scheduling Confl… Approved/Enrolled      2668.
+ 6      70532 AnPhA-S116-… F      Learning Prefere… Approved/Enrolled      2938.
+ 7      77010 AnPhA-S116-… F      Learning Prefere… Approved/Enrolled      1533.
+ 8      85249 AnPhA-S116-… F      Course Unavailab… Approved/Enrolled      1210.
+ 9      85411 AnPhA-S116-… F      Scheduling Confl… Approved/Enrolled       473.
+10      85583 AnPhA-S116-… F      Scheduling Confl… Approved/Enrolled      5532.
+# ℹ 706 more rows</code></pre>
+</div>
+</div>
+<p>Make sure to save it to the <code>time_spent</code> object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>time_spent <span class="ot">&lt;-</span> time_spent <span class="sc">%&gt;%</span>  </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(course_id,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">"subject"</span>, <span class="st">"semester"</span>, <span class="st">"section"</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>time_spent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 716 × 8
+   student_id subject semester section gender enrollment_reason                 
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;                             
+ 1      60186 AnPhA   S116     01      M      Course Unavailable at Local School
+ 2      66693 AnPhA   S116     01      M      Course Unavailable at Local School
+ 3      66811 AnPhA   S116     01      F      Course Unavailable at Local School
+ 4      66862 AnPhA   S116     01      F      Course Unavailable at Local School
+ 5      67508 AnPhA   S116     01      F      Scheduling Conflict               
+ 6      70532 AnPhA   S116     01      F      Learning Preference of the Student
+ 7      77010 AnPhA   S116     01      F      Learning Preference of the Student
+ 8      85249 AnPhA   S116     01      F      Course Unavailable at Local School
+ 9      85411 AnPhA   S116     01      F      Scheduling Conflict               
+10      85583 AnPhA   S116     01      F      Scheduling Conflict               
+# ℹ 706 more rows
+# ℹ 2 more variables: enrollment_status &lt;chr&gt;, time_spent &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>As you can see from the dataset, time_spent variable is not set as hour. Let’s change that. For this, we will use “mutate()” function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate minutes to hours on time spent and save as new variable.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>time_spent <span class="ot">&lt;-</span> time_spent <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_spent_hours =</span> time_spent <span class="sc">/</span> <span class="dv">60</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>time_spent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 716 × 9
+   student_id subject semester section gender enrollment_reason                 
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;                             
+ 1      60186 AnPhA   S116     01      M      Course Unavailable at Local School
+ 2      66693 AnPhA   S116     01      M      Course Unavailable at Local School
+ 3      66811 AnPhA   S116     01      F      Course Unavailable at Local School
+ 4      66862 AnPhA   S116     01      F      Course Unavailable at Local School
+ 5      67508 AnPhA   S116     01      F      Scheduling Conflict               
+ 6      70532 AnPhA   S116     01      F      Learning Preference of the Student
+ 7      77010 AnPhA   S116     01      F      Learning Preference of the Student
+ 8      85249 AnPhA   S116     01      F      Course Unavailable at Local School
+ 9      85411 AnPhA   S116     01      F      Scheduling Conflict               
+10      85583 AnPhA   S116     01      F      Scheduling Conflict               
+# ℹ 706 more rows
+# ℹ 3 more variables: enrollment_status &lt;chr&gt;, time_spent &lt;dbl&gt;,
+#   time_spent_hours &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="data-2-gradebook" class="level5">
+<h5 class="anchored" data-anchor-id="data-2-gradebook">Data 2: GRADEBOOK</h5>
+<p>Now, we will work on the Gradebook dataset.Like the previous dataset, we will seperate course_id variable again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate the course_id variable and save to 'gradebook' object</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="ot">&lt;-</span> gradebook <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>gradebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will create a new variable: <code>proportion_earned.</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate to a proportion_earned, take 'total points earned' divide by 'total points possible.' Save as new variable proportion_earned.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="ot">&lt;-</span> gradebook <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>()<span class="er">)</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-3-survey" class="level5">
+<h5 class="anchored" data-anchor-id="data-3-survey">Data 3: SURVEY</h5>
+<p>Now, we will work on third data source.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data to view the column names</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>survey</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load janitor to clean variable names that do not match</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#clean columns of the survey data and save to survey object</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a> <span class="ot">&lt;-</span> <span class="fu">clean_names</span>()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data to check for consistency with other data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="b.-join-data" class="level3">
+<h3 class="anchored" data-anchor-id="b.-join-data">2b. Join Data</h3>
+<p>We will use <code>join() function</code> to combine datasets. To combine the dataset, we are using full_join.</p>
+<p>The full join returns all of the records in a new table, whether it matches on either the left or right tables. If the table rows match, then a join will be executed, otherwise it will return NULL in places where a matching row does not exist.</p>
+<p>When we are combining <code>gradebook</code> and <code>time_spent</code> datasets, we should identify column names. In this case, we will use <code>student_id,</code> <code>subject,</code> <code>semester,</code> and <code>section</code> for the match.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use single join to join data sets by student_id, subject, semester and section.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(gradebook, time_spent, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"student_id"</span>, <span class="st">"subject"</span>, <span class="st">"semester"</span>, <span class="st">"section"</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>joined_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see, we have a new dataset, joined_data with 12 variables.Those variables came from the gradebook and time_spent datasets.</p>
+<p>Let’s combine this new dataset with survey dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_to_explore  <span class="ot">&lt;-</span> <span class="fu">full_join</span>(joined_data, survey, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"student_id"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="st">"subject"</span>, <span class="st">"section"</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data_to_explore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Datasets cannot be joined because the type of “student_id” is different. We need same types of variables to join the datasets. To turn a numerical variable into a character variable, we are using “as.character()” function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mutate to change variable class from double or numeric to character</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">student_id =</span> <span class="fu">as.character</span>(student_id))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>joined_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#try again to together the grade_book and log_wrangled</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data_to_explore <span class="ot">&lt;-</span> <span class="fu">full_join</span>(joined_data, survey, <span class="at">by =</span> <span class="fu">c</span>())</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s write the file to our data folder using the <code>write_csv()</code> to save for later or download.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add the function to write data to file to use later</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>(data_to_explore, <span class="st">"data/data_to_explore.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

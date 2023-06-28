@@ -1,0 +1,63 @@
+---
+title: "ADD A TITLE"
+output:
+  flexdashboard::flex_dashboard:
+    theme: 
+      version: 4
+      bootswatch: pulse
+    source_code: embed
+  html_document:
+    df_print: paged
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(here)
+
+
+data_to_viz <- read_csv(here("part3-dataviz-quarto", "data", "data_to_explore.csv")) 
+
+data_to_viz <- data_to_viz |>
+  mutate(final_grade = proportion_earned*100)|>
+  mutate(subject = recode(subject, 
+                          "AnPhA" = "Anatomy",
+                          "BioA" = "Biology", 
+                          "FrScA" = "Forensics", 
+                          "OcnA" =  "Oceanography", 
+                          "PhysA" = "Physics"))
+```
+## Inputs {.sidebar}
+
+This is where you would write up something that you want the stakeholders to know. What is the overall findings?
+
+
+Column {data-width=600}
+-----------------------------------------------------------------------
+
+### CHART A
+
+```{r}
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### CHART B
+
+```{r}
+
+
+```
+
+### CHART C
+
+```{r}
+
+
+```
+

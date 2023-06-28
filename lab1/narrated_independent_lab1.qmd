@@ -1,0 +1,265 @@
+---
+title: "Narrated: Let's prepare our document" 
+subtitle: "Independent/Group work"
+author: "The LASER Team"
+date: last-modified
+format:
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: left
+    theme: 
+      - united
+      - "css/quarto-laser-html.scss"
+resources:
+  - demo.pdf
+---
+
+## 0. INTRODUCTION
+
+We will focus on online science classes provided through a state-wide online virtual school and conduct an analysis that help product students' performance in these online courses. This case study is guided by a foundational study in Learning Analytics that illustrates how analyses like these can be used develop an early warning system for educators to identify students at risk of failing and intervene before that happens.
+
+Over the next labs we will dive into the Learning Analytics Workflow as follows:
+
+1.  **Prepare**: Prior to analysis, it's critical to understand the context and data sources you're working with so you can formulate useful and answerable questions. You'll also need to become familiar with and load essential packages for analysis, and learn to load and view the data for analysis.
+2.  **Wrangle**: Wrangling data entails the work of manipulating, cleaning, transforming, and merging data. In Part 2 we focus on importing CSV files, tidying and joining our data.
+3.  **Explore**: In Part 3, we use basic data visualization and calculate some summary statistics to explore our data and see what insight it provides in response to our questions.
+4.  **Model:** After identifying variables that may be related to student performance through exploratory analysis, we'll look at correlations and create some simple models of our data using linear regression.
+5.  **Communicate:** To wrap up our case study, we'll develop our first "data product" and share our analyses and findings by creating our first web page using R Markdown.
+
+------------------------------------------------------------------------
+
+## 1. PREPARE
+
+This case study is guided by a well-cited publication from two authors that have made numerous contributions to the field of Learning Analytics over the years. This article is focused on "early warning systems" in higher education, and where adoption of learning management systems (LMS) like Moodle and Canvas gained a quicker foothold.
+
+Macfadyen, L. P., & Dawson, S. (2010). [Mining LMS data to develop an "early warning system" for educators: A proof of concept.](https://www.sciencedirect.com/science/article/pii/S0360131509002486?via%3Dihub) *Computers & education*, *54*(2), 588-599.
+
+#### ABOUT the study
+
+Previous research has indicated that universities and colleges could utilize Learning Management System (LMS) data to create reporting tools that identify students who are at risk and enable prompt pedagogical interventions. The present study validates and expands upon this idea by presenting data from an international research project that explores the specific online activities of students that reliably indicate their academic success. This paper confirms and extends this proposition by providing data from an international research project investigating **which student online activities accurately predict academic achievement.**
+
+The **data analyzed** in this exploratory research was extracted from the **course-based instructor tracking logs** and the BB Vista production server.
+
+Data collected on each student included 'whole term' counts for frequency of usage of course materials and tools supporting content delivery, engagement and discussion, assessment and administration/management. In addition, tracking data indicating total time spent on certain tool-based activities (assessments, assignments, total time online) offered a total measure of individual student time on task.
+
+The authors used scatter plots for identifying potential relationships between variables under investigation, followed by a a simple correlation analysis of each variable to further interrogate the significance of selected variables as indicators of student achievement. Finally, a linear multiple regression analysis was conducted in order to develop a predictive model in which a student final grade was the continuous dependent variable.
+
+### 1a. Load Libraries
+
+Tidyverse: Tidyverse is a collection of R packages designed for data manipulation, visualization, and analysis.
+
+Here: The `here package` provides a simple way to manage file paths in your R projects.
+
+```{r}
+#Load Libraries below needed for analysis
+library(tidyverse)
+```
+
+### 1b. Load in Data
+
+Load the file from data folder.
+
+-   `log-data.csv` save object as `time-spent`
+-   inspect the file
+
+#### Data Source #1: Log Data
+
+Log-trace data is data generated from our interactions with digital technologies, such as archived data from social media postings. In education, an increasingly common source of log-trace data is that generated from interactions with LMS and other digital tools.
+
+The data we will use has already been "wrangled" quite a bit and is a summary type of log-trace data: the number of minutes students spent on the course. While this data type is fairly straightforward, there are even more complex sources of log-trace data out there (e.g., time stamps associated with when students started and stopped accessing the course).
+
+Let's use the `read_csv()` function from {readr} to import our `log-data.csv` file directly from our data folder and name this data set `time_spent`, to help us to quickly recollect what function it serves in this analysis:
+
+```{r}
+# load log file from data folder
+time_spent <- read_csv("data/log-data.csv")
+
+#inspect data
+
+
+```
+
+#### Data Source #2: Academic Achievement Data
+
+Load the file from data folder.
+
+-   `gradebook-summary.csv` save object as `gradebook`
+-   inspect the file
+
+We'll load the data in the same way as earlier.
+
+Let's use the `read_csv()` function from {readr} to import our `sci-online-classes.csv` file directly from our data folder and name this data set `time_spent`, to help us to quickly recollect what function it serves in this analysis:
+
+```{r}
+# load grade book data from data folder
+
+#inspect data
+
+```
+
+#### Data Source #3: Self-Report Survey
+
+Load the file from data folder.
+
+-   `survey.csv`
+-   inspect the file
+
+The third data source is a self-report survey. This was data collected before the start of the course. The survey included ten items, each corresponding to one of three motivation measures: interest, utility value, and perceived competence. These were chosen for their alignment with one way to think about students' motivation, to what extent they expect to do well (corresponding to their perceived competence) and their value for what they are learning (corresponding to their interest and utility value).
+
+1.  I think this course is an interesting subject. (Interest)
+2.  What I am learning in this class is relevant to my life. (Utility value)
+3.  I consider this topic to be one of my best subjects. (Perceived competence)
+4.  I am not interested in this course. (Interest---reverse coded)
+5.  I think I will like learning about this topic. (Interest)
+6.  I think what we are studying in this course is useful for me to know. (Utility value)
+7.  I don't feel comfortable when it comes to answering questions in this area. (Perceived competence--reverse coded)
+8.  I think this subject is interesting. (Interest)
+9.  I find the content of this course to be personally meaningful. (Utility value)
+10. I've always wanted to learn more about this subject. (Interest)
+
+Let's use the `read_csv()` function from {readr} to import our `survey.csv` file directly from our data folder and name this data set `time_spent`, to help us to quickly recollect what function it serves in this analysis:
+
+```{r}
+
+```
+
+------------------------------------------------------------------------
+
+## 2. WRANGLE
+
+### 2a. Tidy data
+
+##### Data 1: TIME SPENT
+
+We will separate course_id variable in the time-spent.
+
+The `c()` function in R is used to get the output by giving parameters inside the function.
+
+```{r}
+time_spent %>%  
+  separate(course_id,
+           c("subject", "semester", "section"))
+
+
+time_spent
+
+```
+
+Make sure to save it to the `time_spent` object.
+
+```{r}
+time_spent <- time_spent %>%  
+  separate(course_id,
+           c("subject", "semester", "section"))
+
+
+time_spent
+
+```
+
+As you can see from the dataset, time_spent variable is not set as hour. Let's change that. For this, we will use "mutate()" function.
+
+```{r}
+# mutate minutes to hours on time spent and save as new variable.
+time_spent <- time_spent %>% 
+  mutate(time_spent_hours = time_spent / 60)
+time_spent
+```
+
+##### Data 2: GRADEBOOK
+
+Now, we will work on the Gradebook dataset.Like the previous dataset, we will seperate course_id variable again.
+
+```{r eval=FALSE, warning=FALSE, message=FALSE}
+# separate the course_id variable and save to 'gradebook' object
+gradebook <- gradebook %>% 
+
+
+gradebook
+```
+
+We will create a new variable: `proportion_earned.`
+
+```{r eval=FALSE, warning=FALSE, message=FALSE}
+# Mutate to a proportion_earned, take 'total points earned' divide by 'total points possible.' Save as new variable proportion_earned.
+gradebook <- gradebook %>% 
+  mutate())
+
+#inspect data
+
+
+```
+
+##### Data 3: SURVEY
+
+Now, we will work on third data source.
+
+```{r eval=FALSE, warning=FALSE, message=FALSE}
+#inspect data to view the column names
+survey
+
+# load janitor to clean variable names that do not match
+library(janitor)
+
+#clean columns of the survey data and save to survey object
+ <- clean_names()
+
+#inspect data to check for consistency with other data
+
+
+```
+
+### 2b. Join Data
+
+We will use `join() function` to combine datasets. To combine the dataset, we are using full_join.
+
+The full join returns all of the records in a new table, whether it matches on either the left or right tables. If the table rows match, then a join will be executed, otherwise it will return NULL in places where a matching row does not exist.
+
+When we are combining `gradebook` and `time_spent` datasets, we should identify column names. In this case, we will use `student_id,` `subject,` `semester,` and `section` for the match.
+
+```{r eval = FALSE}
+# use single join to join data sets by student_id, subject, semester and section.
+joined_data <- full_join(gradebook, time_spent, 
+                         by = c("student_id", "subject", "semester", "section"))
+
+joined_data
+```
+
+As you can see, we have a new dataset, joined_data with 12 variables.Those variables came from the gradebook and time_spent datasets.
+
+Let's combine this new dataset with survey dataset.
+
+```{r eval = FALSE}
+data_to_explore  <- full_join(joined_data, survey, by = c("student_id",
+"subject", "section"))
+data_to_explore
+```
+
+Datasets cannot be joined because the type of "student_id" is different. We need same types of variables to join the datasets. To turn a numerical variable into a character variable, we are using "as.character()" function.
+
+```{r eval= FALSE}
+#mutate to change variable class from double or numeric to character
+joined_data <- joined_data %>%
+  mutate(student_id = as.character(student_id))
+
+#inspect data
+joined_data
+```
+
+```{r eval = FALSE}
+#try again to together the grade_book and log_wrangled
+data_to_explore <- full_join(joined_data, survey, by = c())
+
+# inspect data
+```
+
+Now let's write the file to our data folder using the `write_csv()` to save for later or download.
+
+```{r eval=FALSE}
+# add the function to write data to file to use later
+(data_to_explore, "data/data_to_explore.csv")
+
+```
+
+------------------------------------------------------------------------

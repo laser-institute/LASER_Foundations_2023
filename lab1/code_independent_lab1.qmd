@@ -1,0 +1,73 @@
+---
+title: "Code: Let's Prepare our document"
+subtitle: "Lab one Independent work"
+author: "The LASER Team"
+date: last-modified
+format:
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: left
+    theme: 
+      - united
+      - "css/quarto-laser-html.scss"
+resources:
+  - demo.pdf
+---
+
+## Prepare
+
+1.  Load in packages
+
+-   library()
+
+2.  Load in Data using `read_csv()`function
+
+-   `log-data.csv`
+-   `survey.csv`
+-   `sci-online-classes.csv`
+
+3.  View Data
+
+-   `View()`
+-   `head()`
+-   `tail()`
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+## Wrangle
+
+-   `separate()` course_id variable in the time-spent
+-   
+
+```{r}
+
+```
+
+## Explore
+
+```{r}
+
+```
+
+## Model
+
+```{r}
+
+```
+
+## Communicate
+
+```{r}
+
+```

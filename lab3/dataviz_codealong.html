@@ -1,0 +1,3691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="The LASER Team">
+
+<title>Data Viz codealong</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="dataviz_codealong_files/libs/clipboard/clipboard.min.js"></script>
+<script src="dataviz_codealong_files/libs/quarto-html/quarto.js"></script>
+<script src="dataviz_codealong_files/libs/quarto-html/popper.min.js"></script>
+<script src="dataviz_codealong_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="dataviz_codealong_files/libs/quarto-html/anchor.min.js"></script>
+<link href="dataviz_codealong_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dataviz_codealong_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="dataviz_codealong_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="dataviz_codealong_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="dataviz_codealong_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">0. Introduction</a></li>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">1. Prepare</a></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">2. Wrangle</a></li>
+  <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">3. Explore</a>
+  <ul class="collapse">
+  <li><a href="#one-conitnous-varibale" id="toc-one-conitnous-varibale" class="nav-link" data-scroll-target="#one-conitnous-varibale">One Conitnous varibale</a></li>
+  <li><a href="#two-categorical-variables" id="toc-two-categorical-variables" class="nav-link" data-scroll-target="#two-categorical-variables">Two categorical Variables</a></li>
+  <li><a href="#two-continuous-variables" id="toc-two-continuous-variables" class="nav-link" data-scroll-target="#two-continuous-variables">Two continuous variables</a></li>
+  </ul></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">4. MODEL</a>
+  <ul class="collapse">
+  <li><a href="#predict-achievement-and-plot" id="toc-predict-achievement-and-plot" class="nav-link" data-scroll-target="#predict-achievement-and-plot">Predict Achievement and plot</a></li>
+  </ul></li>
+  <li><a href="#communicate" id="toc-communicate" class="nav-link" data-scroll-target="#communicate">5. Communicate</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Viz codealong</h1>
+<p class="subtitle lead">AERA 23 Short Course</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>The LASER Team </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">0. Introduction</h2>
+<p>We will continue working with the <strong>data_to_explore</strong> data frame we created consisting of our merged <em>gradebook</em>, <em>log data</em>, and <em>survey data</em>.</p>
+<p>In this session we will:</p>
+<ul>
+<li><p>Learn to <em>explore</em> using <a href="https://ggplot2.tidyverse.org/"><code>GGPLOT</code> package</a>.</p></li>
+<li><p>Learn <em>model</em> by predicting a varibale and then visualize it using <code>GGPLOT</code>.</p></li>
+<li><p>Learn to <em>communicate</em> our findings in a dashboard using <a href="https://pkgs.rstudio.com/flexdashboard/"><code>Flexdashboard</code> package</a>.</p></li>
+</ul>
+</section>
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1. Prepare</h2>
+<p>In the code chunk below, we will:</p>
+<ol type="1">
+<li>load the <em>tidyverse</em> and <em>here</em> packages</li>
+<li>Read in the ‘data_to_explore.csv’ file located in the data folder</li>
+<li>Save your data to a new object named data_to_viz.</li>
+<li>View the data</li>
+</ol>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidyverse library by adding the package name</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load here library by adding the correct function</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"part3-dataviz-quarto"</span>, <span class="st">"data"</span>, <span class="st">"data_to_explore.csv"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the data using a method of your choice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">2. Wrangle</h2>
+<p>We’ve already wrangled out data - but let’s look at the data frame to make sure it is still correct. A quick way to look at the data frame is with the <a href="https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html"><code>skimr</code> package</a>.</p>
+<p>This output is best for internal use.</p>
+<p>This is because the output is rich, but not well-suited to exporting to a table that you add, for instance, to a Google Docs or Microsoft Word manuscript. Of course, these values can be entered manually into a table, but we’ll also discuss ways later on to create tables that are ready, or nearly-ready-to be added directly to manuscripts.</p>
+<p>First, install and load the package. Normally you would do this above but we want to make sure you know which packages are used with the new functions.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install package if this is first time using skimr copy the code below without the hashtag and run in the console</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#load library by adding skimr as the package name</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Second, use the <code>skim()</code> function to view the data</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#skim the data by adding the skim function infront of the data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(data_to_viz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">data_to_viz</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">943</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POSIXct</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">879</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">subject</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">semester</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">section</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gender</td>
+<td style="text-align: right;">227</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: right;">227</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: right;">227</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: right;">281</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1619.55</td>
+<td style="text-align: right;">387.12</td>
+<td style="text-align: right;">1212.00</td>
+<td style="text-align: right;">1217.00</td>
+<td style="text-align: right;">1676.00</td>
+<td style="text-align: right;">1791.00</td>
+<td style="text-align: right;">2425.00</td>
+<td style="text-align: left;">▇▂▆▁▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1229.98</td>
+<td style="text-align: right;">510.64</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1002.50</td>
+<td style="text-align: right;">1177.13</td>
+<td style="text-align: right;">1572.45</td>
+<td style="text-align: right;">2413.50</td>
+<td style="text-align: left;">▂▂▇▅▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: left;">▁▁▁▃▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">1828.80</td>
+<td style="text-align: right;">1363.13</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">895.57</td>
+<td style="text-align: right;">1559.97</td>
+<td style="text-align: right;">2423.94</td>
+<td style="text-align: right;">8870.88</td>
+<td style="text-align: left;">▇▅▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">30.48</td>
+<td style="text-align: right;">22.72</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">14.93</td>
+<td style="text-align: right;">26.00</td>
+<td style="text-align: right;">40.40</td>
+<td style="text-align: right;">147.85</td>
+<td style="text-align: left;">▇▅▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">int</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.30</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.40</td>
+<td style="text-align: right;">4.80</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▆▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">val</td>
+<td style="text-align: right;">287</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▆▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: right;">288</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.64</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▃▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tv</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.07</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">4.12</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q1</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.34</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q2</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.66</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▆▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q3</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.31</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▇▅▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q4</td>
+<td style="text-align: right;">289</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q5</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.28</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q6</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.05</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q7</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.96</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▅▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q8</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q9</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▇▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q10</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.17</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.88</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.48</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▂▅▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.29</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▃▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.47</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▂▇▂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: POSIXct</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: left;">2015-09-02 15:40:00</td>
+<td style="text-align: left;">2016-05-24 15:53:00</td>
+<td style="text-align: left;">2015-10-01 15:57:30</td>
+<td style="text-align: right;">536</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">2015-09-02 15:31:00</td>
+<td style="text-align: left;">2016-01-22 15:43:00</td>
+<td style="text-align: left;">2016-01-04 13:25:00</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date</td>
+<td style="text-align: right;">834</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: left;">2017-01-23 13:14:00</td>
+<td style="text-align: left;">2017-02-13 13:00:00</td>
+<td style="text-align: left;">2017-01-25 18:43:00</td>
+<td style="text-align: right;">107</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>you can also skim by a group such as the <code>subject</code> variable</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(subject) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">Piped data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">943</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POSIXct</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">subject</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: left;">subject</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">171</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">student_id</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">semester</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">semester</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">semester</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">semester</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">semester</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">section</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">section</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">section</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">section</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">section</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_reason</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_status</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">course_id</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: left;">subject</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">1776.52</td>
+<td style="text-align: right;">12.28</td>
+<td style="text-align: right;">1655.00</td>
+<td style="text-align: right;">1775.00</td>
+<td style="text-align: right;">1775.00</td>
+<td style="text-align: right;">1775.00</td>
+<td style="text-align: right;">1805.00</td>
+<td style="text-align: left;">▁▁▁▇▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">2421.00</td>
+<td style="text-align: right;">2.02</td>
+<td style="text-align: right;">2420.00</td>
+<td style="text-align: right;">2420.00</td>
+<td style="text-align: right;">2420.00</td>
+<td style="text-align: right;">2420.00</td>
+<td style="text-align: right;">2425.00</td>
+<td style="text-align: left;">▇▁▁▁▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">1230.81</td>
+<td style="text-align: right;">38.26</td>
+<td style="text-align: right;">1212.00</td>
+<td style="text-align: right;">1212.00</td>
+<td style="text-align: right;">1217.00</td>
+<td style="text-align: right;">1232.00</td>
+<td style="text-align: right;">1361.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1738.47</td>
+<td style="text-align: right;">78.48</td>
+<td style="text-align: right;">1480.00</td>
+<td style="text-align: right;">1676.00</td>
+<td style="text-align: right;">1676.00</td>
+<td style="text-align: right;">1833.00</td>
+<td style="text-align: right;">1833.00</td>
+<td style="text-align: left;">▁▁▇▁▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_points_possible</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: right;">2225.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">1340.16</td>
+<td style="text-align: right;">423.45</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1269.09</td>
+<td style="text-align: right;">1511.14</td>
+<td style="text-align: right;">1616.37</td>
+<td style="text-align: right;">1732.52</td>
+<td style="text-align: left;">▁▁▁▂▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1546.66</td>
+<td style="text-align: right;">813.01</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1035.16</td>
+<td style="text-align: right;">1865.13</td>
+<td style="text-align: right;">2198.50</td>
+<td style="text-align: right;">2413.50</td>
+<td style="text-align: left;">▃▁▁▃▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">952.30</td>
+<td style="text-align: right;">305.60</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">914.92</td>
+<td style="text-align: right;">1062.75</td>
+<td style="text-align: right;">1130.00</td>
+<td style="text-align: right;">1319.02</td>
+<td style="text-align: left;">▁▁▁▅▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">1283.25</td>
+<td style="text-align: right;">427.25</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1216.68</td>
+<td style="text-align: right;">1396.85</td>
+<td style="text-align: right;">1572.50</td>
+<td style="text-align: right;">1786.76</td>
+<td style="text-align: left;">▁▁▁▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_points_earned</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1898.45</td>
+<td style="text-align: right;">469.31</td>
+<td style="text-align: right;">110.00</td>
+<td style="text-align: right;">1891.75</td>
+<td style="text-align: right;">2072.00</td>
+<td style="text-align: right;">2149.12</td>
+<td style="text-align: right;">2216.00</td>
+<td style="text-align: left;">▁▁▁▂▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: left;">▁▁▁▂▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▃▁▁▃▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: left;">▁▁▁▃▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: left;">▁▁▁▃▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">proportion_earned</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▁▂▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">2374.39</td>
+<td style="text-align: right;">1669.58</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">1209.85</td>
+<td style="text-align: right;">2164.90</td>
+<td style="text-align: right;">3134.97</td>
+<td style="text-align: right;">7084.70</td>
+<td style="text-align: left;">▆▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">1404.57</td>
+<td style="text-align: right;">1528.14</td>
+<td style="text-align: right;">1.22</td>
+<td style="text-align: right;">297.02</td>
+<td style="text-align: right;">827.30</td>
+<td style="text-align: right;">1955.08</td>
+<td style="text-align: right;">6664.45</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">1591.90</td>
+<td style="text-align: right;">1016.76</td>
+<td style="text-align: right;">2.42</td>
+<td style="text-align: right;">935.03</td>
+<td style="text-align: right;">1404.90</td>
+<td style="text-align: right;">2130.75</td>
+<td style="text-align: right;">6537.02</td>
+<td style="text-align: left;">▇▇▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">2031.44</td>
+<td style="text-align: right;">1496.82</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">1133.47</td>
+<td style="text-align: right;">1800.22</td>
+<td style="text-align: right;">2573.45</td>
+<td style="text-align: right;">8870.88</td>
+<td style="text-align: left;">▇▆▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1431.76</td>
+<td style="text-align: right;">990.40</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">749.32</td>
+<td style="text-align: right;">1282.81</td>
+<td style="text-align: right;">2049.85</td>
+<td style="text-align: right;">5373.35</td>
+<td style="text-align: left;">▇▆▃▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">39.57</td>
+<td style="text-align: right;">27.83</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">20.16</td>
+<td style="text-align: right;">36.08</td>
+<td style="text-align: right;">52.25</td>
+<td style="text-align: right;">118.08</td>
+<td style="text-align: left;">▆▇▃▂▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">23.41</td>
+<td style="text-align: right;">25.47</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">4.95</td>
+<td style="text-align: right;">13.79</td>
+<td style="text-align: right;">32.58</td>
+<td style="text-align: right;">111.07</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">26.53</td>
+<td style="text-align: right;">16.95</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">15.58</td>
+<td style="text-align: right;">23.42</td>
+<td style="text-align: right;">35.51</td>
+<td style="text-align: right;">108.95</td>
+<td style="text-align: left;">▇▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">33.86</td>
+<td style="text-align: right;">24.95</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">18.89</td>
+<td style="text-align: right;">30.00</td>
+<td style="text-align: right;">42.89</td>
+<td style="text-align: right;">147.85</td>
+<td style="text-align: left;">▇▆▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">time_spent_hours</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">23.86</td>
+<td style="text-align: right;">16.51</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">12.49</td>
+<td style="text-align: right;">21.38</td>
+<td style="text-align: right;">34.16</td>
+<td style="text-align: right;">89.56</td>
+<td style="text-align: left;">▇▆▃▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">4.42</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.40</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▅▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">2.40</td>
+<td style="text-align: right;">3.35</td>
+<td style="text-align: right;">3.80</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▆▇▆▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.42</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">2.60</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.40</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▃▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">4.24</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">2.20</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">4.60</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">2.20</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.40</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▆▇▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">val</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">4.67</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">val</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▆▆▇▁▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">val</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">3.53</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▅▇▅▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">val</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▅▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">val</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.89</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">3.80</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▃▇▆▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">3.34</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▅▇▃▇▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">3.64</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▅▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">3.57</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▇▆▅▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">percomp</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.56</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▅▅▇▅▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">4.83</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">3.14</td>
+<td style="text-align: right;">3.57</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▇▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">156</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">4.04</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▆▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.97</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">1.71</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.38</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">3.94</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">2.14</td>
+<td style="text-align: right;">3.57</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▃▇▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q1</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q1</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.76</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q1</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▆▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q1</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▁▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q1</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">4.03</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q2</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.30</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q2</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.48</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▇▁▆▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q2</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">3.35</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▇▆▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q2</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">3.46</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▆▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q2</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">4.03</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▁▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q3</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">3.53</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▅▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q3</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">2.98</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▅▇▁▂▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q3</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">3.25</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▇▃▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q3</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">3.30</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▃▇▁▅▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q3</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.32</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▇▆▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q4</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">4.52</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▃▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q4</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▃▁▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q4</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.44</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q4</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q4</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">4.02</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q5</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.36</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q5</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">3.88</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q5</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.38</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q5</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q5</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">4.06</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q6</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q6</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.83</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▅▁▇▁▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q6</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">3.88</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q6</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.84</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▅▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q6</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">4.27</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q7</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q7</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▇▁▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q7</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.02</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▅▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q7</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.83</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▆▁▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q7</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.81</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▅▁▇▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q8</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">4.45</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q8</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.79</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q8</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.45</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▁▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q8</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▇▁▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q8</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">4.05</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q9</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.07</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▆</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q9</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">3.19</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▃▇▁▅▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q9</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">3.37</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▇▆▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q9</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">3.54</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▇▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q9</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.38</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▃▇▁▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q10</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q10</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">3.37</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▇▁▅▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q10</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">4.30</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">q10</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">4.13</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▃▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">q10</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">3.78</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▂▆▁▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">1.75</td>
+<td style="text-align: right;">2.75</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.25</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: left;">▂▃▇▂▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">3.75</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.88</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">4.75</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▅▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_int</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.75</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▂▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">3.11</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: left;">▂▃▂▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.38</td>
+<td style="text-align: right;">1.11</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▃▃▆▇▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.93</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.58</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▁▁▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_uv</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.57</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.67</td>
+<td style="text-align: left;">▁▁▃▇▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">1.71</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.29</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: left;">▂▂▇▃▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">3.29</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▃▅▆▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">4.71</td>
+<td style="text-align: right;">4.86</td>
+<td style="text-align: left;">▂▁▅▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_tv</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">3.43</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">4.04</td>
+<td style="text-align: right;">4.71</td>
+<td style="text-align: left;">▂▁▃▇▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: left;">▁▁▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.50</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: left;">▂▃▁▂▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.51</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▁▂▆▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▃▁▆▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">post_percomp</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.40</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: left;">▂▂▂▆▇</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: POSIXct</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: left;">subject</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: left;">2015-09-02 15:40:00</td>
+<td style="text-align: left;">2016-03-23 16:11:00</td>
+<td style="text-align: left;">2015-09-27 20:10:30</td>
+<td style="text-align: right;">129</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: left;">2015-09-08 19:52:00</td>
+<td style="text-align: left;">2016-03-09 14:07:00</td>
+<td style="text-align: left;">2015-09-16 14:27:00</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: left;">2015-09-08 13:10:00</td>
+<td style="text-align: left;">2016-04-27 02:12:00</td>
+<td style="text-align: left;">2015-10-08 19:19:30</td>
+<td style="text-align: right;">218</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: left;">2015-09-08 20:08:00</td>
+<td style="text-align: left;">2016-03-03 15:57:00</td>
+<td style="text-align: left;">2016-01-25 20:17:00</td>
+<td style="text-align: right;">97</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date_x</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: left;">2015-09-09 12:24:00</td>
+<td style="text-align: left;">2016-05-24 15:53:00</td>
+<td style="text-align: left;">2015-10-08 21:17:00</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">2015-09-02 15:31:00</td>
+<td style="text-align: left;">2015-09-02 15:31:00</td>
+<td style="text-align: left;">2015-09-02 15:31:00</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: left;">2015-11-17 03:04:00</td>
+<td style="text-align: left;">2016-01-21 23:38:00</td>
+<td style="text-align: left;">2016-01-16 23:48:00</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">392</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">2015-09-09 15:21:00</td>
+<td style="text-align: left;">2016-01-22 15:43:00</td>
+<td style="text-align: left;">2016-01-04 13:13:00</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">2015-09-12 15:56:00</td>
+<td style="text-align: left;">2016-01-08 17:51:00</td>
+<td style="text-align: left;">2015-09-18 04:08:30</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date_y</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: left;">2015-09-14 14:45:00</td>
+<td style="text-align: left;">2016-01-22 05:36:00</td>
+<td style="text-align: left;">2016-01-17 08:24:30</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">AnPhA</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">2017-01-23 14:28:00</td>
+<td style="text-align: left;">2017-02-10 15:25:00</td>
+<td style="text-align: left;">2017-02-01 17:09:00</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">BioA</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: left;">2017-02-06 20:12:00</td>
+<td style="text-align: left;">2017-02-09 19:15:00</td>
+<td style="text-align: left;">2017-02-08 07:43:30</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">FrScA</td>
+<td style="text-align: right;">372</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: left;">2017-01-23 13:14:00</td>
+<td style="text-align: left;">2017-02-13 13:00:00</td>
+<td style="text-align: left;">2017-01-24 17:23:00</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">OcnA</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: left;">2017-01-23 14:07:00</td>
+<td style="text-align: left;">2017-02-09 18:45:00</td>
+<td style="text-align: left;">2017-02-01 21:53:30</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">PhysA</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: left;">2017-01-30 14:41:00</td>
+<td style="text-align: left;">2017-02-03 15:23:00</td>
+<td style="text-align: left;">2017-02-02 20:54:00</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="explore" class="level2">
+<h2 class="anchored" data-anchor-id="explore">3. Explore</h2>
+<section id="ggplot-grammar---with-layers" class="level4">
+<h4 class="anchored" data-anchor-id="ggplot-grammar---with-layers">GGplot grammar - with layers</h4>
+<p>GGplot is designed to work iteratively. You start with a layer that shows the raw data. Then you add layers of annotations and statistical summaries.</p>
+<p>You can read more about ggplot in the book <a href="https://ggplot2-book.org/introduction.html">“GGPLOT: Elegant Graphics for Data Analysis”</a>. You can also find lots of inspiration in the <a href="https://r-graph-gallery.com/">r-graph gallery</a> that includes code. Finally you can use the GGPLOT cheat sheet to help.</p>
+<p><img src="img/grammar.png" class="img-fluid" width="600"></p>
+<p>” Elegant Graphics for Data Analysis” states that “every ggplot2 plot has three key components:</p>
+<ul>
+<li><p>data,</p></li>
+<li><p>A set of aesthetic mappings between variables in the data and visual properties, and</p></li>
+<li><p>At least one layer which describes how to render each observation. Layers are usually created with a geom function.”</p></li>
+</ul>
+</section>
+<section id="one-conitnous-varibale" class="level3">
+<h3 class="anchored" data-anchor-id="one-conitnous-varibale">One Conitnous varibale</h3>
+<p>Create a basic visualization that examines a continuous variable of interest.</p>
+<section id="barplot" class="level4">
+<h4 class="anchored" data-anchor-id="barplot">Barplot</h4>
+</section>
+<section id="which-online-course-had-the-largest-enrollment-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="which-online-course-had-the-largest-enrollment-numbers">Which online course had the largest enrollment numbers?</h4>
+<p>Which variable should we be looking at?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#look at the data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="level-a.-the-most-basic-level-for-a-plot" class="level4">
+<h4 class="anchored" data-anchor-id="level-a.-the-most-basic-level-for-a-plot">Level a. The most basic level for a plot</h4>
+<p>Includes:</p>
+<ul>
+<li><strong>data</strong>: data_to_explore.csv</li>
+<li>*<strong><code>aes()</code> function</strong> - one continuous variable:
+<ul>
+<li>subject mapped to x position</li>
+</ul></li>
+<li><strong>Geom</strong>:<code>geom_bar()</code> function - bar graph</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 2: add aesthetics mapping</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplot(data_to_viz, aes(x = subject)) +</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add geom </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_bar() +</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="level-b.-add-another-layer-with-labels" class="level4">
+<h4 class="anchored" data-anchor-id="level-b.-add-another-layer-with-labels">Level b. Add another layer with labels</h4>
+<ul>
+<li><strong>title</strong>: “Number of Student Enrollments per Subject”</li>
+<li><strong>caption</strong>: “Which online courses have had the largest enrollment numbers?”</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 2: add aesthetics mapping</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, <span class="fu">aes</span>(<span class="at">x =</span> subject)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add geom </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 4: add labels</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Student Enrollments per Subject"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Which online courses have had the largest enrollment numbers?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="level-c-add-scale-with-a-different-color." class="level4">
+<h4 class="anchored" data-anchor-id="level-c-add-scale-with-a-different-color.">Level c: Add <strong>Scale</strong> with a different color.</h4>
+<ul>
+<li><strong>scale</strong>: fill = gender</li>
+</ul>
+<section id="what-can-we-notice-about-gender" class="level5">
+<h5 class="anchored" data-anchor-id="what-can-we-notice-about-gender">What can we notice about gender?</h5>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 2: add aesthetics mapping and #layer 5 scale</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, <span class="fu">aes</span>(<span class="at">x =</span> subject, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add geom </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 4: add labels</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gender Distribution of Students Across Subjects"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Which subjects enroll more female students?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="histogram---you-try" class="level4">
+<h4 class="anchored" data-anchor-id="histogram---you-try">Histogram - You try</h4>
+<ul>
+<li><strong>data</strong>: data_to_viz</li>
+<li><strong><code>aes()</code> function</strong> - one continuous variables:
+<ul>
+<li><code>tv</code> variable mapped to x position</li>
+</ul></li>
+<li><strong>Geom</strong>: geom_histogram() <em>this code is already there you just need to un-comment it.</em></li>
+<li>Add a <strong>title</strong> ““Number of Hours Students Watch TV per Day”</li>
+<li>Add a <strong>caption</strong> that poses the question “Approximately how many students watch 4+ hours of TV per day?”</li>
+</ul>
+<p><strong>NEED HELP? <a href="http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization">TRY STHDA</a></strong></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add the geom</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#add geom</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_histogram(bins = 5) +</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#add the labs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Yours could look like something below…</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, <span class="fu">aes</span>(<span class="at">x =</span> tv)) <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Hours Students Watch TV per Day"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Approximately how many students watch 4+ hours of TV per day?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>or</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_to_viz<span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> tv))<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 2: add histogram geom </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 3a: add bin size</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># layer 3b: add color</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">colour =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Hours Students Watch TV per Day"</span>, </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Approximately how many students watch 4+ hours of TV per day?"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="two-categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="two-categorical-variables">Two categorical Variables</h3>
+<p>Create a basic visualization that examines the relationship between two categorical variables.</p>
+<section id="what-do-you-wonder-about-the-reasons-for-enrollment-in-various-courses" class="level5">
+<h5 class="anchored" data-anchor-id="what-do-you-wonder-about-the-reasons-for-enrollment-in-various-courses">What do you wonder about the reasons for enrollment in various courses?</h5>
+</section>
+<section id="heatmap" class="level4">
+<h4 class="anchored" data-anchor-id="heatmap">Heatmap</h4>
+<ul>
+<li>*<strong>data</strong>: data_to_viz</li>
+<li>use <code>count()</code> function for <code>subject</code>, <code>enrollment</code> then,</li>
+<li><code>ggplot()</code> function</li>
+<li><strong><code>aes()</code> function</strong> - one continuous variables
+<ul>
+<li><code>subject</code> variable mapped to x position</li>
+<li><code>enrollment reason</code> variable mapped to x position</li>
+</ul></li>
+<li><strong>Geom</strong>: <code>geom_tile()</code> function</li>
+<li>Add a <strong>title</strong> “Reasons for Enrollment by Subject”</li>
+<li>Add a *<strong>caption</strong> that poses the question “Which subjects were the least available at local schools?”</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(subject, enrollment_reason) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> subject, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> enrollment_reason, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> n)) <span class="sc">+</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Reasons for Enrollment by Subject"</span>, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Which subjects were the least available at local schools?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="two-continuous-variables" class="level3">
+<h3 class="anchored" data-anchor-id="two-continuous-variables">Two continuous variables</h3>
+<p>Create a basic visualization that examines the relationship between two continuous variables.</p>
+<section id="scatter-plot" class="level4">
+<h4 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h4>
+<section id="can-we-predict-the-grade-on-a-course-from-the-time-spent-in-the-course-lms" class="level5">
+<h5 class="anchored" data-anchor-id="can-we-predict-the-grade-on-a-course-from-the-time-spent-in-the-course-lms">Can we predict the grade on a course from the time spent in the course LMS?</h5>
+<p>Which variables should we be looking at?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#look at the data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="level-a.-the-most-basic-level-for-a-plot-1" class="level4">
+<h4 class="anchored" data-anchor-id="level-a.-the-most-basic-level-for-a-plot-1">Level a. The most basic level for a plot</h4>
+<p>Includes:</p>
+<ul>
+<li><strong>data</strong>: data_to_explore.csv</li>
+<li><strong><code>aes()</code> function</strong> - two continuous variables
+<ul>
+<li>time spent in hours mapped to x position</li>
+<li>proportion earned mapped to y position</li>
+</ul></li>
+<li><strong>Geom</strong>: <code>geom_point()</code> function - Scatter plot</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data and aesthetics mapping </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> proportion_earned)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 2: +  geom function type</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="level-b.-add-another-layer-with-labels-1" class="level4">
+<h4 class="anchored" data-anchor-id="level-b.-add-another-layer-with-labels-1">Level b. Add another layer with labels</h4>
+<ul>
+<li>Add a <strong>title</strong>: “How Time Spent on Course LMS is Related to Points Earned in the course”</li>
+<li>Add a <strong>x label</strong>: “Time Spent (Hours)”</li>
+<li>Add a <strong>y label</strong>: “Proportion of Points Earned”</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data and aesthetics mapping </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add color scale by type</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> proportion_earned,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 2: +  geom function type</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 4: add labels</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the course"</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>, </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="level-c.-add-scale-with-a-different-color." class="level4">
+<h4 class="anchored" data-anchor-id="level-c.-add-scale-with-a-different-color.">Level c.&nbsp;Add <strong>Scale</strong> with a different color.</h4>
+<section id="can-we-notice-anything-about-enrollment-status" class="level5">
+<h5 class="anchored" data-anchor-id="can-we-notice-anything-about-enrollment-status">Can we notice anything about enrollment status?</h5>
+<ul>
+<li>Add <strong>scale</strong>: color = enrollment_status</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data and aesthetics mapping </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 4: add color scale by type</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> proportion_earned,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 2: +  geom function type</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add labels</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the course"</span>, </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>, </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="level-d.-divide-up-graphs-using-facet-to-visualize-by-subject." class="level4">
+<h4 class="anchored" data-anchor-id="level-d.-divide-up-graphs-using-facet-to-visualize-by-subject.">Level d.&nbsp;Divide up graphs using facet to visualize by subject.</h4>
+<ul>
+<li>Add <strong>facet</strong> with facet_wrap() function: by subject</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 1: add data and aesthetics mapping </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 3: add color scale by type</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_to_viz, <span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, <span class="at">y =</span> proportion_earned, <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 2: +  geom function type</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 4: add labels</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the Course"</span>, </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)<span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#layer 5: add facet wrap</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subject) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="level-e.-how-can-we-remove-nas-from-plot-and-what-will-the-code-look-like-without-the-comments" class="level4">
+<h4 class="anchored" data-anchor-id="level-e.-how-can-we-remove-nas-from-plot-and-what-will-the-code-look-like-without-the-comments">Level e. How can we remove NA’s from plot? and What will the code look like without the comments?</h4>
+<ul>
+<li>use *<strong>data</strong> then,</li>
+<li>use <code>drop_na</code> function to remove na’s from enrollment status then,</li>
+<li>add <code>ggplot</code> function like above</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(enrollment_status) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> proportion_earned, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the Course"</span>, </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)<span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subject) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="model" class="level2">
+<h2 class="anchored" data-anchor-id="model">4. MODEL</h2>
+<section id="predict-achievement-and-plot" class="level3">
+<h3 class="anchored" data-anchor-id="predict-achievement-and-plot">Predict Achievement and plot</h3>
+<section id="linear-regression" class="level5">
+<h5 class="anchored" data-anchor-id="linear-regression">Linear Regression</h5>
+<p>In brief, a linear regression model involves estimating the relationships between one or more <em>independent variables</em> with one dependent variable. Mathematically, it can be written like the following.</p>
+<p><span class="math display">\[
+\operatorname{dependentvar} = \beta_{0} + \beta_{1}(\operatorname{independentvar}) + \epsilon
+\]</span></p>
+<p>Does time spent predict grade earned?</p>
+<p>The following code estimates a model in which <code>proportion_earned</code>, the proportion of points students earned, is the dependent variable. It is predicted by one independent variable, <code>time_pent_hours</code>, students’ time spent on the course LMS.</p>
+<div class="cell" data-messages="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(proportion_earned <span class="sc">~</span> time_spent_hours, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> data_to_viz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = proportion_earned ~ time_spent_hours, data = data_to_viz)
+
+Coefficients:
+     (Intercept)  time_spent_hours  
+        0.624306          0.004792  </code></pre>
+</div>
+</div>
+<p>Note that that estimate for time spent is .005, so for every one-unit increase in <code>time_spent_hours</code>, we should expect a 5 percentage point increase in their grade.</p>
+<p>Plot the linear model with: <code>geom_smooth</code> function and method = “lm” which fits a linear model, giving the line of best fit.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(enrollment_status) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> proportion_earned, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add geom_smooth for lm</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="dataviz_codealong_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the Course"</span>, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)<span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subject) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-regression" class="level5">
+<h5 class="anchored" data-anchor-id="multiple-regression">Multiple regression</h5>
+<p>We can add another variable for science interest called <code>int</code> varibale.</p>
+<div class="cell" data-messages="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add predictor variable for science</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(proportion_earned <span class="sc">~</span> time_spent_hours <span class="sc">+</span> int, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> data_to_viz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = proportion_earned ~ time_spent_hours + int, data = data_to_viz)
+
+Coefficients:
+     (Intercept)  time_spent_hours               int  
+        0.449657          0.004255          0.046283  </code></pre>
+</div>
+</div>
+<p>We can see that the intercept is now estimated at 0.44, which tells us that when students’ time spent and interest are equal to zero, they are likely fail the course unsurprisingly. Note that that estimate for interest in science is .046, so for every one-unit increase in <code>int</code>, we should expect an 5 percentage point increase in their grade.</p>
+<p>We can save the output of the function to an object—let’s say <code>m1</code>, standing for model 1. We can then use the <code>summary()</code> function built into R to view a much more feature-rich summary of the estimated model.</p>
+<div class="cell" data-messages="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the model</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(proportion_earned <span class="sc">~</span> time_spent_hours <span class="sc">+</span> int, <span class="at">data =</span> data_to_viz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Run a summary model for the model you just created called, <code>m1.</code></p>
+<div class="cell" data-messages="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#run the summary</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = proportion_earned ~ time_spent_hours + int, data = data_to_viz)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.66705 -0.07836  0.05049  0.14695  0.35766 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      0.449657   0.066488   6.763 3.54e-11 ***
+time_spent_hours 0.004255   0.000410  10.378  &lt; 2e-16 ***
+int              0.046282   0.015364   3.012  0.00271 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2142 on 536 degrees of freedom
+  (404 observations deleted due to missingness)
+Multiple R-squared:  0.1859,    Adjusted R-squared:  0.1828 
+F-statistic: 61.18 on 2 and 536 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="summarize-predictors" class="level5">
+<h5 class="anchored" data-anchor-id="summarize-predictors">Summarize predictors</h5>
+<p>the <code>summarize()</code> function from the {dplyr} package used to create summary statistics such as the mean, standard deviation, or the minimum or maximum of a value. At its core, think of <code>summarize()</code> as a function that returns a single value (whether it’s a mean, median, standard deviation—whichever!) that summarizes a single column.</p>
+<div class="cell" data-messages="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data_to_viz <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_interest =</span> <span class="fu">mean</span>(int, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_time =</span> <span class="fu">mean</span>(time_spent_hours, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  mean_interest mean_time
+          &lt;dbl&gt;     &lt;dbl&gt;
+1          4.30      30.5</code></pre>
+</div>
+</div>
+<p>The mean value for interest is quite high. If we multiply the estimate relationship between interest and proportion of points earned—0.046—by this, the mean interest across all of the students—we can determine that students’ estimate final grade was 0.046 X 4.3, or <strong>0.197</strong>. For hours spent spent, the average students’ estimate final grade was 0.0042 X 30.48, or <strong>0.128</strong>.</p>
+<p>If we add both 0.197 and 0.128 to the intercept, 0.449, that equals 0.774, or about 77%. In other words, a student with average interest in science who spent an average amount of time in the course earned a pretty average grade.</p>
+</section>
+</section>
+</section>
+<section id="communicate" class="level2">
+<h2 class="anchored" data-anchor-id="communicate">5. Communicate</h2>
+<p>We are going to pick 2 graph and tell a story in a flex dashboard.</p>
+<p>We need to open ‘flexdashboard_template’ file.</p>
+<p>We also have a ‘flexdashboard_example’ file.</p>
+<p>RESOURCES:</p>
+<p><a href="http://r-statistics.co/ggplot2-cheatsheet.html">GGPLOT cheat sheet</a> by r-statistics.co <strong>by Selva Prabhakaran</strong></p>
+<p><a href="https://statsandr.com/blog/files/ggplot2-cheatsheet.pdf">GGPLOT::CHEAT SHEET</a></p>
+<p><a href="http://sthda.com/english/">STHDA statistics</a></p>
+<p><a href="http://sthda.com/english/wiki/ggplot2-essentials">STHDA GGPLOT</a> Basics</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

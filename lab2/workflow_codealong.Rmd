@@ -1,0 +1,282 @@
+---
+title: "workflow_codealong"
+author: "Jeanne McClure"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is R Markdown?
+
+## 1. Introduction
+
+Let's get familiar with the R Markdown layout and syntax.
+
+### 1.1 YAML Heading
+
+Yaml is a data serialization language. It contains, title, author,
+dates, type of document etc. YAML is picky!
+
+Check out this site on[Yamll
+heading](https://zsmith27.github.io/rmarkdown_crash-course/lesson-4-yaml-headers.html)
+by @Smith.
+
+### 1.2 R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, webpage and MS Word documents. For more details
+on using R Markdown see <http://rmarkdown.rstudio.com> or [The R
+Markdown: the definitive guide]
+(<https://bookdown.org/yihui/rmarkdown/>).
+
+When you click the **Knit** button a document will be generated that
+includes both content as well as the output of any embedded R code
+chunks within the document. You can also press `ctrl`+`shift`+`k`
+
+### 1.2a. Markdown Syntax
+
+R Markdowns syntax is based off of [Pandoc's
+Markdown](https://pandoc.org/MANUAL.html).
+
+##### Headers
+
+    + # Level One(largest)
+    + ## Level Two
+    + ### Level Three
+    + #### Level Four
+    + ##### Level Five(smallest)
+
+##### Bullet points
+
+Bullet points can be used with a `single dash` or a `plus sign`
+
+> Outcomes:
+
+-   Learn R Markdown.
+    -   Learn about Yaml heading.
+    -   Learn R Markdown Syntax.
+-   Learn how to read in data.
+-   Learn to wrangle data.
+
+### 1.3. Add a Code Chunk
+
+1.  Menu Bar \> 'Code' \> 'insert chunk'
+
+2.  Add a code chunk by holding down `Ctrl` + `Alt` + `I`
+
+
+
+
+## 2. WorkFlow Recap
+
+### 3.1 Workflow
+
+Each organization may have a familiar workflow. In Learning Analytics we
+use a five step process: ![Learning Analytics
+Workflow](img/la_wrkflow.png){width="60%"}
+
+## 0. Introduction
+
+Provide a brief overview or case study.
+
+-   Include your R1: *research questions!*
+
+## 1. Prepare
+
+Load Packages
+
+```{r warning =FALSE, message=FALSE}
+
+#Load necessary packages
+
+library(tidyverse) #general analysis using dplyr
+library(here) #read in data
+```
+
+## 2. Wrangle
+
+### a. *Import Data*
+
+#### Data Source #1: Log Data
+
+Log-trace data is data generated from our interactions with digital
+technologies, such as archived data from social media postings. In
+education, an increasingly common source of log-trace data is that
+generated from interactions with LMS and other digital tools.
+
+The data we will use has already been "wrangled" quite a bit and is a
+summary type of log-trace data: the number of minutes students spent on
+the course. While this data type is fairly straightforward, there are
+even more complex sources of log-trace data out there (e.g., time stamps
+associated with when students started and stopped accessing the course).
+
+Let's use the `read_csv()` function from {readr} to import our
+`log-data.csv` file directly from our data folder and name this data set
+`time_spent`, to help us to quickly recollect what function it serves in
+this analysis:
+
+```{r}
+#load with read_csv package
+time_spent <- read_csv("data/log-data.csv")
+```
+
+Now let's load it with the {here} package.
+
+```{r}
+#load with here package
+time_spent <- read_csv(here("data", "log-data.csv"))
+
+#inspect data
+time_spent
+```
+
+#### Data Source #2: Academic Achievement Data
+
+We'll load the data in the same way as earlier but take a quick peek but
+including the name of our data frame in the code chunk as well:
+
+```{r}
+#load data 2: Academic Achievement
+gradebook <- read_csv(here("data", "gradebook-summary.csv"))
+
+#inspect data with glimpse
+glimpse(gradebook)
+```
+
+#### Data Source #3: Self-Report Survey
+
+The third data source is a self-report survey. This was data collected
+before the start of the course. The survey included ten items, each
+corresponding to one of three motivation measures: interest, utility
+value, and perceived competence. These were chosen for their alignment
+with one way to think about students' motivation, to what extent they
+expect to do well (corresponding to their perceived competence) and
+their value for what they are learning (corresponding to their interest
+and utility value).
+
+```{r}
+#load data 3:Self-Report Survey
+survey <- read_csv(here("data", "survey.csv"))
+
+#inspect data with view
+head(survey)
+tail(survey)
+```
+
+### b. Tidy data
+
+##### Data 1: TIME SPENT
+
+# separate course_id variable in the time-spent
+
+The `c()` function in R is used to get the output by giving parameters
+inside the function.
+
+```{r}
+time_spent %>%  
+  separate(course_id,
+           c("subject", "semester", "section"))
+
+
+time_spent
+
+```
+
+```{r}
+time_spent_2 <- time_spent %>%
+  separate(course_id,
+           c("subject", "semester", "section"))
+
+time_spent_2
+```
+
+```{r}
+# mutate minutes to hours on time spent and save as new variable.
+time_spent_2 <- time_spent_2 %>% 
+  mutate(time_spent_hours = time_spent / 60)
+time_spent_2
+```
+
+##### Data 2: GRADEBOOK
+
+```{r}
+# separate the course_id variable
+gradebook <- gradebook %>% 
+  separate(course_id, c("subject", "semester", "section"))
+
+gradebook
+```
+
+```{r}
+# Mutate to a proportion, take total points earned divide by total points. Save as new variable proportion_earned.
+gradebook <- gradebook %>% 
+  mutate(proportion_earned = (total_points_earned / total_points_possible))
+
+#inspect data
+gradebook
+
+```
+
+##### Data 3: SURVEY
+
+```{r}
+#inspect data 
+survey
+
+# load janitor to clean variable names that do not match
+library(janitor)
+
+#clean column
+survey <- clean_names(survey)
+
+#inspect data to check for consistency with other data
+survey
+
+```
+
+#### C. Join Data
+
+# join together the grade_book and log_wrangled
+
+```{r}
+# use single join to join data sets by student_id, subject, semester and section.
+joined_data <- full_join(gradebook, time_spent_2, 
+                         by = c("student_id", "subject", "semester", "section"))
+
+joined_data
+```
+
+```{r eval = FALSE}
+data_to_explore  <- full_join(joined_data, survey, by = c("student_id",
+"subject", "section"))
+data_to_explore
+```
+
+```{r}
+#mutate to change variable class from double or numeric to character
+joined_data <- joined_data %>%
+  mutate(student_id = as.character(student_id))
+
+#inspect data
+joined_data
+
+#try again to together the grade_book and log_wrangled
+data_to_explore <- full_join(joined_data, survey, by = c("student_id", "subject", "semester", "section"))
+
+# inspect data
+data_to_explore
+
+# write data to file to use later
+write_csv(data_to_explore, "data/data_to_explore.csv")
+
+```
