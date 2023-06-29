@@ -5,106 +5,174 @@ Sharing your work with xaringan:
 https://spcanelon.github.io/xaringan-basics-and-beyond/index.html */
 :root {
 /* core palette */
---black:   #000000;
---white:   #FFFFFF;
+--wolfpack-red:     #CC0000;
+--wolfpack-black:   #000000;
+--wolfpack-white:   #FFFFFF;
 
-/* logo colors */
+/* expanded palette */
 
---light-orange:     #e77225;
---medium-orange:    #dc5b26;
---dark-orange:      #d34126;
---red:              #cb2026;
---dark-red:         #8f303b;
---burgundy:         #59334c;
---navy:             #143156;
+--reynolds-red:     #990000;
+--pyroman-flame:    #d14905;
+--hunt-yellow:      #fac800;
+--genomic-green:    #6f7d1c;
+--carmichael-aqua:  #008473;
+--innovation-blue:  #427e93;
+--bio-indigo:       #4156a1;
 
+/* tints and shades */
+
+/* reds */
+--red-100:          #ea1500;
+--red-200:          #cc0000; /*same as wolfpack-red */
+--red-300:          #b40000;
+--red-400:          #990000; /*same as reynolds-red */
+--red-500:          #7e0000;
+--red-600:          #5e0000;
+--red-700:          #3e0000;
+
+/* oranges (flames) */
+--orange-100:       #f8a812;
+--orange-200:       #f28c0d;
+--orange-300:       #e16408;
+--orange-400:       #d14905; /*same as pyroman-flame */
+--orange-500:       #c03003;
+--orange-600:       #a91b02;
+--orange-700:       #910e01;
+
+/* yellows */
+--yellow-100:       #fef8cb;
+--yellow-200:       #fde565;
+--yellow-300:       #f8da3e;
+--yellow-400:       #fac800; /*same as hunt-yello */
+--yellow-500:       #d7a700;
+--yellow-600:       #b88800;
+--yellow-700:       #966d00;
+
+/* greens */
+--green-100:       #bfcc46;
+--green-200:       #a2b729;
+--green-300:       #8d9e2b;
+--green-400:       #6f7d1c; /*same as genomic-green */
+--green-500:       #586800;
+--green-600:       #424c09;
+--green-700:       #2f3a03;
+
+/* aquas */
+--aqua-100:        #91f2cb;
+--aqua-200:        #57dab1;
+--aqua-300:        #2db597;
+--aqua-400:        #008473; /*same as carmichael-aqua */
+--aqua-500:        #00716d;
+--aqua-600:        #005b5f;
+--aqua-700:        #00444c;
+
+/* blues */
+--blue-100:       #80c3d4;
+--blue-200:       #6fb2c5;
+--blue-300:       #599baf;
+--blue-400:       #427e93; /*same as innovation-blue */
+--blue-500:       #2d637a;
+--blue-600:       #1d4b61;
+--blue-700:       #12394d;
+
+/* indigos */
+--indigo-100:       #84a0dc;
+--indigo-200:       #728bcf;
+--indigo-300:       #5b73bb;
+--indigo-400:       #4156a1; /*same as bio-indigo */
+--indigo-500:       #344891;
+--indigo-600:       #24347b;
+--indigo-700:       #192668;
+
+/* grays */
+/* for white use wolfpack-white and black use wolfpack-black */
+--gray-100:        #e5e5e5;
+--gray-200:        #cccccc;
+--gray-300:        #b2b2b2;
+--gray-400:        #999999;
+--gray-500:        #808080;
+--gray-600:        #666666;
+--gray-700:        #4d4d4d;
+--gray-800:        #333333;
+--gray-900:        #1a1a1a;
 }
 
 /*-- LINKS/ANCHORS --*/
 a {
-  color:              var(--dark-red);
-  border-bottom:      1px solid var(--dark-red);
+  color:              var(--wolfpack-red);
+  border-bottom:      1px solid var(--wolfpack-red);
   line-height:        2.5rem;
 }
 
 a:hover { border-bottom: none; }
 
 .remark-slide-content {
-  background-color: var(--white);
-  border-top: 80px solid var(--dark-red);
-  font-size: 28px; /* change default text size here*/
+  background-color: var(--wolfpack-white);
+  border-top: 80px solid var(--wolfpack-red);
+  font-size: 30px; /* change default text size here*/
   font-weight: 300;
   line-height: 1.5;
   padding: 1em 2em 1em 2em;
-  background-image: url(../img/LASERLogoB.png); 
-  background-position: 97% 105%; 
-  background-size: 15%;
+  background-image: url(../img/fi-logo.png); /*alternatively can be ncstate-text.png */
+  background-position: 95% 95%; 
+  background-size: 25%;
 }
 
 .title-slide .inverse .remark-slide-content {
-  background-color: var(--navy);
+  background-color: var(--wolfpack-black);
 }
 
 .inverse {
-  background-color: var(--navy);
-  background-image: none;
+  background-color: var(--gray-900);
   text-shadow: none;
 }
 
-.footnote {
-    position: absolute;
-    bottom: 3em;
-    padding-right: 4em;
-    font-size: 70%;
+.wolfhead {
+  background-image: url(../img/wolf-head.png);
+  background-position: -15% 95%; 
+  background-size: 50%;
 }
 
-.no-logo {
-    background-image: none;
-}
-
-.laser {
-  background-image: url(../img/LASERBackground.png);
-  background-position: -10% 0%;
-  background-size: 100%;
-}
-
-.laser .quote {
+.wolfhead .quote {
   float: right;
-  width: 40%;
-  color: var(--navy);
+  width: 50%;
+  background-color: var(--gray-100);
+  border-radius: 5px 5px 5px 5px;
+  color: var(--wolfpack-black);
   text-shadow: none;
   padding: 20px;
 }
-
-.laser .author {
+.wolfhead .author {
   float: right;
-  width: 60%;
-  margin-top: 10px;
+  width: 50%;
   text-align: right;
-  color: var(--dark-orange);
+  color: var(--wolfpack-red);
 }
 
-.laser .pull-right{
-  float: right;
-  width: 40%;
+
+.footnote {
+    position: absolute;
+    bottom: 1em;
+    padding-right: 4em;
+    font-size: 60%;
 }
 
 /* Removes colored bar from top of the slide resulting in a clear slide */
 .clear{
-  border-top: 0px solid var(--white);
+  border-top: 0px solid var(--wolfpack-white);
 }
 
 h1 {
   font-weight: normal;
   margin-top: -100px;
   margin-left: -00px;
-  color: var(--white);
+  color: var(--wolfpack-white);
 }
 
 h2, h3, h4 {
   padding-top: -15px;
   padding-bottom: 00px;
-  color: var(--navy);
+  color: var(--wolfpack-black);
   text-shadow: none;
   font-weight: 400;
   text-align: left;
@@ -125,34 +193,31 @@ h2, h3, h4 {
 }
 
 .left-column h2, .left-column h3, .left-column h4 {
-  color: var(--dark-orange);
+  color: #777;
 }
 
 .left-column h2:last-of-type, .left-column h3:last-child {
-  color: var(--dark-orange);
+  color: #1A292C;
 }
 
 .title-slide {
-  background-color: var(--white);
-  background-image: url(../img/LASERLogoB.png); 
-  background-position: 95% 100%; 
-  background-size: 40%;
+  background-color: var(--wolfpack-white);
+  border-top: 80px solid var(--wolfpack-white);
 }
 
 .title-slide h1  {
-  color: var(--dark-red);
-  font-size: 40px;
+  color: var(--wolfpack-red);
+  font-size: 50px;
   text-shadow: none;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   margin-left: 15px;
-  padding-top: 80px;
+  padding-top: -100px;
 }
-
 .title-slide h2  {
   margin-top: -25px;
   padding-bottom: -20px;
-  color: var(--navy);
+  color: var(--wolfpack-black);
   text-shadow: none;
   font-weight: 300;
   font-size: 35px;
@@ -160,7 +225,7 @@ h2, h3, h4 {
   margin-left: 15px;
 }
 .title-slide h3  {
-  color: var(--navy);
+  color: var(--wolfpack-black);
   text-shadow: none;
   font-weight: 300;
   font-size: 25px;
@@ -173,13 +238,13 @@ hr, .title-slide h2::after, .mline h1::after {
   content: '';
   display: block;
   border: none;
-  background-color: var(--light-orange);
-  color: var(--light-orange);
+  background-color: var(--wolfpack-black);
+  color: var(--wolfpack-black);
   height: 1px;
 }
 
 hr, .mline h1::after {
-  margin: 1em 15px 0 15px;
+  margin: -1em 15px 0 15px;
 }
 
 .title-slide h2::after {
@@ -192,17 +257,13 @@ hr, .mline h1::after {
 
 .remark-slide-number {
   font-size: 13pt;
-  color: var(--red);
+  color: var(--reynolds-red);
   opacity: 1;
 }
 .inverse .remark-slide-number {
   font-size: 13pt;
-  color: var(--white);
+  color: var(--wolfpack-white);
   opacity: 1;
-}
-
-.inverse .remark-inline-code {
-  color: var(--navy);
 }
 
 /* turns off slide numbers for title page: https://github.com/gnab/remark/issues/298 */
@@ -334,11 +395,10 @@ hr, .mline h1::after {
 }
 
 /*-- Custom classes for text emphasis --*/
-.navy       { color:  var(--navy) }
-.orange      { color:  var(--medium-orange) }
-.red        { color:  var(--red) }
-.white      { color:  var(--white)}
-.burgundy { color:  var(--burgundy) }
+.blue       { color:  var(--bio-indigo) }
+.green      { color:  var(--genomic-green) }
+.red        { color:  var(--reynolds-red) }
+.warmyellow { color:  var(--yellow-600) }
 
 /*-- PROGRESS BAR IN FOOTER --*/
 /* https://github.com/yihui/xaringan/wiki/Progressbar */
@@ -356,7 +416,7 @@ hr, .mline h1::after {
 
 .remark-slide-number .progress-bar {
   height: 100%;
-  background-color: var(--dark-red);
+  background-color: var(--wolfpack-red);
 }
 
 /*-- 3 column layout --*/

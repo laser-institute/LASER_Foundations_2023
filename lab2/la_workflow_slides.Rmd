@@ -1,5 +1,5 @@
 ---
-  title: "Foundation lab 2 - Methods and Ethics"
+  title: "Foundation lab 2 - LA Methods"
   author: "Jeanne McClure"
   institute: "Instituttional Affiliation"
   date: '`r format(Sys.time(), "%B %d, %Y")`'
@@ -109,7 +109,6 @@ On a quick recap from our data structures presentation we discussed the differen
 .pull-left[**Part-1  Conceptual Overview**
 
 - Methods in Learning Analytics
-- Ethical Considerations
 
 ]
 
