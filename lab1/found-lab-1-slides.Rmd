@@ -1,5 +1,5 @@
 ---
-  title: "Foundations lab 1 - Data Structures"
+  title: "Foundations lab 1 - LA Data Structures"
   author: "Jeanne McClure"
   institute: "Instituttional Affiliation"
   date: '`r format(Sys.time(), "%B %d, %Y")`'

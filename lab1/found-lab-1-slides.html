@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Foundations lab 1 - LA Data Structures</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jeanne McClure" />
+    <meta name="date" content="2023-06-29" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link rel="stylesheet" href="css/laser.css" type="text/css" />
+    <link rel="stylesheet" href="css/laser-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: clear, title-slide, inverse, center, top, middle
+
+
+
+
+
+
+
+
+
+
+
+&lt;style type="text/css"&gt;
+table {
+  font-size: 12px;     
+}
+&lt;/style&gt;
+
+# Foundations lab 1 - LA Data Structures
+----
+### Jeanne McClure
+### June 29, 2023
+
+---
+# Recap from Orientation lab
+
+--
+
+- Well Documented
+--
+
+- Clear Communication
+--
+
+- Reproducible Theory
+
+???
+
+In the orientation lab we learned about reproducible research. Keep your code well documented, use clear communication and follow the reproducible theory.
+
+We also learned about the open movement and its importance for  reproducible research.
+
+From your pre-reading, Krumm 2018 sums it up nicely stating, "The basic idea
+behind the open data movement is that anyone can access or use a data set, and key to this movement is not just accessibility but usability. Making open data usable means making it accessible in machine-readable, structured, granular, and well-documented formats."
+
+
+---
+
+# Agenda
+
+.pull-left[**Part-1  Conceptual Overview**
+- Types of Learning Environments 
+- Characteristics of Data (Format)
+
+]
+
+.pull-right[**Part-2  Code-Along**
+- Workflow
+  + Prepare
+    - Context of Case Problem
+    - Install/Load Packages
+    - Read in Data
+    - Inspect Data
+
+.footnote[Pre-Reading:
+[Learning Analytics Goes to School, (Ch. 2, pp 28 - 41 ) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
+]
+]
+
+???
+In this session for the conceptual overview we are going to learn more about the types and characteristics of data common in Learning Analytics. Many of these you will be familiar with and some may be new.
+
+In our code-along we will continue with learning how to read in data, using the various packages from `tidyverse`. We will also learn to view data between a tibble and a data frame.
+---
+
+class: clear, inverse, middle, center
+
+Part 1:
+
+----
+
+Data Structures: Conceptual Overview
+
+
+---
+
+# Educational Data
+
+--
+
+- Interaction between instructors and students
+--
+
+- Administrative
+--
+
+- Demographic data
+--
+
+- Student affectivity
+--
+
+.pull-center[
+&lt;img src="img/granularity.png" height="300px"/&gt;
+]
+
+???
+Interaction between instructors and students: (e.g., navigation behavior, input in quizzes, interactive exercises, forum messages,
+Administrative data: school and teacher information
+Demographic: gender, age,
+Student affectivity: motivation, emotional states),
+
+
+
+---
+# Types of Learning Environments
+
+--
+
+- Face to Face
+--
+
+- Blended
+--
+
+- Digital (computer aided) Learning Systems
+--
+
+.pull-center[
+&lt;img src="img/la_ed_environments.png" height="350px"/&gt;
+]
+
+???
+face-to-face con- tact between educators and students organized through lectures, class discussion, small groups, individual seat work, and so on. Traditional education systems are classified in different levels UNESCO. These
+systems gather information on student attendance, marks, curriculum goals, class, schedule information, and so on. Finally, it is important to note that all these traditional systems can also use computer-based educational systems as
+a complementary tool to face-to-face sessions.
+
+Digital Learning Systems or Computer use computers in education to provide direction, to instruct or to manage instructions given to the student. The global use of Internet and the application of artificial intelligence (AI) techniques have led to today's plethora of new web-based intelligent educational systems. Gibson and Frietas (2016) suggest the function of technology as an active participant in data generation is significant, as it is involved in the intricate process of data creation. This process stems from the dynamic interplay between the learner and the digital learning environment, as well as from the collaborative data production by the learner, environment, and social context. Such collaborative situations give rise to a wide range of diverse data sources, which exhibit substantial variation. It becomes necessary to harmonize and integrate these distinct data sources together.
+
+Blended (“blended learning,” “hybrid learning,” and “mixed-mode instruction”) combine face-to-face instruction with computer-mediated instruction. Before COVID we saw some use but after COVID we saw an increase in the use of Digital Learning Systems and Blended. 
+
+---
+
+## .font175[.center[What types of Digital Learning Environments (computer Aided) have you used data from?]]
+
+
+---
+# Digital Learning Environments (Computer Aided)
+
+
+.pull-left[
+
+- Adaptive and Intelligent Hypermedia System (AIHS)
+
+- Intelligent Tutoring System (ITS)
+
+- Serious Games and Simulations 
+
+- Learning Management System (LMS) 
+
+- In-Context Learning (ChatGPT/Whisper)
+]
+
+.pull-right[
+
+- Massive Open Online Course (MOOC)
+
+- Test and quiz system
+
+- Sensor  Wearable learning systems and Virtual
+
+- Augmented reality systems
+
+- Multimodal Computer Aided Learning
+
+]
+
+???
+
+Adaptive and Intelligent Hypermedia System (AIHS) - These systems attempt to be more adaptive by building a model of the goals, preferences, and knowledge of each individual student and using this model throughout interaction with the student in order to adapt to the needs of that student. The data recorded by AIHs are similar to ITS data.
+
+ITS - ITSs provide direct customized instruction or feedback to students by modeling student behavior and changing its mode of interaction with each student based on its individual model. Normally, it consists of a domain model, student model, and pedagogical model. ITSs record all student-tutor interaction (mouse clicks, typing, and speech).
+
+Test and quiz system - The main goal of these systems is to measure the students' level of knowledge with respect to one or more concepts or subjects by using a series of questions/items and other prompts for the purpose of gathering information from respondents. They store a great deal of information about students' answers, calculated scores, and statistics.
+
+
+---
+# Characteristics of Data
+
+.panelset[
+
+.panel[.panel-name[Types]
+
+
+.center[
+&lt;img src="img/data_types.png" height="400px"/&gt;
+]
+]
+
+
+
+.panel[.panel-name[Structured]
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; student_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; course_id &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; total_points_possible &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; total_points_earned &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; percentage_earned &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; subject &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; semester &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; section &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Gradebook_Item &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Grade_Category &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FinalGradeCEMS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Points_Possible &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Points_Earned &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Gender &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q6 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q7 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q8 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q9 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q10 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent_hours &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent_std &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; int &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; pc &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; uv &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 43146 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA-S216-02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3280 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2220 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6768293 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 02 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.45372 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1555.1667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.9194450 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1805150 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.333333 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 44638 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA-S116-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3531 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2672 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7567261 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S116 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ATTEMPTED &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.70184 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1382.7001 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.0450017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.3078031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 47448 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA-S216-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2870 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1897 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6609756 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.48758 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 860.4335 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14.3405583 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.6932595 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.666667 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 47979 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA-S216-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4562 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3090 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6773345 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.85260 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1598.6166 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.6436100 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1484470 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48797 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PhysA-S116-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2207 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8654282 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PhysA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S116 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 438 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 399 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1481.8000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.6966667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.2346629 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.500000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51943 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA-S216-03 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3596 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8545627 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 03 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.4501 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0575017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.3257521 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+
+.panel[.panel-name[Unstructured]
+
+.center[
+&lt;img src="img/unstructured.png" height="400px"/&gt;
+]
+]
+
+.panel[.panel-name[Semi-Structured]
+
+.center[
+&lt;img src="img/semi.png" height="400px"/&gt;          
+]
+]
+
+
+
+.panel[.panel-name[Meta-Data]
+
+.center[
+&lt;img src="img/meta_dat.png" height="300px"/&gt;
+]
+
+]
+???
+
+***TYPES-TAB**
+In data-intensive research we might acquire data from LMS, SIS or another source. Data maybe to big for a typical  database  software  tools  to  capture,  store,  manage,  and  analyze”
+
+Those data are similar but different because 
+1. the tasks that students are engaged in and 
+2. how data from those tasks are collected and stored by the technology. 
+
+We identify four main types of data structures.
+- structured
+- unstructured
+- semi-structured and 
+- meta-data
+
+
+
+**STRUCTURED - TAB**
+
+Structured data is Quantitative in nature
+Here we see the rows and columns nice and tidy. 
+- data is tidy when each column is a variable, each row is an observation, and each cell is a single value.
+
+We typically have tidy data in Excel files or SQL databases that we can import using the readr function or here function.
+
+- Tabular - relational data. 
+Examples might include:
+- performance data (current and prior)
+- demographic data (student’s ethnic and or group or disability)
+
+Each field (variable) is discrete and can be accessed separately or jointly along with data from other fields (variables).
+
+**UNSTRUCTURED TAB**
+
+Unstructured data is Qualitative in nature
+and includes:
+- Non-Relational Data
+- sensor data, web logs, clickstreams, keystroke capture data, emails, images and videos
+
+Text Heavy relationships between nodes
+IE: Audio, video, dates SQL database
+
+
+
+**SEMI-*STRUCTURED-TAB**
+Semi-structured data includes Qualitative 
+Triangular Data (uses surveys and interview answers)
+Semi-structured data is a form of structured data that does not conform with the formal structure of data models associated with relational databases or other forms of data tables.
+
+Semi structured can also include log data.
+
+It is a self-describing structure that contains tags
+examples: Social media, JSON and XML, Social Networkdata
+
+
+
+
+**META-DATA - TAB**
+
+Not in the readings but something to think about is Meta-data collection, such as the field dates, times and locations of photos, videos and other structured data about data.
+ - contexts and purposes for why the data was collected
+ 
+You can read more about the meta data standards on Canada's heritage information network. The link is in the presenters notes. https://www.canada.ca/en/heritage-information-network/services/collections-documentation-standards/chin-guide-museum-standards/metadata-data-structure.html
+
+
+]
+
+---
+
+class: clear, inverse, middle, center
+
+Part 2:
+
+----
+
+Code-Along
+
+---
+
+# Workflow: Prepare
+
+&lt;img src="img/prepare_wflow.png" height="425px"/&gt;
+
+???
+**PREPARE TAB**
+
+
+
+**Prepare** for a data-intensive analysis with clear and refined research questions with an understanding of where the data came from. 
+For example, Krumm et al uses the example surrounding an activity system for which the technology was used. 
+
+You may ask yourself - Is it for instructional, reward or even a social collaborative context? Having that understanding will allow for more refined understanding when formulating guiding research questions for the analysis. Identify what gets collected and stored by technology is important for the development of the research question.
+
+Here you may even refine your research question after having a better idea of where the data came from. The question may also be refined and redeveloped after you have started the data intensive analysis.
+
+The Learning Analysis Cycle is not a linear process but rather a process of phases that can be moved around.
+
+---
+# Context of the Problem
+
+Macfadyen, L. P., &amp; Dawson, S. (2010). [Mining LMS data to develop an "early warning system" for educators: A proof of concept.](https://www.sciencedirect.com/science/article/pii/S0360131509002486?via%3Dihub) *Computers &amp; education*, *54*(2), 588-599.
+
+- Explores specific online activities of students indicating their academic success.
+- Focused on "early warning systems" in higher education.
+- Research was extracted from course-based instructor tracking logs and the BB Vista production server.
+- Data Sources
+  + A **self-report survey** assessing three aspects of students’ motivation
+  + **Log-trace data,** such as data output from the learning management system (LMS)
+  + **Academic achievement data**
+  + Discussion board data
+
+???
+The context for our next couple of days is surrounded by online science classes we explore and were designed and taught by instructors through a state-wide online course provider designed to supplement—but not replace—students’ enrollment in their local school. For example, students may have chosen to enroll in an online physics class because one was not offered at their school.
+
+---
+# Install Packages
+
+- First time using a package
+- Do this only once in the "Console"
+
+
+```r
+# Install Packages
+*install.packages("tidyverse")
+```
+
+---
+# Load in Data
+.panelset[
+
+.panel[.panel-name[package]
+
+
+```r
+# Load tidyverse package 
+*library(tidyverse)
+
+# could load only readr 
+*library(readr)
+```
+]
+
+.panel[.panel-name[functions]
+Common readr functions
+
+To help us import our data, we'll be using readr function:
+{[readr](https://readr.tidyverse.org)} 
+
+.pull-left[
+&lt;img src="img/readr_function.png" height="300px"/&gt;
+]
+
+.pull-right[
+&lt;img src="img/delimiter.png" height="300px"/&gt;
+]
+
+]
+
+.panel[.panel-name[readr]
+# Using the readr function
+
+Use `read_csv()` function to read in CSV.
+
+
+```r
+#use read_csv function to read in sci-online-classes.csv rename object to online_classes
+
+*online_classes &lt;- read_csv("data/sci-online-classes.csv")
+
+#use head() function
+knitr::kable(head(online_classes, n=5), format = 'html')
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; student_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; course_id &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; total_points_possible &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; total_points_earned &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; percentage_earned &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; subject &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; semester &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; section &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Gradebook_Item &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Grade_Category &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FinalGradeCEMS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Points_Possible &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Points_Earned &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Gender &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q6 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q7 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q8 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q9 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; q10 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent_hours &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; TimeSpent_std &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; int &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; pc &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; uv &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 43146 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA-S216-02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3280 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2220 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6768293 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 02 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.45372 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1555.1667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.91944 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1805150 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.333333 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 44638 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA-S116-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3531 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2672 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7567261 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S116 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ATTEMPTED &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.70184 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1382.7001 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.04500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.3078031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 47448 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA-S216-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2870 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1897 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6609756 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FrScA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.48758 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 860.4335 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14.34056 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.6932595 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.666667 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 47979 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA-S216-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4562 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3090 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6773345 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OcnA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S216 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.85260 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1598.6166 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.64361 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1484470 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.000000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48797 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PhysA-S116-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2207 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8654282 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PhysA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S116 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 01 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; POINTS EARNED &amp;amp; TOTAL COURSE POINTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.00000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 438 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 399 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1481.8000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.69667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.2346629 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.500000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+.panel[.panel-name[readxl]
+# YOUR TURN! Read in excel files
+
+Read in with `readxl` package
+
+
+```r
+#Install and read in the readxl Package 
+
+#use read_excel() function to read in data/csss_tweets.xlsx
+csss_tweets &lt;- 
+#use head() function to read 
+head()
+```
+]
+
+.panel[.panel-name[readxl]
+# read in excel files
+
+Read in with `readxl` package
+
+
+```r
+#Install and read in the readxl Package 
+library(readxl)
+#use read_excel() function to read in data/csss_tweets.xlsx
+csss_tweets &lt;- read_excel("data/csss_tweets.xlsx")
+#use head() function to read 
+head(csss_tweets, n = 5)
+```
+
+```
+## # A tibble: 5 × 91
+##   user_id             status_id     created_at          screen_name text  source
+##   &lt;chr&gt;               &lt;chr&gt;         &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; 
+## 1 1331246991762976769 136572200862… 2021-02-27 17:54:35 InnerSchol… "@We… Twitt…
+## 2 1331246991762976769 136572187371… 2021-02-27 17:54:03 InnerSchol… "@Bo… Twitt…
+## 3 1331246991762976769 136572178780… 2021-02-27 17:53:42 InnerSchol… "@Co… Twitt…
+## 4 1331246991762976769 136572174606… 2021-02-27 17:53:32 InnerSchol… "@Co… Twitt…
+## 5 1331246991762976769 136572164488… 2021-02-27 17:53:08 InnerSchol… "Ano… Twitt…
+## # ℹ 85 more variables: display_text_width &lt;dbl&gt;, reply_to_status_id &lt;chr&gt;,
+## #   reply_to_user_id &lt;chr&gt;, reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;,
+## #   is_retweet &lt;lgl&gt;, favorite_count &lt;dbl&gt;, retweet_count &lt;dbl&gt;,
+## #   quote_count &lt;lgl&gt;, reply_count &lt;lgl&gt;, hashtags &lt;lgl&gt;, symbols &lt;lgl&gt;,
+## #   urls_url &lt;lgl&gt;, urls_t.co &lt;lgl&gt;, urls_expanded_url &lt;lgl&gt;, media_url &lt;lgl&gt;,
+## #   media_t.co &lt;lgl&gt;, media_expanded_url &lt;lgl&gt;, media_type &lt;lgl&gt;,
+## #   ext_media_url &lt;lgl&gt;, ext_media_t.co &lt;lgl&gt;, ext_media_expanded_url &lt;lgl&gt;, …
+```
+]
+
+.panel[.panel-name[functions]
+
+Check what sheets are included.
+
+
+```r
+?read_excel
+
+*excel_sheets("data/csss_tweets.xlsx")
+```
+
+```
+## [1] "Sheet1"
+```
+
+```r
+csss_tweets &lt;- read_excel("data/csss_tweets.xlsx", sheet = "Sheet1")
+knitr::kable(head(csss_tweets, n = 5),format = 'html')
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; user_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; status_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; created_at &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; screen_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; text &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; source &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; display_text_width &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; reply_to_status_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; reply_to_user_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; reply_to_screen_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; is_quote &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; is_retweet &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; favorite_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; retweet_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quote_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; reply_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hashtags &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; symbols &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; urls_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; urls_t.co &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; urls_expanded_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; media_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; media_t.co &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; media_expanded_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; media_type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ext_media_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ext_media_t.co &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ext_media_expanded_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ext_media_type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mentions_user_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mentions_screen_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; lang &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_status_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_text &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_created_at &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_source &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quoted_favorite_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quoted_retweet_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_user_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_screen_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quoted_followers_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quoted_friends_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quoted_statuses_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_location &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_description &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quoted_verified &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_status_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_text &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_created_at &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_source &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_favorite_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_retweet_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_user_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_screen_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_followers_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_friends_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_statuses_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_location &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_description &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; retweet_verified &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; place_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; place_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; place_full_name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; place_type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country_code &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; geo_coords &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; coords_coords &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; bbox_coords &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; status_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; location &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; description &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; protected &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; followers_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; friends_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; listed_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statuses_count &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; favourites_count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; account_created_at &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; verified &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; profile_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; profile_expanded_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; account_lang &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; profile_banner_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; profile_background_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; profile_image_url &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; query &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1331246991762976769 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365722008621834247 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2021-02-27 17:54:35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; InnerScholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; @WeAreTeachers Another form of practice for your students on how to drag a number to a picture of a certain quantity. Originally designed for kindergartners, this lesson can be adapted for any grade level.
+
+#commoncore #technology #numbers #googleslides #kindergarten
+
+https://t.co/zITD1j1Vbt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter Web App &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365686637104103424 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 14369901 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; WeAreTeachers &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; en &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://twitter.com/InnerScholars/status/1365722008621834247 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Inner Scholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chatsworth, Georgia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 💡Founder / CEO of Inner Scholars Education, Inc. and School Librarian 📚 / Media Specialist 💻 of Grades K-6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2020-11-24 14:43:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://www.teacherspayteachers.com/Store/Inner-Scholars-Education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; http://pbs.twimg.com/profile_images/1331247799393021953/a3wEtmWX_normal.jpg &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; #commoncore &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1331246991762976769 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365721873712107523 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2021-02-27 17:54:03 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; InnerScholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; @Bored_Teachers Another form of practice for your students on how to drag a number to a picture of a certain quantity. Originally designed for kindergartners, this lesson can be adapted for any grade level.
+
+#commoncore #technology #numbers #googleslides #kindergarten
+
+https://t.co/zITD1j1Vbt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter Web App &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365678155776856067 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 716707161645191168 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bored_Teachers &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; en &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://twitter.com/InnerScholars/status/1365721873712107523 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Inner Scholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chatsworth, Georgia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 💡Founder / CEO of Inner Scholars Education, Inc. and School Librarian 📚 / Media Specialist 💻 of Grades K-6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2020-11-24 14:43:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://www.teacherspayteachers.com/Store/Inner-Scholars-Education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; http://pbs.twimg.com/profile_images/1331247799393021953/a3wEtmWX_normal.jpg &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; #commoncore &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1331246991762976769 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365721787804352516 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2021-02-27 17:53:42 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; InnerScholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; @CommonSenseEd Another form of practice for your students on how to drag a number to a picture of a certain quantity. Originally designed for kindergartners, this lesson can be adapted for any grade level.
+
+#commoncore #technology #numbers #googleslides #kindergarten
+
+https://t.co/zITD1j1Vbt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter Web App &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365719871342989313 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1304864108 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CommonSenseEd &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; en &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://twitter.com/InnerScholars/status/1365721787804352516 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Inner Scholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chatsworth, Georgia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 💡Founder / CEO of Inner Scholars Education, Inc. and School Librarian 📚 / Media Specialist 💻 of Grades K-6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2020-11-24 14:43:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://www.teacherspayteachers.com/Store/Inner-Scholars-Education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; http://pbs.twimg.com/profile_images/1331247799393021953/a3wEtmWX_normal.jpg &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; #commoncore &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1331246991762976769 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365721746066800652 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2021-02-27 17:53:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; InnerScholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; @CommonSenseEd Another form of practice for your students on how to drag a number to a picture of a certain quantity. Originally designed for kindergartners, this lesson can be adapted for any grade level.
+
+#commoncore #technology #numbers #googleslides #kindergarten
+
+https://t.co/zITD1j1Vbt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter Web App &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365678368864276483 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1304864108 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CommonSenseEd &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; en &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://twitter.com/InnerScholars/status/1365721746066800652 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Inner Scholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chatsworth, Georgia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 💡Founder / CEO of Inner Scholars Education, Inc. and School Librarian 📚 / Media Specialist 💻 of Grades K-6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2020-11-24 14:43:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://www.teacherspayteachers.com/Store/Inner-Scholars-Education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; http://pbs.twimg.com/profile_images/1331247799393021953/a3wEtmWX_normal.jpg &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; #commoncore &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1331246991762976769 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1365721644883402752 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2021-02-27 17:53:08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; InnerScholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Another form of practice for your students on how to drag a number to a picture of a certain quantity. Originally designed for kindergartners, this lesson can be adapted for any grade level.
+
+#commoncore #technology #numbers #googleslides #kindergarten
+
+https://t.co/zITD1j1Vbt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Twitter Web App &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; en &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://twitter.com/InnerScholars/status/1365721644883402752 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Inner Scholars &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chatsworth, Georgia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 💡Founder / CEO of Inner Scholars Education, Inc. and School Librarian 📚 / Media Specialist 💻 of Grades K-6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2020-11-24 14:43:32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://t.co/6uwVRNWaNZ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; https://www.teacherspayteachers.com/Store/Inner-Scholars-Education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; http://pbs.twimg.com/profile_images/1331247799393021953/a3wEtmWX_normal.jpg &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; #commoncore &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+???
+
+**PACKAGES-TAB**
+
+In order to read in data we must load packages that allow us to read data in, like we did in foundation lab 1. 
+Although there are read-in capabilities with the `utils package` in base r, we are going to use a more modern approach.
+One of the packages in Tidyverse allows for reading in Comma delimiter files, or CSV. 
+
+
+*Reminder if needed - this was discussed in foundation 1*
+R comes with several packages in base r when you start a session. Packages are a collection of objects, data sets around a theme or purpose. You may find a package whose objects are for the purpose of correlation, like in the cor package. Or you may find a package that has objects to produce better tables, like in the *kable extra* package. Or you may find a package that will help wrangling the data (processing it) easier than in Base R package. That is the package we are going to install here Tidyverse.
+
+Tidyverse is a suite of packages that share a common philosophy and are designed to work together. Think Google products or Microsoft products. data importing, data wrangling and plotting.
+
+
+
+
+**FUNCTIONS-TAB**
+
+Common functions that are included when you read in data are 
+1. the file, we need to give a path to get the data. It should be in the working directory.
+
+2. column names corresponds to variables on the first row. The first row of the input will be used as the column names, and will not be included in the data frame. If FALSE, column names will be generated automatically: X1, X2, X3 etc.
+
+3. NA corresponds to missing values. commonly you will see capital NA but you may also see quotations or only a period depending on the original database (excel, SAS, STATA etc).
+
+4. Skip functions allows you to skill to when your data starts. 
+
+5. col_types is not typically needed but good to know. R guesses what type of column types you have when it reads in the file using the default guess_max.
+This is convenient (and fast), but not robust. If the imputation fails, you'll need to increase the guess_max or supply the correct types yourself.
+
+6. guess_max if the imputation fails increase the number beyond the 1000 default to guess col_types correctly.
+
+
+
+
+
+**READR-TAB**
+readr is a quick way to read in comma-separated values (CSV) and tab-separated values (TSV)
+
+- We read in from the path. My data is stored in a folder called data. I then use the assignment operator to save it as a new object called online-classes. 
+- (instructor is showing how to import from file) a quick way to see where your data file is stored is by clicking on the file under files and then import. 
+
+
+
+
+
+
+
+**readxl- TAB**
+To read in an excel file we will need to install the readxl package and then read in with the read_excel function. We can see that it is an excel file with the .xlsx extension.
+
+
+
+
+
+
+**FUNCTIONS-TAB**
+
+You can check what sheets are included in your excel file by calling it with the excel_sheets function. 
+Then you can call only that sheet. Our data only includes one sheet so we do not really need to use this function, but it's good to know.
+]
+---
+# Read in data cont.
+
+
+.panelset[
+
+.panel[.panel-name[path]
+
+Read in from Path
+
+
+```r
+sci_online_classes &lt;- read_csv("data/sci-online-classes.csv") 
+```
+
+
+]
+
+
+.panel[.panel-name[url]
+
+Read in a url path with `read_csv2` function.
+
+
+```r
+*air_quality &lt;- read_csv2("https://www4.stat.ncsu.edu/~online/datasets/AirQualityUCI.csv")
+knitr::kable(head(air_quality, n=3),format = 'html')
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Time &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CO(GT) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PT08.S1(CO) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NMHC(GT) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; C6H6(GT) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PT08.S2(NMHC) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NOx(GT) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PT08.S3(NOx) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NO2(GT) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PT08.S4(NO2) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PT08.S5(O3) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; T &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; RH &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; AH &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ...16 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; ...17 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10/03/2004 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18.00.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1360 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 150 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1046 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 166 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1056 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 113 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1692 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1268 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7578 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10/03/2004 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 19.00.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1292 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 112 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 955 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 103 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1174 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1559 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 972 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7255 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10/03/2004 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20.00.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1402 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 939 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 131 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1140 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 114 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1555 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1074 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7502 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+.panel[.panel-name[.dta file]
+
+Read in a Stata file with `read_dta` function
+
+
+```r
+library(haven)
+
+*gpa_dt &lt;- read_dta("data/GPA3.dta")
+```
+
+]
+
+]
+???
+**PATH-tab**
+You can read in from your computers path. If you aren't sure you go to the file and hold down Shift on your keyboard and right-click on the file.
+You would need to change the direction of the slashes so that R can read it in.
+
+
+
+
+**URL-tab**
+If you want to read in a url you use the read_csv2 function.
+
+
+
+
+**.dta-TAB**
+You may want to read in a SAS, SPSS or Stata file. To do this we would use the Haven package. https://haven.tidyverse.org/
+
+---
+# GLOBAL OPTIONS
+
+
+.pull-left[
+ - 1. `R General` -&gt; (untick) Restore .RData into workspace at startup.
+ - 2. `R General` -&gt; Save workspace to .RData on exit: Never
+ - 3. `R Markdown` -&gt; Show output preview in: Viewer Pane
+]
+
+.pull-right[
+&lt;img src="img/global.png" height="425px"/&gt;
+]
+
+---
+
+class: inverse, clear, center
+
+## .font130[.pull-left[**What's next?**]]
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+.pull-left-wide[.left[.font100[
+- Complete **Independent work today**
+- Complete the R Programming primer:  [Work with Data](https://rstudio.cloud/learn/primers/2)
+- Complete the Badge requirement document [Foundations badge - Data Sources](https://github.com/laser-institute/foundational-skills/tree/master/foundation_lab_1/lab1_badge).
+]]
+]
+
+## .font175[.center[Thank you! Any questions?]]
+
+
+---
+&lt;img src="img/team_2022.png" height="550px"/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "default",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

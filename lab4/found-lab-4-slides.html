@@ -1,63 +1,43 @@
----
-  title: "Foundation Lab 4 - Data Products"
-  author: "Jeanne McClure, Jennifer Houchins"
-  institute: "Instituttional Affiliation"
-  date: '`r format(Sys.time(), "%B %d, %Y")`'
-  output:
-    xaringan::moon_reader:
-      css:
-       - default
-       - css/laser.css
-       - css/laser-fonts.css
-      lib_dir: libs                        # creates directory for libraries
-      seal: false                          # false: custom title slide
-      nature:
-        highlightStyle: default         # highlighting syntax for code
-        highlightLines: true               # true: enables code line highlighting
-        highlightLanguage: ["r"]           # languages to highlight
-        countIncrementalSlides: false      # false: disables counting of incremental slides
-        ratio: "16:9"                      # 4:3 for standard size,16:9
-        slideNumberFormat: |
-         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
-          </div>
-         </div>
----
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Foundation Lab 4 - Data Products</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jeanne McClure, Jennifer Houchins" />
+    <meta name="date" content="2023-06-29" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link rel="stylesheet" href="css/laser.css" type="text/css" />
+    <link rel="stylesheet" href="css/laser-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
 class: clear, title-slide, inverse, center, top, middle
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
-```{r, echo=FALSE}
-# then load all the relevant packages
-pacman::p_load(pacman, knitr, tidyverse, here)
-```
 
-```{r xaringan-panelset, echo=FALSE}
-xaringanExtra::use_panelset()
-```
 
-```{r xaringanExtra-clipboard, echo=FALSE}
-# these allow any code snippets to be copied to the clipboard so they 
-# can be pasted easily
-htmltools::tagList(
-  xaringanExtra::use_clipboard(
-    button_text = "<i class=\"fa fa-clipboard\"></i>",
-    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
-  ),
-  rmarkdown::html_dependency_font_awesome()
-)
-```
-```{r xaringan-extras, echo=FALSE}
-xaringanExtra::use_tile_view()
 
-```
 
-# `r rmarkdown::metadata$title`
+
+
+
+
+# Foundation Lab 4 - Data Products
 ----
-### `r rmarkdown::metadata$author`
-### `r format(Sys.time(), "%B %d, %Y")`
+### Jeanne McClure, Jennifer Houchins
+### June 29, 2023
 
 
 ---
@@ -98,7 +78,7 @@ Again we finished our last session in the Explore phase of our LA Cycle. Using G
 ]
 
 .footnote[Pre-Reading:
-R for Data Science, (Ch. 21 & 23) by Hadley Wickham & Garrett Grolemund(https://slides.yihui.org/xaringan/zh-CN.html)
+R for Data Science, (Ch. 21 &amp; 23) by Hadley Wickham &amp; Garrett Grolemund(https://slides.yihui.org/xaringan/zh-CN.html)
 
 ]
 ???
@@ -165,7 +145,7 @@ Learning Analytics Workflow: Conceptual Overview
 - Administrators
 - Teachers
 - Other practitioners
-- Students & their families
+- Students &amp; their families
 
 ]
 ]
@@ -265,7 +245,7 @@ A really important caveat though is that you are going to also make a plan for a
   + bibliography:
 ]
 .pull-right[
-<img src="img/yaml.png" height="300px"/>
+&lt;img src="img/yaml.png" height="300px"/&gt;
 ]
 
  
@@ -345,7 +325,7 @@ So when we are creating reports, or articles for journals, it's common to have t
 .panel[.panel-name[Document]
 
 .left-column[
-<img src="img/output.png" height="400px"/>
+&lt;img src="img/output.png" height="400px"/&gt;
 ]
 
 .right-column[
@@ -384,7 +364,7 @@ _Must install LaTeX package first_
 ]
 ]
 
-.panel[.panel-name[Citations & Bibliography]
+.panel[.panel-name[Citations &amp; Bibliography]
 
 .pull-left[
 - Specify a [bibliography file](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
@@ -396,7 +376,7 @@ _Must install LaTeX package first_
   + csl: apa.csl
 ]
 .pull-right[
-<img src="img/outputbiblio.png" height="400px"/>
+&lt;img src="img/outputbiblio.png" height="400px"/&gt;
 ]
 
 ]
@@ -429,7 +409,7 @@ There are also a number of ways to create presentations in R markdown and I've s
 
 
 
-**Citations & Bibliography TAB**
+**Citations &amp; Bibliography TAB**
 Another really relevant form of output that you might want to create is a bibliography. That's very necessary if you are producing scholarship, and so we wanted to talk briefly about how you would include a bibliography and citations. So Pandoc is actually the package that helps translate your R markdown file into your final report. And so Pandoc can generate citations and a bibliography for you. 
 
 The way that you're going to do that is you're going to specify a bibliography file in your file’s YAML header. And you want to make sure to include the path from the directory of your R markdown file to the directory of your bibliography file, if they're not the same. One thing that they note in the R for Data Science book is that this command will print your bibliography but it typically does not print any sort of header, so one of the last things that you should include in your Rmarkdown file is a header, so for example # (because the hashtag remember is going to indicate that it's a header), and then the word “references” or “bibliography”. 
@@ -467,30 +447,29 @@ Code-Along
 
 .panel[.panel-name[MODEL]
 
-```{r echo = TRUE, eval=FALSE}
+
+```r
 # Add predictor variable for science
 lm(proportion_earned ~ time_spent_hours + int, 
    data = data_to_explore)
 
 # save the model
-m1 <- lm(proportion_earned ~ time_spent_hours + int, data = data_to_explore)
-
-
+m1 &lt;- lm(proportion_earned ~ time_spent_hours + int, data = data_to_explore)
 ```
 
 
 ]
 
 .panel[.panel-name[Correlation]
-```{r eval = FALSE, echo = TRUE}
+
+```r
 #install corrr package if this is your first time
 install.packages("corrr")
 # read in library
-library(corrr) <##
-  data_to_explore %>% 
-  select(proportion_earned, time_spent_hours) %>%
-  correlate() <##
-
+library(corrr) &lt;##
+  data_to_explore %&gt;% 
+  select(proportion_earned, time_spent_hours) %&gt;%
+  correlate() &lt;##
 ```
 
 ]
@@ -498,22 +477,23 @@ library(corrr) <##
 .panel[.panel-name[APA TABLE]
 
 .pull-left[
-```{r eval = FALSE, echo=TRUE}
+
+```r
 #install if this is your first time
 install.packages("apaTables")
 
 # read in apatables library
 library(apaTables)
 
-data_to_explore_subset <- data_to_explore %>% 
+data_to_explore_subset &lt;- data_to_explore %&gt;% 
   select(time_spent_hours, proportion_earned, int)
 
-apa.cor.table(data_to_explore_subset)<##
+apa.cor.table(data_to_explore_subset)&lt;##
 ```
 
 ]
 .pull-right[
-<img src="img/apa_table.png" height="350px"/>
+&lt;img src="img/apa_table.png" height="350px"/&gt;
 ]
 ]
 
@@ -521,17 +501,18 @@ apa.cor.table(data_to_explore_subset)<##
 .panel[.panel-name[Linear Regression]
 
 .pull-left[
-```{r eval=FALSE, echo=TRUE}
+
+```r
 lm(proportion_earned ~ time_spent_hours, 
    data = data_to_explore)
 ```
 ]
 .pull-right[
-```{r eval=FALSE, echo=TRUE}
-# save the model
-m1 <- lm(proportion_earned ~ time_spent_hours + int, 
-         data = data_to_explore)
 
+```r
+# save the model
+m1 &lt;- lm(proportion_earned ~ time_spent_hours + int, 
+         data = data_to_explore)
 ```
 
 ]
@@ -582,7 +563,7 @@ The following code estimates a model in which `proportion_earned`, the proportio
 
 .panel[.panel-name[COMMUNICATE]
 
-<img src="img/communicate.png" height="450px"/>
+&lt;img src="img/communicate.png" height="450px"/&gt;
 ]
 ]
 
@@ -616,7 +597,7 @@ class: inverse, clear, center
 
 ## .font130[.pull-left[**What's next?**]]
 
-<br/><br/><br/><br/><br/>
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
 
 .pull-left-wide[.left[.font100[
 -  Make sure to complete the R Programming primer: [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html?_ga=2.149737333.2122961316.1655817816-1599820931.1654624890).
@@ -631,4 +612,143 @@ class: inverse, clear, center
 
 
 ---
-<img src="img/team_2022.png" height="550px"/>
+&lt;img src="img/team_2022.png" height="550px"/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "default",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
