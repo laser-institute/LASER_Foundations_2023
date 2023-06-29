@@ -1,0 +1,318 @@
+---
+title: 'Laser Lab 4 - pdf Final Workflow'
+author: "Jeanne McClure"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 0. Introduction
+
+Provide a brief overview or case study.
+
+-   Include your R1: *research questions!*
+
+## 1. Prepare
+
+Load Packages
+
+```{r warning =FALSE, message=FALSE}
+
+#Load necessary packages
+library(tidyverse)
+library(here)
+```
+
+```{r eval = FALSE}
+
+# install Latex - this may take a few minutes. After it is installed you do not need to keep it on your file. Doing this in a separate script would be better.
+
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+## 2. Wrangle
+
+### a. *Import Data*
+
+#### Data Source #1: Log Data
+
+Log-trace data is data generated from our interactions with digital
+technologies, such as archived data from social media postings. In
+education, an increasingly common source of log-trace data is that
+generated from interactions with LMS and other digital tools.
+
+The data we will use has already been "wrangled" quite a bit and is a
+summary type of log-trace data: the number of minutes students spent on
+the course. While this data type is fairly straightforward, there are
+even more complex sources of log-trace data out there (e.g., time stamps
+associated with when students started and stopped accessing the course).
+
+Let's use the `read_csv()` function from {readr} to import our
+`log-data.csv` file directly from our data folder and name this data set
+`time_spent`, to help us to quickly recollect what function it serves in
+this analysis:
+
+```{r}
+#load with read_csv package
+time_spent <- read_csv("~/RProj22/foundation_labs_2022/foundation_lab_2/data/log-data.csv")
+
+#read in data_to_explore
+data_to_explore <- read_csv(here("data", "data_to_explore.csv"))
+```
+
+
+
+## 3. Explore
+
+
+
+#### A. TABLE SUMMARY
+```{r}
+#install package if this is first time using skimr
+
+
+#load library
+library(skimr)
+
+#skim data
+skim(data_to_explore)
+
+```
+
+## B. TIDY to EXPLORE
+```{r}
+# using the `select()` and `filter()` functions. In the code chunk below,look at descriptive for just `proportion_earned` , `time_spent` and `gender`, but only for the "OcnA" and "PhysA" subjects.
+
+data_to_explore %>% 
+  select(c('subject', 'gender', 'proportion_earned', 'time_spent')) %>% 
+  filter(subject == "OcnA" | subject == "PhysA") %>%
+  skim()
+```
+
+
+#### B. DATA VIZ
+
+ggplot grammar - with layers
+
+
+##### layers - Scatter Plot
+
+Basic graph 
+1. data
+2. aes
+3. geom
+
+```{r}
+#layer 1: add data and aesthetics mapping 
+ggplot(data_to_explore, #<<
+       aes(x = time_spent_hours, 
+           y = proportion_earned)) +
+#layer 2: +  geom function type
+  geom_point() #<<
+```
+
+Add **Scale ** with different color for enrollment status.
+
+```{r}
+#layer 1: add data and aesthetics mapping 
+#layer 3: add color scale by type
+ggplot(data_to_explore, 
+       aes(x = time_spent_hours, 
+           y = proportion_earned,
+           color = enrollment_status)) + #<<
+#layer 2: +  geom function type
+  geom_point()
+```
+
+
+Add another layer with **labs* labeling the title
+```{r}
+#layer 1: add data and aesthetics mapping 
+#layer 3: add color scale by type
+ggplot(data_to_explore, 
+       aes(x = time_spent_hours, 
+           y = proportion_earned,
+           color = enrollment_status)) +
+#layer 2: +  geom function type
+  geom_point() +
+#layer 4: add lables
+  labs(title="How Time Spent on Course LMS is Related to Points Earned in the Course", x="Time Spent (Hours)", y = "Proportion of Points Earned")
+```
+
+
+Add the **facet** layer
+```{r echo = TRUE, eval=FALSE}
+#layer 1: add data and aesthetics mapping 
+#layer 3: add color scale by type
+ggplot(data_to_explore, aes(x = time_spent_hours, y = proportion_earned, color = enrollment_status)) +
+#layer 2: +  geom function type
+  geom_point() +
+#layer 4: add lables
+    x_lab(title="How Time Spent on Course LMS is Related to Points Earned in the Course", 
+       x="Time Spent (Hours)",
+       y = "Proportion of Points Earned")
+#layer 5: add facet wrap
+  facet_wrap(~ subject) 
+```
+
+
+
+
+##### layers- Histogram
+
+Create a basic histogram using the 'geom_hist()' function
+```{r hist1, message=FALSE, warning=FALSE}
+
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% #<<
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom
+  geom_histogram()
+```
+
+
+Change bin size
+
+```{r hist2, message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+  geom_histogram(bins = 10)
+```
+
+
+Add color label to make bins stand out
+
+```{r hist3,message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+#layer 3b: add color
+  geom_histogram(bins = 10,
+                 fill = "red", 
+                 colour = "black") 
+```
+
+
+Add labels and add a theme for a clean aesthetic
+
+
+```{r hist4, message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+# layer 3b: add color
+  geom_histogram(bins = 10, fill = "red", colour = "black")+
+#layer 4: add Labels
+  labs(title="Time Spent on LMS histogram plot",x="Time Spent(hours)", y = "Count")+
+  theme_classic()
+```
+
+Create a histogram with density plot
+
+```{r hist5, message=FALSE, warning=FALSE}
+data_to_explore%>%
+  ggplot(aes(x=time_spent_hours)) +
+  geom_histogram(aes(y=..density..), colour="black", fill="white", bins = 10)+
+ geom_density(alpha=.2, fill="#FF6666") 
+  labs(title="Time Spent on LMS histogram/density plot",x="Time Spent(hours)", y = "Density")+
+  theme_classic()
+```
+
+
+
+## 4. Model
+Quantify the insights using mathematical models.
+
+#### A. MATHMATICAL
+
+Does time spent predict grade earned?
+
+```{r}
+# Use linear regression model
+lm(proportion_earned ~ time_spent_hours, 
+   data = data_to_explore)
+```
+
+```{r}
+# Add predictor variable for science
+lm(proportion_earned ~ time_spent_hours + int, 
+   data = data_to_explore)
+
+# save the model
+m1 <- lm(proportion_earned ~ time_spent_hours + int, data = data_to_explore)
+
+```
+
+Run a summary model for the model you just created called, `m1.`
+```{r}
+#run the summary
+summary(m1)
+
+```
+
+```{r}
+#install apaTables if this is your first time - do you remember how?
+
+#load packages
+library(apaTables)
+# use the {apaTables} package to create a nice regression table that could be used for later publication.
+apa.reg.table(m1, filename = "lm-table.doc")
+
+```
+
+## Communicate
+
+**RQ1**: Do males outperform females in online STEM courses?
+
+```{r warning=FALSE, message=FALSE}
+data_viz <- data_to_explore %>%
+  select(subject, gender, proportion_earned) %>%  # reduced 
+  mutate(subject = recode(subject, 
+                          "AnPhA" = "Anatomy",
+                          "BioA" = "Biology", 
+                          "FrScA" = "Forensics", 
+                          "OcnA" =  "Oceanography", 
+                          "PhysA" = "Physics")) %>%
+  mutate(grade = proportion_earned * 100) %>%
+  # filter(!is.na(gender)) %>%
+  na.omit() %>% # removed all NAs instead of just those for gender
+  group_by(subject, gender) %>% # grouped by subject and gender
+  summarise(grade = mean(grade), 
+            sd = sd(grade))# calculated mean and sd for grade and saved as grade again  
+
+  ggplot(data_viz, aes(x = subject, y = grade, 
+                          fill = gender)) +
+  geom_bar(stat = "identity", 
+           position = position_dodge()) +
+  labs(title = "Do Males out-preform Females in online STEM courses?",
+       caption = "Online STEM course performance, why is there still a gender gap?",
+       y = "Average Grade",
+       x = "Online STEM Course")
+```
+
+1. **Purpose** -  
+
+2. **Methods** - 
+
+3. **Findings** - 
+
+4. **Discussion** - 
+
+
+

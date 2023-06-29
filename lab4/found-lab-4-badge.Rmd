@@ -1,0 +1,115 @@
+---
+title: "Data Products - Badge"
+subtitle: "LASER Institute Foundation Learning Lab 4"
+author: ""
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](img/dataproduct_badge.png){width="30%"}
+
+
+The final activity for each learning lab provides space to work with data and to reflect on how the concepts and techniques introduced in each lab might apply to your own research.
+
+To earn a badge for each lab, you are required to respond to a set of prompts for two parts: 
+
+-   In Part I, you will reflect on your understanding of key concepts and begin to think about potential next steps for your own study.
+
+-   In Part II, you will create a simple data product in R that demonstrates your ability to apply a data analysis technique introduced in this learning lab.
+
+### Part I: Reflect and Plan
+
+Use the institutional library (e.g. [NCSU Library](https://www.lib.ncsu.edu/#articles)), [Google Scholar](https://scholar.google.com/) or search engine to locate a research article, presentation, or resource that applies learning analytics analysis to an educational context or topic of interest. More specifically, **locate a study that makes use of one of the data structures we learned today.** You are also welcome to select one of your research papers.
+
+1.  Provide an APA citation for your selected study.
+
+    -   
+
+2.  What educational issue, “problem of practice,” and/or questions were addressed?
+
+    -   
+
+
+3.  What maked this a “good” data product?
+
+
+    -   
+
+4.  In your self-selected article, who were the intended beneficiaries of the work and what “change ideas” might the result imply for them?
+
+    -   
+5. Finally,  how were modeling used to support analysis, if at all? Were these practices new to you?
+    -   
+
+Draft a new research question of guided by the the phases of the Learning Anlytics Workflow. Or use one of your current research questions.
+
+1.  What educational issue, “problem of practice,” and/or questions is  addressed?
+
+    -   
+
+2.  Briefly describe how you might “polish” a data visualization for the educators you will share it with?
+ 
+    -
+
+3.  How might you include education practitioners (e.g teachers, admin, policymakers, etc) to be involved in the study?
+
+    -   
+
+### Part II: Data Product
+
+We have completed the phases of the Learning Analytics Workflow but really have only scratched the surface with the power of tidyverse in each of these phases.
+
+Using one of the data sets provided in the data folder, your goal for this lab is to complete a data product. 
+You have two options for completing the Data Product portion:
+
+- Create a data product of your choice using a data set from the data folder 
+- Create a data product using your own data.
+
+Exercise:
+- You will create a data product to share with stakeholders.
+
+1.  **Select**. Communicating what one has learned involves selecting
+    among those analyses that are most important and most useful to an
+    intended audience, as well as selecting a form for displaying that
+    information, such as a graph or table in static or interactive form,
+    i.e.a "data product."
+
+2.  **Polish**. After creating initial versions of data products,
+    research teams often spend time refining or polishing them, by
+    adding or editing titles, labels, and notations and by working with
+    colors and shapes to highlight key points.
+
+3.  **Narrate**. Writing a narrative to accompany the data products
+    involves, at a minimum, pairing a data product with its related
+    research question, describing how best to interpret the data
+    product, and explaining the ways in which the data product helps
+    answer the research question.
+
+
+I highly recommend creating a new R script in your lab-3 folder to complete this task. When your code is ready to share, use the code chunk below to share the final code for your model and answer the questions that follow.
+
+```{r, my-data-product}
+# YOUR FINAL CODE HERE
+```
+
+### Knit & Submit
+
+Congratulations, you've completed your Foundation Badge on Learning Analytics Data Product! Complete the following steps to submit your work for review by:
+
+1. Change the name of the author: in the [YAML header](https://monashdatafluency.github.io/r-rep-res/yaml-header.html) at the very top of this document to your name. As noted in [Reproducible Research in R](https://monashdatafluency.github.io/r-rep-res/index.html), The YAML header controls the style and feel for knitted document but doesn’t actually display in the final output.
+
+2. Click the yarn icon above to “knit” your data product to a [HTML](https://bookdown.org/yihui/rmarkdown/html-document.html) file that will be saved in your R Project folder.
+
+3. Commit your changes in GitHub Desktop and push them to your online GitHub repository.
+
+4. Publish your HTML page the web using one of the following [publishing methods](https://rpubs.com/cathydatascience/518692):
+Publish on [RPubs](https://rpubs.com/) by clicking the “Publish” button located in the Viewer Pane when you knit your document. Note, you will need to quickly create a RPubs account. Publishing on GitHub using either [GitHub Pages](https://pages.github.com/) or the [HTML previewer](http://htmlpreview.github.io/).
+
+5. Post a new discussion on GitHub to our [Foundations Badges forum](https://github.com/orgs/laser-institute/teams/foundations/discussions/2). In your post, include a link to your published web page and `write` a short reflection highlighting one thing you learned from this lab and one thing you’d like to explore further.
+
+
+
