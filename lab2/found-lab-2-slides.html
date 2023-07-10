@@ -1,63 +1,43 @@
----
-  title: "Foundation lab 2 - LA Methods"
-  author: "Jeanne McClure, Melinda Whitford, Doreen Mushi"
-  institute: "Instituttional Affiliation"
-  date: '`r format(Sys.time(), "%B %d, %Y")`'
-  output:
-    xaringan::moon_reader:
-      css:
-       - default
-       - css/laser.css
-       - css/laser-fonts.css
-      lib_dir: libs                        # creates directory for libraries
-      seal: false                          # false: custom title slide
-      nature:
-        highlightStyle: default         # highlighting syntax for code
-        highlightLines: true               # true: enables code line highlighting
-        highlightLanguage: ["r"]           # languages to highlight
-        countIncrementalSlides: false      # false: disables counting of incremental slides
-        ratio: "16:9"                      # 4:3 for standard size,16:9
-        slideNumberFormat: |
-         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
-          </div>
-         </div>
----
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Foundation lab 2 - LA Methods</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
+    <meta name="date" content="2023-07-10" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link rel="stylesheet" href="css/laser.css" type="text/css" />
+    <link rel="stylesheet" href="css/laser-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
 class: clear, title-slide, inverse, center, top, middle
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
-```{r, echo=FALSE}
-# then load all the relevant packages
-pacman::p_load(pacman, knitr)
-```
 
-```{r xaringan-panelset, echo=FALSE}
-xaringanExtra::use_panelset()
-```
 
-```{r xaringanExtra-clipboard, echo=FALSE}
-# these allow any code snippets to be copied to the clipboard so they 
-# can be pasted easily
-htmltools::tagList(
-  xaringanExtra::use_clipboard(
-    button_text = "<i class=\"fa fa-clipboard\"></i>",
-    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
-  ),
-  rmarkdown::html_dependency_font_awesome()
-)
-```
-```{r xaringan-extras, echo=FALSE}
-xaringanExtra::use_tile_view()
 
-```
 
-# `r rmarkdown::metadata$title`
+
+
+
+
+# Foundation lab 2 - LA Methods
 ----
-### `r rmarkdown::metadata$author`
-### `r format(Sys.time(), "%B %d, %Y")`
+### Jeanne McClure, Melinda Whitford, Doreen Mushi
+### July 10, 2023
 
 
 ---
@@ -123,7 +103,7 @@ On a quick recap from our data structures presentation we discussed the differen
 
 .footnote[Pre-Reading:
 1. [Learning Analytics Goes to School, (Ch. 2, pp. 41 - 34) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
-2. [The journey of learning analytics. By Joksimović, Kovanović & Dawson]()
+2. [The journey of learning analytics. By Joksimović, Kovanović &amp; Dawson]()
 ]
 ---
 
@@ -206,7 +186,7 @@ Methods used in LA: Conceptual Overview
 
 **Predictive Analysis** supports student learning by predicting future
 
-- Learning analytics aims to comprehend and enhance the learning process (Macfadyen & Dawson, 2010). Consequently, it is not unexpected that initial investigations predominantly concentrated on establishing predictive frameworks for student retention and academic achievement (Gašević et al., 2015; Siemens, 2013). This emphasis on identifying or foreseeing students who may be at risk of academic failure during the early stages of their academic journey is driven by the economic advantages associated with student retention.
+- Learning analytics aims to comprehend and enhance the learning process (Macfadyen &amp; Dawson, 2010). Consequently, it is not unexpected that initial investigations predominantly concentrated on establishing predictive frameworks for student retention and academic achievement (Gašević et al., 2015; Siemens, 2013). This emphasis on identifying or foreseeing students who may be at risk of academic failure during the early stages of their academic journey is driven by the economic advantages associated with student retention.
 
 - Course Signals first predictive dashboard by Arnold and Pistilli, 2012
 consisted of a predictive model for detecting students’ at-risk of course
@@ -479,7 +459,7 @@ Code-Along
 ---
 # WORKFLOW: Wrangle
 
-<img src="img/wrangle_wflow.png" height="425px"/>
+&lt;img src="img/wrangle_wflow.png" height="425px"/&gt;
 
 ???
 
@@ -488,7 +468,7 @@ Code-Along
 Wrangling or sometimes called "munging or pre-processing" entails the work of manipulating, cleaning, transforming, and merging data.
 - **manipulating** involves identifying, acquiring, and importing data into analysis software.
 
-- Wickham & Grolemund suggest cleaning data involves ensuring that each variable is in its own column, each observation is in its own row, and each value
+- Wickham &amp; Grolemund suggest cleaning data involves ensuring that each variable is in its own column, each observation is in its own row, and each value
 
 is in its own cell within a dataset.
 This is called Tidying your data and is part of the philosophy that informs the tidyvers suite.
@@ -506,16 +486,15 @@ categorical variables and rescaling continuous variables.
 #First Prepare
 
 
-```{r eval=FALSE, echo=TRUE, warning=FALSE, message=FALSE}
 
+```r
 #load Library
 library(tidyverse)
 
 #load with read_csv package
-time_spent <- read_csv("data/log-data.csv")
-gradebook <- read_csv("data", "gradebook-summary.csv")
-survey <- read_csv("data", "survey.csv")
-
+time_spent &lt;- read_csv("data/log-data.csv")
+gradebook &lt;- read_csv("data", "gradebook-summary.csv")
+survey &lt;- read_csv("data", "survey.csv")
 ```
 
 
@@ -533,7 +512,7 @@ survey <- read_csv("data", "survey.csv")
 #Tidy
 
 .center[
-<img src="img/dplyr.png" height="425px"/>
+&lt;img src="img/dplyr.png" height="425px"/&gt;
 ]
 
 ---
@@ -541,21 +520,22 @@ survey <- read_csv("data", "survey.csv")
 
 
 
-```{r eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
-time_spent %>%  
+
+```r
+time_spent %&gt;%  
   separate(course_id,
            c("subject", "semester", "section"))
 
 
 knitr::kable(head(time_spent, n=5), format = 'html')
-
 ```
 ---
 # Mutate
 
-```{r eval=FALSE, echo=TRUE, warning=FALSE, message=FALSE}
+
+```r
 # mutate minutes to hours on time spent and save as new variable.
-time_spent_2 <- time_spent_2 %>% 
+time_spent_2 &lt;- time_spent_2 %&gt;% 
   mutate(time_spent_hours = time_spent / 60)
 time_spent_2
 ```
@@ -565,7 +545,7 @@ time_spent_2
 #Join
 
 .center[
-<img src="img/join.png" height="425px"/>
+&lt;img src="img/join.png" height="425px"/&gt;
 ]
 
 ---
@@ -573,7 +553,7 @@ time_spent_2
 
 {[Janitor](packagehttps://cran.r-project.org/web/packages/janitor/vignettes/janitor.html)}
 .center[
-<img src="img/janitor.png" height="425px"/>
+&lt;img src="img/janitor.png" height="425px"/&gt;
 ]
 
 
@@ -592,7 +572,7 @@ In this part of the workflow, **Prepare**, load your libraries. If this is the f
 **WRANGLE TAB**
 About 45- 50%% of your time is spent in cleaning the data.
 
-In general, data wrangling involves some combination of cleaning, reshaping, transforming, and merging data (Wickham & Grolemund, 2017). The importance of data wrangling is difficult to overstate, as it involves the initial steps of going from raw data to a dataset that can be explored and modeled (Krumm et al, 2018). 
+In general, data wrangling involves some combination of cleaning, reshaping, transforming, and merging data (Wickham &amp; Grolemund, 2017). The importance of data wrangling is difficult to overstate, as it involves the initial steps of going from raw data to a dataset that can be explored and modeled (Krumm et al, 2018). 
 
 In the wrangle section we are going to:
 
@@ -618,7 +598,7 @@ separate the `course_id` variable.
 Once we've processed the data how we
 would like, we have to assign, or save, the results back to the name for
 the data with which we have been working. This is done with the
-assignment operator, or the \<- symbol.
+assignment operator, or the \&lt;- symbol.
 
 2. We'll use
 `mutate()` to create a new variable for the percentage of points each
@@ -697,7 +677,7 @@ variables.
 
 
 For more on joins:
-<https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti>
+&lt;https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti&gt;
 
 GREAT job on wrangling your data!
 
@@ -710,7 +690,7 @@ class: inverse, clear, center
 
 ## .font130[.pull-left[**What's next?**]]
 
-<br/><br/><br/><br/><br/>
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
 
 .pull-left-wide[.left[.font100[
 -  Make sure to complete the R Programming primers:  [Tidy your Data](https://rstudio.cloud/learn/primers/4)
@@ -725,4 +705,143 @@ class: inverse, clear, center
 
 ---
 
-<img src="img/team_2022.png" height="550px"/>
+&lt;img src="img/team_2022.png" height="550px"/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "default",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

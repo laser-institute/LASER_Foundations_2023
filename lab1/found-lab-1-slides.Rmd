@@ -1,6 +1,6 @@
 ---
   title: "Foundations lab 1 - LA Data Structures"
-  author: "Jeanne McClure"
+  author: "Jeanne McClure, Melinda Whitford, Doreen Mushi"
   institute: "Instituttional Affiliation"
   date: '`r format(Sys.time(), "%B %d, %Y")`'
   output:
@@ -106,10 +106,13 @@ behind the open data movement is that anyone can access or use a data set, and k
     - Install/Load Packages
     - Read in Data
     - Inspect Data
+]
 
 .footnote[Pre-Reading:
-[Learning Analytics Goes to School, (Ch. 2, pp 28 - 41 ) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
-]
+1. [Learning Analytics Goes to School, (Ch. 2, pp 28 - 41 ) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
+2. [Educational data mining and learning analytics: An updated survey, By Romero& Ventura]()
+
+
 ]
 
 ???
@@ -195,9 +198,9 @@ Blended (“blended learning,” “hybrid learning,” and “mixed-mode instru
 
 .pull-left[
 
-- Adaptive and Intelligent Hypermedia System (AIHS)
+- **Adaptive and Intelligent Hypermedia System (AIHS)**
 
-- Intelligent Tutoring System (ITS)
+- **Intelligent Tutoring System (ITS)**
 
 - Serious Games and Simulations 
 
@@ -210,7 +213,7 @@ Blended (“blended learning,” “hybrid learning,” and “mixed-mode instru
 
 - Massive Open Online Course (MOOC)
 
-- Test and quiz system
+- **Test and quiz system**
 
 - Sensor  Wearable learning systems and Virtual
 
@@ -407,6 +410,8 @@ install.packages("tidyverse")#<<
 ```
 
 ---
+class: no-logo
+
 # Load in Data
 .panelset[
 
@@ -655,4 +660,4 @@ class: inverse, clear, center
 
 
 ---
-<img src="img/team_2022.png" height="550px"/>
+<img src="img/teams_2023.png" height="550px"/>

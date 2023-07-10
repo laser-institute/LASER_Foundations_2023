@@ -1,6 +1,6 @@
 ---
   title: "Foundation Lab 4 - Data Products"
-  author: "Jeanne McClure, Jennifer Houchins"
+  author: "Jeanne McClure, Melinda Whitford, Doreen Mushi"
   institute: "Instituttional Affiliation"
   date: '`r format(Sys.time(), "%B %d, %Y")`'
   output:
@@ -66,11 +66,9 @@ xaringanExtra::use_tile_view()
 --
 
 - Purpose of Visualizations
-
 --
 
 - Basic Principles of Visualizations
-
 --
 
 - ggplot2 grammar and visualizations
@@ -84,17 +82,18 @@ Again we finished our last session in the Explore phase of our LA Cycle. Using G
 # Agenda
 
 .pull-left[**Part-1  Conceptual Overview**
-- Storytelling
+
+- Communicating your message
 - Publication-ready products
+- Ethical Considerations
+
 ]
 
 
 .pull_right[**Part-2  Code-Along**
-- Model
+- Model 
 - Communicate
-- RMarkdown File formats
-- Citation Manager in R
-- Journal Submission
+- Flexdashboard
 ]
 
 .footnote[Pre-Reading:
@@ -104,7 +103,7 @@ R for Data Science, (Ch. 21 & 23) by Hadley Wickham & Garrett Grolemund(https://
 ???
 In this presentation we are going to focus on communicating your data and findings effectively with education stakeholders. We'll also talk about how to create publication-ready products in R markdown. 
 
-For the code along, we will continue on in our Learning Analytics workflow to finish up with Model and Communication. Where we will be  converting R markdown files into a variety of formats and experiment a little bit with setting up a bibliography and formatting in-text citations. And if we have time you may have the opportunity to also experiment with the `rticles package` to tailor a publication or a document for a specific journal.
+For the code along, we will continue on in our Learning Analytics workflow to finish up with Model and Communication. Where we will be  converting R markdown files into a variety of formats and how to bring it together in a flexdashboard.
 
 So the pre-reading for this module was chapters 21 and 23 in the R for Data Science book by Hadley Wickham and Garrett Grolemund. Both of these chapters are a really great introduction to this module. The information is presented really clearly and succinctly, and each section of these chapters also has a number of small very manageable exercises that will enable you to practice some of these skills. And I think we may be incorporating a few of these exercises into the code-along, but I just want to reiterate that this is a really high quality resource. So, if you didn't have time to look at these chapters before today's session, As mentioned previously, I recommend that you get this book or even bookmark it to have it on your bookshelf to aid you as you continue to practice with data analytics in R.
 
@@ -114,7 +113,7 @@ Who are some of the stakeholders that you communicate your findings?
 
 What experiences have you had with communicating the results of data analysis and how did you communicate these findings?
 
-What types of differences are there in your communications between your stakeholders? 
+What are some things you are normally asked to communicate?
 
 ???
 Before we begin I want you to take a moment and discuss with the person near you some of the questions I have on the screen. Really think about what types of products you produce, what types of language you use to communicate and what their faces look like...do they understand or do you find your self rewording your findings?
@@ -129,23 +128,6 @@ Part 1:
 ----
 
 Learning Analytics Workflow: Conceptual Overview
-
----
-
-# Legal and Ethical Considerations
-
-- Ethics of ‘Big Data’ and AI
---
-
-- Problem of opaque ‘black box’ algorithms
---
-
-- Training machine learning classifiers on biased data sets
---
-
-- Incorrectly predicting someone’s behavior
-
-???
 
 
 ---
@@ -631,4 +613,4 @@ class: inverse, clear, center
 
 
 ---
-<img src="img/team_2022.png" height="550px"/>
+<img src="img/teams_2023.png" height="550px"/>
