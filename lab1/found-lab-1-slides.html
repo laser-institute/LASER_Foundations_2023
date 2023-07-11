@@ -4,7 +4,7 @@
     <title>Foundations lab 1 - LA Data Structures</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-10" />
+    <meta name="date" content="2023-07-11" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -44,7 +44,7 @@ table {
 # Foundations lab 1 - LA Data Structures
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 10, 2023
+### July 11, 2023
 
 ---
 # Recap from Orientation lab
@@ -89,8 +89,8 @@ behind the open data movement is that anyone can access or use a data set, and k
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Ch. 2, pp 28 - 41 ) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
-2. [Educational data mining and learning analytics: An updated survey, By Romero&amp; Ventura]()
+1. [Learning Analytics Goes to School, (Ch. 2, pp 16 - 21 ) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
+2. [Educational data mining and learning analytics: An updated survey, By Romero &amp; Ventura]()
 
 
 ]
@@ -619,7 +619,7 @@ class: no-logo
 .panelset[
 
 .panel[.panel-name[package]
-
+.code60.remark-code[
 
 ```r
 # Load tidyverse package 
@@ -628,7 +628,7 @@ class: no-logo
 # could load only readr 
 *library(readr)
 ```
-]
+]]
 
 .panel[.panel-name[functions]
 Common readr functions
@@ -650,7 +650,7 @@ To help us import our data, we'll be using readr function:
 # Using the readr function
 
 Use `read_csv()` function to read in CSV.
-
+.code60.remark-code[
 
 ```r
 #use read_csv function to read in sci-online-classes.csv rename object to online_classes
@@ -860,35 +860,39 @@ knitr::kable(head(online_classes, n=5), format = 'html')
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-]
+]]
 
 .panel[.panel-name[readxl]
 # YOUR TURN! Read in excel files
 
-Read in with `readxl` package
+In the corresponding script do the following:
+- load in the `readxl` package, 
+- load in "data/csss_tweets.xlsx" file
+- inspect the data
 
+.code60.remark-code[
 
 ```r
-#Install and read in the readxl Package 
+# 1. Install and read in the readxl Package 
 
-#use read_excel() function to read in data/csss_tweets.xlsx
+# 2. use read_excel() function to read in data/csss_tweets.xlsx
 csss_tweets &lt;- 
-#use head() function to read 
+# 3. use head() function to read 
 head()
 ```
-]
+]]
 
 .panel[.panel-name[readxl]
 # read in excel files
 
 Read in with `readxl` package
-
+.code60.remark-code[
 
 ```r
 #Install and read in the readxl Package 
 library(readxl)
 #use read_excel() function to read in data/csss_tweets.xlsx
-csss_tweets &lt;- read_excel("data/csss_tweets.xlsx")
+*csss_tweets &lt;- read_excel("data/csss_tweets.xlsx")
 #use head() function to read 
 head(csss_tweets, n = 5)
 ```
@@ -910,17 +914,17 @@ head(csss_tweets, n = 5)
 ## #   media_t.co &lt;lgl&gt;, media_expanded_url &lt;lgl&gt;, media_type &lt;lgl&gt;,
 ## #   ext_media_url &lt;lgl&gt;, ext_media_t.co &lt;lgl&gt;, ext_media_expanded_url &lt;lgl&gt;, …
 ```
-]
+]]
 
 .panel[.panel-name[functions]
 
 Check what sheets are included.
+To learn more about functions for this package type: ?read_excel in the script.
 
+.code60.remark-code[
 
 ```r
-?read_excel
-
-*excel_sheets("data/csss_tweets.xlsx")
+excel_sheets("data/csss_tweets.xlsx") 
 ```
 
 ```
@@ -928,7 +932,7 @@ Check what sheets are included.
 ```
 
 ```r
-csss_tweets &lt;- read_excel("data/csss_tweets.xlsx", sheet = "Sheet1")
+*csss_tweets &lt;- read_excel("data/csss_tweets.xlsx", sheet = "Sheet1")
 knitr::kable(head(csss_tweets, n = 5),format = 'html')
 ```
 
@@ -1516,8 +1520,9 @@ https://t.co/zITD1j1Vbt &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
 ]
+]
+
 ???
 
 **PACKAGES-TAB**
@@ -1589,12 +1594,12 @@ Then you can call only that sheet. Our data only includes one sheet so we do not
 .panel[.panel-name[path]
 
 Read in from Path
-
+.code70.remark-code[
 
 ```r
 sci_online_classes &lt;- read_csv("data/sci-online-classes.csv") 
 ```
-
+]
 
 ]
 
@@ -1602,7 +1607,7 @@ sci_online_classes &lt;- read_csv("data/sci-online-classes.csv")
 .panel[.panel-name[url]
 
 Read in a url path with `read_csv2` function.
-
+.code70.remark-code[
 
 ```r
 *air_quality &lt;- read_csv2("https://www4.stat.ncsu.edu/~online/datasets/AirQualityUCI.csv")
@@ -1691,21 +1696,21 @@ knitr::kable(head(air_quality, n=3),format = 'html')
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-
+]
 
 ]
 
 .panel[.panel-name[.dta file]
 
 Read in a Stata file with `read_dta` function
-
+.code70.remark-code[
 
 ```r
 library(haven)
 
 *gpa_dt &lt;- read_dta("data/GPA3.dta")
 ```
-
+]
 ]
 
 ]
@@ -1729,7 +1734,7 @@ You may want to read in a SAS, SPSS or Stata file. To do this we would use the H
 ---
 # GLOBAL OPTIONS
 
-
+Let's learn about settings.
 .pull-left[
  - 1. `R General` -&gt; (untick) Restore .RData into workspace at startup.
  - 2. `R General` -&gt; Save workspace to .RData on exit: Never

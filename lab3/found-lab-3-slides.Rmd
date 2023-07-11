@@ -1,6 +1,6 @@
 ---
   title: "The power of Data Viz"
-  author: "Jeanne McClure"
+  author: "Jeanne McClure, Melinda Whitford, Doreen Mushi"
   institute: "Instituttional Affiliation"
   date: '`r format(Sys.time(), "%B %d, %Y")`'
   output:
@@ -98,9 +98,9 @@ xaringanExtra::use_tile_view()
 ]
 
 .footnote[Pre-Readings
-[Data Visualization: A practical Introduction (Ch. 1 & 3) by Kieren Healy](https://socviz.co/)
-
-[R for Data Science, (Ch. 3) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/index.html)
+1. [Learning Analytics Goes to School, (Explore Ch. 3, pp. 43 - 49) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
+2. [Data Visualization: A practical Introduction (Ch. 1 & 3) by Kieren Healy](https://socviz.co/)
+3. [R for Data Science, (Ch. 3 & 7) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/index.html)
 ]
 
 ---
@@ -178,6 +178,7 @@ Network diagrams: Illustrate connections and relationships between entities.
 Treemaps: Represent hierarchical data structures in a space-efficient manner. Treemap visualizes the hierarchy of data in nested rectangles. Hierarchy levels are displayed from larger rectangles to smaller ones.
 
 ---
+class: no-logo
 # Examples
 .panelset[
 .panel[.panel-name[Showcasing]
@@ -267,13 +268,13 @@ Code-Along
 # Explore setup
 
 
-.column-left[- Data Visualization
+.pull-left[- Data Visualization
 - Data Transformation
 - Data Preprocessing (DP)
 - Feature Engineering (FE)
 ]
-.column-right[    
-<img src="img/explore_phase.png" height="350px"/>
+.pull-right[    
+<img src="img/explore_phase.png" height="300px"/>
 ]
 
 ???
@@ -294,13 +295,28 @@ FEATURE ENGINEERING is known as the process of transforming raw data (that has a
 
 .panelset[
 
-.panel[.panel-name[FUNCTION]
+.panel[.panel-name[PACKAGE]
+.pull-left[- Data Visualization
+<img src="img/skimr.png" height="300px"/>
+]
+.pull-right[    
+<img src="img/skimr_2.png" height="300px"/>
+]
 
-SKIMR
+]
+.panel[.panel-name[your turn]
+
+```{r echo=TRUE, eval=FALSE}
+#LOAD SKIMR package and use skim() function to skim 'data_to_explore'
+#
+#
+
+```
 ]
 
 .panel[.panel-name[TABLE]
 
+.code70.remark-code[
 ```{r echo = TRUE, eval=FALSE}
 #load library
 library(skimr)
@@ -308,24 +324,26 @@ library(skimr)
 #skim data
 skim(data_to_explore)
 ```
-
+]
 ]
 
 .panel[.panel-name[TIDY]
+.code70.remark-code[
 ```{r eval=FALSE, echo=TRUE}
 data_to_explore %>% 
   select(c('subject', 'gender', 'proportion_earned', 'time_spent')) %>% 
   filter(subject == "OcnA" | subject == "PhysA") %>%
   skim() <##
 ```
-
 ]
+]
+
 ]
 
 
 ???
 **SKIMR**
-
+skimr is designed to provide summary statistics about variables in data frames, tibbles, data tables and vectors. It is opinionated in its defaults, but easy to modify.
 
 **TABLE TAB**
 
@@ -364,6 +382,12 @@ with an arrow on it to expand your output in a separate window.
 
 .panelset[
 
+.panel[.panel-name[PACKAGE]
+
+<img src="img/ggplot2.png" height="300px"/>
+]
+
+
 .panel[.panel-name[Grammar 101]
 .center[
 <img src="img/grammar.png" height="400px"/>
@@ -371,15 +395,45 @@ with an arrow on it to expand your output in a separate window.
 
 ]
 
-.panelset[
 .panel[.panel-name[Geoms]
-.center[
-<img src="img/tidy.png" height="400px"/>
-]
+.pull-left[
+<img src="img/geoms.png" height="400px"/>
 
 ]
+.pull-right[Do you need all of these things to create a graph?
 ]
 ]
+
+.panel[.panel-name[Basic graph]
+
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+
+data_to_explore <- read_csv("data/data_to_explore.csv")
+```
+
+
+.code70.remark-code[.pull-left[
+```{r bar1, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+
+data_to_explore %>% 
+  ggplot(aes(x = subject)) +
+  geom_bar()
+```
+]]
+.pull-right[
+
+```{r, ref.label="bar1", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
+data_to_explore %>% 
+  ggplot(aes(x = subject)) +
+  geom_bar()
+```
+]
+]
+]
+
 ???
 **GRAMMER 101 TAB**
 
@@ -403,16 +457,166 @@ ggplot2 has **layers** what you see on the plot (lines, points, etc)
 - **faceting** provides digital "drill-down" into the data. Multiple plots by value
 - **theme** fine grain control over the visualization of the display (fonts)
 
-Do you need all of these things to create a graph? No!
+Do you need all of these things to create a graph?
 
+
+
+---
+# GGplot2 - Histogram
+.panelset[
+
+.panel[.panel-name[Your Turn]
+
+In the corresponding code script add the code for a basic histogram for 'time_spent_hours'.
+
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+#
+#
+#
+```
+
+
+]
+
+.panel[.panel-name[ANSWER]
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+
+data_to_explore <- read_csv("data/data_to_explore.csv")
+```
+
+
+.code60.remark-code[.pull-left[
+
+```{r hist1, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% #<<
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom
+  geom_histogram()
+```
+]]
+.pull-right[
+
+```{r, ref.label="hist1", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% ##<
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom
+  geom_histogram()
+```
+
+]
+
+
+]
+
+.panel[.panel-name[Bin]
+.code60.remark-code[.pull-left[
+```{r hist2, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+  geom_histogram(bins = 10)#<<
+```
+]]
+In your script change the bin size, what happens?
+
+.pull-right[
+```{r ref.label="hist2", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
+
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+  geom_histogram(bins = 10)#<<
+
+```
+]
+]
+
+.panel[.panel-name[Color]
+.code60.remark-code[.pull-left[
+```{r hist3, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+#layer 3b: add color
+  geom_histogram(bins = 30,
+                 fill = "red", #<<
+                 colour = "black") #<<
+```
+]]
+
+.pull-right[
+```{r ref.label="hist3", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+#layer 3b: add color
+  geom_histogram(bins = 30, 
+                 fill = "red", 
+                 colour = "black")
+```
+]
+]
+
+.panel[.panel-name[Labels]
+
+.code60.remark-code[.pull-left[
+```{r hist4, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+# layer 3b: add color
+  geom_histogram(bins = 30, fill = "red", colour = "black")+
+#layer 4: add Labels
+  labs(title="Time Spent on LMS histogram plot",x="Time Spent(hours)", y = "Count")+
+  theme_classic()
+```
+]]
+
+.pull-right[
+```{r ref.label="hist4", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
+# Layer 1: add data and aesthetic mapping
+data_to_explore %>% 
+  ggplot(aes(x = time_spent_hours)) +
+# layer 2: add histogram geom 
+# layer 3a: add bin size
+# layer 3b: add color
+  geom_histogram(bins = 30, fill = "red", colour = "black")+
+# layer 4: add labels
+  labs(title="Time Spent on LMS histogram plot",x="Weight(kg)", y = "Count")+
+#layer 5: add theme
+  theme_classic()
+
+```
+
+How would we interpret this graph?
+]
+
+]
+]
 ---
 # SCATTERPLOT
 
 .panelset[
 
-.panel[.panel-name[Data, AES, Geom]
+.panel[.panel-name[Basic graph]
 
-.pull-left[
+.code60.remark-code[.pull-left[
 ```{r echo = TRUE, eval=FALSE}
 #layer 1: add data and aesthetics mapping 
 ggplot(data_to_explore, #<<
@@ -421,7 +625,7 @@ ggplot(data_to_explore, #<<
 #layer 2: +  geom function type
   geom_point() #<<
 ```
-]
+]]
 .pull-right[
 <img src="img/scatter_1.png" height="300px"/>
 
@@ -431,7 +635,7 @@ ggplot(data_to_explore, #<<
 
 .panel[.panel-name[Scale]
 
-.pull-left[
+.code60.remark-code[.pull-left[
 ```{r echo = TRUE, eval=FALSE}
 #layer 1: add data and aesthetics mapping 
 #layer 3: add color scale by type
@@ -442,7 +646,7 @@ ggplot(data_to_explore,
 #layer 2: +  geom function type
   geom_point()
 ```
-]
+]]
 .pull-right[
 <img src="img/scatter_2.png" height="300px"/>
 
@@ -451,7 +655,7 @@ ggplot(data_to_explore,
 
 .panel[.panel-name[Labels]
 
-.pull-left[
+.code60.remark-code[.pull-left[
 ```{r echo = TRUE, eval=FALSE}
 #layer 1: add data and aesthetics mapping 
 #layer 3: add color scale by type
@@ -466,7 +670,7 @@ ggplot(data_to_explore,
        x="Time Spent (Hours)", #<<
        y = "Proportion of Points Earned")  #<<
 ```
-]
+]]
 .pull-right[
 <img src="img/scatter_3.png" height="300px"/>
 
@@ -475,11 +679,11 @@ ggplot(data_to_explore,
 
 .panel[.panel-name[Facet]
 
-.pull-left[
+.code60.remark-code[.pull-left[
 ```{r echo = TRUE, eval=FALSE}
 #layer 1: add data and aesthetics mapping 
 #layer 3: add color scale by type
-ggplot(data_to_explore, aes(x = time_spent_hours, y = proportion_earned, color = enrollment_status)) +
+viz1 <- ggplot(data_to_explore, aes(x = time_spent_hours, y = proportion_earned, color = enrollment_status)) +
 #layer 2: +  geom function type
   geom_point() +
 #layer 4: add labels
@@ -489,11 +693,25 @@ ggplot(data_to_explore, aes(x = time_spent_hours, y = proportion_earned, color =
 #layer 5: add facet wrap
   facet_wrap(~ subject) #<<
 ```
-]
+]]
 .pull-right[
 <img src="img/scatter_4.png" height="300px"/>
 
 ]
+]
+.panel[.panel-name[Discuss]
+
+In the corresponding line of your R script, type the name of visualization object we just created and run the code:
+
+```{r}
+# 
+#
+#
+
+```
+
+How would you interpret this graph?
+
 ]
 ]
 
@@ -531,138 +749,6 @@ Do you think this would be enough. No we could add a scale to it.
 
 
 **FACET TAB**
-
----
-# GGplot2 - Histogram
-.panelset[
-
-.panel[.panel-name[load data]
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(tidyverse)
-
-data_to_explore <- read_csv("data/data_to_explore.csv")
-```
-
-
-.pull-left[
-
-```{r hist1, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
-
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% #<<
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom
-  geom_histogram()
-```
-]
-.pull-right[
-
-```{r, ref.label="hist1", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% ##<
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom
-  geom_histogram()
-```
-
-]
-
-
-]
-
-.panel[.panel-name[Bin]
-.pull-left[
-```{r hist2, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-  geom_histogram(bins = 10)#<<
-```
-]
-
-.pull-right[
-```{r ref.label="hist2", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
-
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-  geom_histogram(bins = 10)#<<
-
-```
-]
-]
-
-.panel[.panel-name[Color]
-.pull-left[
-```{r hist3, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-#layer 3b: add color
-  geom_histogram(bins = 30,
-                 fill = "red", #<<
-                 colour = "black") #<<
-```
-]
-
-.pull-right[
-```{r ref.label="hist3", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-#layer 3b: add color
-  geom_histogram(bins = 30, 
-                 fill = "red", 
-                 colour = "black")
-```
-]
-]
-
-.panel[.panel-name[Labels]
-
-.pull-left[
-```{r hist4, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-# layer 3b: add color
-  geom_histogram(bins = 30, fill = "red", colour = "black")+
-#layer 4: add Labels
-  labs(title="Time Spent on LMS histogram plot",x="Time Spent(hours)", y = "Count")+
-  theme_classic()
-```
-]
-
-.pull-right[
-```{r ref.label="hist4", echo=FALSE, message=FALSE, warning=FALSE,  out.width = '300px'}
-# Layer 1: add data and aesthetic mapping
-data_to_explore %>% 
-  ggplot(aes(x = time_spent_hours)) +
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-# layer 3b: add color
-  geom_histogram(bins = 30, fill = "red", colour = "black")+
-# layer 4: add labels
-  labs(title="Time Spent on LMS histogram plot",x="Weight(kg)", y = "Count")+
-#layer 5: add theme
-  theme_classic()
-
-```
-]
-
-]
-]
 
 
 

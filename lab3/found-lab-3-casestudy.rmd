@@ -105,7 +105,7 @@ You can read more about ggplot in the book ["GGPLOT: Elegant Graphics for Data A
 
 -   At least one layer which describes how to render each observation. Layers are usually created with a geom function."
 
-### One Conitnous varibale
+### One Continuous variable
 
 Create a basic visualization that examines a continuous variable of interest.
 

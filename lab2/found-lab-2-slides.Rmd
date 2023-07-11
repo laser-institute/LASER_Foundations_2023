@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r, echo=FALSE}
 # then load all the relevant packages
-pacman::p_load(pacman, knitr)
+pacman::p_load(pacman, knitr, magick)
 ```
 
 ```{r xaringan-panelset, echo=FALSE}
@@ -122,8 +122,9 @@ On a quick recap from our data structures presentation we discussed the differen
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Ch. 2, pp. 41 - 34) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
+1. [Learning Analytics Goes to School, (Wrangle Ch. 3, pp. 39 - 43) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
 2. [The journey of learning analytics. By Joksimović, Kovanović & Dawson]()
+3.  [OPTIONAL: R for Data Science, (Ch. 3) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/transform.html)
 ]
 ---
 
@@ -258,13 +259,12 @@ Ensemble Methods: Ensemble methods combine multiple predictive models to improve
 ]
 .panel[.panel-name[Research Scholars]
 
-- Caroline Haythornthwaite
-- Rebecca Ferguson
-- Shaun Kellogg
-- Simon J. Buckingham Shum
-- Brian V. Carolan
-- Bret Staudt Willet 
-
+.left-column[
+*Pdf with links to each scholar is in the "Readings" folder*
+]
+.right-column[
+<img src="img/SNA_SCHOLAR.png" height="350px"/>
+]
 
 ]
 ]
@@ -505,7 +505,7 @@ categorical variables and rescaling continuous variables.
 ---
 #First Prepare
 
-
+.code80.remark-code[
 ```{r eval=FALSE, echo=TRUE, warning=FALSE, message=FALSE}
 
 #load Library
@@ -517,7 +517,7 @@ gradebook <- read_csv("data", "gradebook-summary.csv")
 survey <- read_csv("data", "survey.csv")
 
 ```
-
+]
 
 ---
 # Workflow: WRANGLE
@@ -540,7 +540,7 @@ survey <- read_csv("data", "survey.csv")
 #Separate
 
 
-
+.code70.remark-code[
 ```{r eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
 time_spent %>%  
   separate(course_id,
@@ -550,16 +550,18 @@ time_spent %>%
 knitr::kable(head(time_spent, n=5), format = 'html')
 
 ```
+]
 ---
 # Mutate
 
+.code70.remark-code[
 ```{r eval=FALSE, echo=TRUE, warning=FALSE, message=FALSE}
 # mutate minutes to hours on time spent and save as new variable.
 time_spent_2 <- time_spent_2 %>% 
   mutate(time_spent_hours = time_spent / 60)
 time_spent_2
 ```
-
+]
 
 ---
 #Join

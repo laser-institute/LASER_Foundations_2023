@@ -4,7 +4,7 @@
     <title>Foundation Lab 4 - Data Products</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-09" />
+    <meta name="date" content="2023-07-11" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -37,7 +37,7 @@ class: clear, title-slide, inverse, center, top, middle
 # Foundation Lab 4 - Data Products
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 09, 2023
+### July 11, 2023
 
 
 ---
@@ -46,11 +46,9 @@ class: clear, title-slide, inverse, center, top, middle
 --
 
 - Purpose of Visualizations
-
 --
 
 - Basic Principles of Visualizations
-
 --
 
 - ggplot2 grammar and visualizations
@@ -58,33 +56,36 @@ class: clear, title-slide, inverse, center, top, middle
 
 ???
 
-Again we finished our last session in the Explore phase of our LA Cycle. Using GGplot and its layers to create data visualizations.
+Again we finished our last session in the Explore phase of our LA Cycle. Using GGplot and its layers to create data visualizations. Looking at variables that might be good predictors of at risk or early warning signs.
 ---
 
 # Agenda
 
 .pull-left[**Part-1  Conceptual Overview**
-- Storytelling
+
+- Communicating your message
 - Publication-ready products
+- Ethical Considerations
+
 ]
 
 
 .pull_right[**Part-2  Code-Along**
-- Model
+- Model 
 - Communicate
-- RMarkdown File formats
-- Citation Manager in R
-- Journal Submission
+- Flexdashboard
 ]
 
 .footnote[Pre-Reading:
-R for Data Science, (Ch. 21 &amp; 23) by Hadley Wickham &amp; Garrett Grolemund(https://slides.yihui.org/xaringan/zh-CN.html)
+1. [Learning Analytics Goes to School, (Model/Communicate Ch. 3, pp. 49 - 59) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
+2. [R for Data Science, (Ch. 28 &amp; 29) by Hadley Wickham &amp; Garrett Grolemund](https://r4ds.had.co.nz/graphics-for-communication.html)
+3. [OPTIONAL: Communicating data to an audience. By Drucker, Huron, Kosara, Schwabish &amp; Diakopoulos]()
 
 ]
 ???
 In this presentation we are going to focus on communicating your data and findings effectively with education stakeholders. We'll also talk about how to create publication-ready products in R markdown. 
 
-For the code along, we will continue on in our Learning Analytics workflow to finish up with Model and Communication. Where we will be  converting R markdown files into a variety of formats and experiment a little bit with setting up a bibliography and formatting in-text citations. And if we have time you may have the opportunity to also experiment with the `rticles package` to tailor a publication or a document for a specific journal.
+For the code along, we will continue on in our Learning Analytics workflow to finish up with Model and Communication. Where we will be  converting R markdown files into a variety of formats and how to bring it together in a flexdashboard.
 
 So the pre-reading for this module was chapters 21 and 23 in the R for Data Science book by Hadley Wickham and Garrett Grolemund. Both of these chapters are a really great introduction to this module. The information is presented really clearly and succinctly, and each section of these chapters also has a number of small very manageable exercises that will enable you to practice some of these skills. And I think we may be incorporating a few of these exercises into the code-along, but I just want to reiterate that this is a really high quality resource. So, if you didn't have time to look at these chapters before today's session, As mentioned previously, I recommend that you get this book or even bookmark it to have it on your bookshelf to aid you as you continue to practice with data analytics in R.
 
@@ -94,7 +95,7 @@ Who are some of the stakeholders that you communicate your findings?
 
 What experiences have you had with communicating the results of data analysis and how did you communicate these findings?
 
-What types of differences are there in your communications between your stakeholders? 
+What are some things you are normally asked to communicate?
 
 ???
 Before we begin I want you to take a moment and discuss with the person near you some of the questions I have on the screen. Really think about what types of products you produce, what types of language you use to communicate and what their faces look like...do they understand or do you find your self rewording your findings?
@@ -109,23 +110,6 @@ Part 1:
 ----
 
 Learning Analytics Workflow: Conceptual Overview
-
----
-
-# Legal and Ethical Considerations
-
-- Ethics of ‘Big Data’ and AI
---
-
-- Problem of opaque ‘black box’ algorithms
---
-
-- Training machine learning classifiers on biased data sets
---
-
-- Incorrectly predicting someone’s behavior
-
-???
 
 
 ---
@@ -427,6 +411,7 @@ Lastly, you can change the style of your citations and your bibliography with a 
 
 Given our time constraints today we don't have time to talk about everything that R markdown can do. Not by any means. But I did just want to let you know that there are other output formats that R markdown is capable of and I've listed them here. And you can feel free to do investigation on your own to learn more if you're interested. The one that I wanted to mention specifically though, was the rticles package because if you are engaged in scholarship and you're trying to get your scholarship published this could be very helpful. The rticles package allows you to format articles for specific journals. So, if you are fairly advanced in your R markdown skills, and some of the information presented in this module is old hat for you, one of your afternoon activities today could be exploring the rticles package a little bit more.
 
+---
 
 
 
@@ -445,38 +430,40 @@ Code-Along
 
 .panelset[
 
-.panel[.panel-name[MODEL]
-
-
-```r
-# Add predictor variable for science
-lm(proportion_earned ~ time_spent_hours + int, 
-   data = data_to_explore)
-
-# save the model
-m1 &lt;- lm(proportion_earned ~ time_spent_hours + int, data = data_to_explore)
-```
-
-
-]
-
 .panel[.panel-name[Correlation]
+
+
+
+`Corrr` package for correlation
+
+.code60.remark-code[
 
 ```r
 #install corrr package if this is your first time
-install.packages("corrr")
+#install.packages("corrr")
+
 # read in library
-library(corrr) &lt;##
-  data_to_explore %&gt;% 
+*library(corrr)
+data_to_explore %&gt;% 
   select(proportion_earned, time_spent_hours) %&gt;%
-  correlate() &lt;##
+* correlate()
 ```
+
+```
+## # A tibble: 2 × 3
+##   term              proportion_earned time_spent_hours
+##   &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;
+## 1 proportion_earned            NA                0.438
+## 2 time_spent_hours              0.438           NA
+```
+ How can we interpret this?
+]
 
 ]
 
 .panel[.panel-name[APA TABLE]
 
-.pull-left[
+.code60.remark-code[.pull-left[
 
 ```r
 #install if this is your first time
@@ -488,9 +475,9 @@ library(apaTables)
 data_to_explore_subset &lt;- data_to_explore %&gt;% 
   select(time_spent_hours, proportion_earned, int)
 
-apa.cor.table(data_to_explore_subset)&lt;##
+*apa.cor.table(data_to_explore_subset)
 ```
-
+]
 ]
 .pull-right[
 &lt;img src="img/apa_table.png" height="350px"/&gt;
@@ -500,22 +487,97 @@ apa.cor.table(data_to_explore_subset)&lt;##
 
 .panel[.panel-name[Linear Regression]
 
-.pull-left[
+Linear regression uses lm() function.
+
+lm(dependent ~ independent, data = "your data name")
+
+- Save it to a new object like model1
+- Inspect it with summary()
+]
+
+.panel[.panel-name[YOUR TURN]
+In the corresponding script 
+1. create a linear regression
+- independent = `time_spent_hours`
+- dependent = `proportion_earned
+2. save as a new object
+3. inspect the data
+
+
+
+]
+
+.panel[.panel-name[ANSWER]
+
+.code60.remark-code[
 
 ```r
-lm(proportion_earned ~ time_spent_hours, 
+model1 &lt;- lm(proportion_earned ~ time_spent_hours, 
    data = data_to_explore)
+summary(model1)
 ```
+
+```
+## 
+## Call:
+## lm(formula = proportion_earned ~ time_spent_hours, data = data_to_explore)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.64671 -0.07841  0.05427  0.15419  0.33743 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.6243061  0.0151073   41.33   &lt;2e-16 ***
+## time_spent_hours 0.0047921  0.0004025   11.91   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2221 on 596 degrees of freedom
+##   (345 observations deleted due to missingness)
+## Multiple R-squared:  0.1921,	Adjusted R-squared:  0.1908 
+## F-statistic: 141.8 on 1 and 596 DF,  p-value: &lt; 2.2e-16
+```
+
 ]
-.pull-right[
+
+]
+.panel[.panel-name[YOUR TURN]
+
+- create a ggplot viz for our model
+- Add + geom_smooth(method = "lm") after your geom_point
+
+.code80.remark-code[
 
 ```r
-# save the model
-m1 &lt;- lm(proportion_earned ~ time_spent_hours + int, 
-         data = data_to_explore)
+#
+#
+#
 ```
+]
 
 ]
+.panel[.panel-name[ANSWER]
+.code60.remark-code[.pull-left[
+
+```r
+data_to_explore %&gt;%
+  ggplot(aes(x = time_spent_hours, 
+             y = proportion_earned, 
+             color = enrollment_status)) +
+  geom_point() +
+# add geom_smooth for lm
+  geom_smooth(method = "lm")+
+  labs(title="How Time Spent on Course LMS is Related to Points Earned in the Course", 
+       x="Time Spent (Hours)",
+       y = "Proportion of Points Earned")
+```
+]]
+
+.pull-right[
+&lt;img src="found-lab-4-slides_files/figure-html/unnamed-chunk-5-1.png" width="350px" /&gt;
+]
+
 ]
 ]
 

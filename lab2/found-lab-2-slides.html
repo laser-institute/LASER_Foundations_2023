@@ -4,7 +4,7 @@
     <title>Foundation lab 2 - LA Methods</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-10" />
+    <meta name="date" content="2023-07-11" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -37,7 +37,7 @@ class: clear, title-slide, inverse, center, top, middle
 # Foundation lab 2 - LA Methods
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 10, 2023
+### July 11, 2023
 
 
 ---
@@ -102,8 +102,9 @@ On a quick recap from our data structures presentation we discussed the differen
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Ch. 2, pp. 41 - 34) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
+1. [Learning Analytics Goes to School, (Wrangle Ch. 3, pp. 39 - 43) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
 2. [The journey of learning analytics. By Joksimović, Kovanović &amp; Dawson]()
+3.  [OPTIONAL: R for Data Science, (Ch. 3) by Hadley Wickham &amp; Garrett Grolemund](https://r4ds.had.co.nz/transform.html)
 ]
 ---
 
@@ -238,13 +239,12 @@ Ensemble Methods: Ensemble methods combine multiple predictive models to improve
 ]
 .panel[.panel-name[Research Scholars]
 
-- Caroline Haythornthwaite
-- Rebecca Ferguson
-- Shaun Kellogg
-- Simon J. Buckingham Shum
-- Brian V. Carolan
-- Bret Staudt Willet 
-
+.left-column[
+*Pdf with links to each scholar is in the "Readings" folder*
+]
+.right-column[
+&lt;img src="img/SNA_SCHOLAR.png" height="350px"/&gt;
+]
 
 ]
 ]
@@ -485,7 +485,7 @@ categorical variables and rescaling continuous variables.
 ---
 #First Prepare
 
-
+.code80.remark-code[
 
 ```r
 #load Library
@@ -496,7 +496,7 @@ time_spent &lt;- read_csv("data/log-data.csv")
 gradebook &lt;- read_csv("data", "gradebook-summary.csv")
 survey &lt;- read_csv("data", "survey.csv")
 ```
-
+]
 
 ---
 # Workflow: WRANGLE
@@ -519,7 +519,7 @@ survey &lt;- read_csv("data", "survey.csv")
 #Separate
 
 
-
+.code70.remark-code[
 
 ```r
 time_spent %&gt;%  
@@ -529,9 +529,11 @@ time_spent %&gt;%
 
 knitr::kable(head(time_spent, n=5), format = 'html')
 ```
+]
 ---
 # Mutate
 
+.code70.remark-code[
 
 ```r
 # mutate minutes to hours on time spent and save as new variable.
@@ -539,7 +541,7 @@ time_spent_2 &lt;- time_spent_2 %&gt;%
   mutate(time_spent_hours = time_spent / 60)
 time_spent_2
 ```
-
+]
 
 ---
 #Join
