@@ -514,7 +514,7 @@ lm(dependent ~ independent, data = "your data name")
 In the corresponding script 
 1. create a linear regression
 - independent = `time_spent_hours`
-- dependent = `proportion_earned
+- dependent = `proportion_earned`
 2. save as a new object
 3. inspect the data
 
@@ -619,16 +619,84 @@ The following code estimates a model in which `proportion_earned`, the proportio
 
 
 ---
+class: no-logo
 # Communicate
 
 .panelset[
 
 
+
 .panel[.panel-name[COMMUNICATE]
+
+
+<img src="img/communicate_wflow.png" height="300px"/>
+]
+.panel[.panel-name[Flow]
+
 
 <img src="img/communicate.png" height="450px"/>
 ]
 ]
+---
+# FLEXDASHBOARD Product
+.panelset[
+.panel[.panel-name[Flexdashboard]
+Process can be automated using R and R Markdown
+
+Output can include interactive elements
+
+Output as a stand alone html file
+- Universal file format
+- No requirement for password protected shiny server
+- Can continue to be distributed via email to restrict access
+]
+.panel[.panel-name[YAML Header]
+
+Define output as flexdashboard in YAML header of R Markdown document:
+.code60.remark-code[
+```{r echo=TRUE, eval=FALSE}
+---
+title: "ADD A TITLE"
+output:
+  flexdashboard::flex_dashboard:
+    theme: 
+      version: 4
+      bootswatch: pulse
+    source_code: embed
+  html_document:
+    df_print: paged
+editor_options: 
+  chunk_output_type: console
+---
+  
+```
+]
+]
+
+.panel[.panel-name[dashboard template]
+
+<img src="img/flexdashboard.jpg" height="300px"/>
+
+]
+.panel[.panel-name[Task]
+
+Create a Data Story with our current data set 
+- Develop a research question
+- Add ggplot visualizations 
+- Modeling visualizations
+- add a short write up for the intended stakeholders
+
+]
+
+.panel[.panel-name[Resources]
+[FLEXDASHBOARD sample layouts](https://pkgs.rstudio.com/flexdashboard/articles/layouts.html)
+
+[Flexdashboard: Easy interactive dashboards for R](https://posit.co/blog/flexdashboard-easy-interactive-dashboards-for-r/)
+
+]
+]
+
+
 
 ???
 The final(ish) step in our workflow/process is sharing the results of
@@ -676,3 +744,6 @@ class: inverse, clear, center
 
 ---
 <img src="img/teams_2023.png" height="550px"/>
+
+---
+<img src="img/supportteam_2023.png" height="550px"/>

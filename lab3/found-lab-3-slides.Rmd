@@ -774,3 +774,7 @@ class: inverse, clear, center
 ---
 
 <img src="img/teams_2023.png" height="550px"/>
+
+---
+
+<img src="img/supportteam_2023.png" height="550px"/>

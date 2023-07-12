@@ -4,7 +4,7 @@
     <title>Foundation lab 2 - LA Methods</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-11" />
+    <meta name="date" content="2023-07-12" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -37,7 +37,7 @@ class: clear, title-slide, inverse, center, top, middle
 # Foundation lab 2 - LA Methods
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 11, 2023
+### July 12, 2023
 
 
 ---
@@ -517,8 +517,31 @@ survey &lt;- read_csv("data", "survey.csv")
 
 ---
 #Separate
+.panelset[
+.panel[.panel-name[function]
+
+.pull-left[
+&lt;img src="img/seperate_func.png" height="300px"/&gt;
+]
+
+.pull-right[
+&lt;img src="img/separate_pipe.png" height="300px"/&gt;
+
+]
+]
 
 
+.panel[.panel-name[your turn]
+In your corresponding script mutate the time from minute to hours.
+
+```r
+#
+#
+#
+```
+]
+
+.panel[.panel-name[answer]
 .code70.remark-code[
 
 ```r
@@ -529,18 +552,46 @@ time_spent %&gt;%
 
 knitr::kable(head(time_spent, n=5), format = 'html')
 ```
+]]
 ]
 ---
 # Mutate
 
+.panelset[
+.panel[.panel-name[function]
+
+.pull-left[
+
+&lt;img src="img/mutate_func.png" height="300px"/&gt;
+]
+
+.pull-right[
+
+]
+
+]
+
+.panel[.panel-name[your turn]
+In your corresponding script mutate the time from minute to hours.
+
+```r
+#
+#
+#
+```
+]
+
+.panel[.panel-name[answer]
 .code70.remark-code[
 
 ```r
 # mutate minutes to hours on time spent and save as new variable.
-time_spent_2 &lt;- time_spent_2 %&gt;% 
+time_spent &lt;- time_spent %&gt;% 
   mutate(time_spent_hours = time_spent / 60)
 time_spent_2
 ```
+]
+]
 ]
 
 ---
@@ -708,6 +759,9 @@ class: inverse, clear, center
 ---
 
 &lt;img src="img/team_2022.png" height="550px"/&gt;
+
+---
+&lt;img src="img/supportteam_2023.png" height="550px"/&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
