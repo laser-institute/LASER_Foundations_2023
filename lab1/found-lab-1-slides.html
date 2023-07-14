@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Foundations lab 1 - LA Data Structures</title>
+    <title>Foundations lab 1 - Characteristics of Data in LA</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-12" />
+    <meta name="date" content="2023-07-14" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -41,10 +41,10 @@ table {
 }
 &lt;/style&gt;
 
-# Foundations lab 1 - LA Data Structures
+# Foundations lab 1 - Characteristics of Data in LA
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 12, 2023
+### July 14, 2023
 
 ---
 # Recap from Orientation lab
@@ -186,7 +186,7 @@ Blended (“blended learning,” “hybrid learning,” and “mixed-mode instru
 
 - Learning Management System (LMS) 
 
-- In-Context Learning (ChatGPT/Whisper)
+- **In-Context Learning (ChatGPT/Whisper)**
 ]
 
 .pull-right[
@@ -213,6 +213,8 @@ Test and quiz system - The main goal of these systems is to measure the students
 
 
 ---
+class: no-logo
+
 # Characteristics of Data
 
 .panelset[
@@ -478,13 +480,22 @@ Test and quiz system - The main goal of these systems is to measure the students
 ]
 
 
-
 .panel[.panel-name[Meta-Data]
 
 .center[
 &lt;img src="img/meta_dat.png" height="300px"/&gt;
 ]
+]
 
+.panel[.panel-name[Discuss]
+
+.center[
+Data is often referred to as the 'lifeblood' of learning analytics. 
+
+In the context of education, what does this analogy mean, and why is data so crucial for the success of learning analytics initiatives?
+]
+
+]
 ]
 ???
 
@@ -581,7 +592,14 @@ You may ask yourself - Is it for instructional, reward or even a social collabor
 
 Here you may even refine your research question after having a better idea of where the data came from. The question may also be refined and redeveloped after you have started the data intensive analysis.
 
-The Learning Analysis Cycle is not a linear process but rather a process of phases that can be moved around.
+The Learning Analysis Cycle is not a linear process but rather a process of phases that can be moved around.*
+
+**DISCUSS slide**
+THis should encourage educational scholars to reflect on the fundamental importance of data in the realm of learning analytics. 
+
+Allowing to delve into the significance of data in shaping insights, understanding student performance, and facilitating data-driven decision-making to enhance the learning experience. Exploring how data empowers educators to identify patterns, predict outcomes, and personalize learning for individual students. 
+
+Bringing in the ethical considerations surrounding data collection, storage, and usage in the context of learning analytics. Hopefully this question will help the scholars recognize the indispensable role of data in driving meaningful educational improvements and student success.
 
 ---
 # Context of the Problem
@@ -601,10 +619,12 @@ Macfadyen, L. P., &amp; Dawson, S. (2010). [Mining LMS data to develop an "early
 The context for our next couple of days is surrounded by online science classes we explore and were designed and taught by instructors through a state-wide online course provider designed to supplement—but not replace—students’ enrollment in their local school. For example, students may have chosen to enroll in an online physics class because one was not offered at their school.
 
 ---
-# Install Packages
+# Load Packages
+.panelset[
+.panel[.panel-name[install packages]
 
 - First time using a package
-- Do this only once in the "Console"
+- Do this ONLY ONCE in the "console"
 
 
 ```r
@@ -612,28 +632,44 @@ The context for our next couple of days is surrounded by online science classes 
 *install.packages("tidyverse")
 ```
 
----
-class: no-logo
+]
 
-# Load in Data
-.panelset[
+.panel[.panel-name[Your turn]
 
-.panel[.panel-name[package]
+- Load tidyverse to use
+- you do this every time you create a new script/rmd
+
 .code60.remark-code[
 
 ```r
 # Load tidyverse package 
-*library(tidyverse)
-
-# could load only readr 
-*library(readr)
+#
+#
 ```
+
 ]]
 
-.panel[.panel-name[functions]
-Common readr functions
+.panel[.panel-name[ANSWER]
 
-To help us import our data, we'll be using readr function:
+
+```r
+# Load tidyverse package 
+library(tidyverse)
+```
+]
+]
+
+---
+class: no-logo
+
+# Reading in Data
+
+.panelset[
+
+.panel[.panel-name[readr package]
+
+Common readr functions to read in different types of data
+
 {[readr](https://readr.tidyverse.org)} 
 
 .pull-left[
@@ -862,13 +898,13 @@ knitr::kable(head(online_classes, n=5), format = 'html')
 
 ]]
 
-.panel[.panel-name[readxl]
+.panel[.panel-name[YOUR TURN]
 # YOUR TURN! Read in excel files
 
 In the corresponding script do the following:
 - load in the `readxl` package, 
-- load in "data/csss_tweets.xlsx" file
-- inspect the data
+- load in "data/csss_tweets.xlsx" file save to a new object csss_tweets
+- inspect the data by `head()` function
 
 .code60.remark-code[
 
@@ -877,22 +913,26 @@ In the corresponding script do the following:
 
 # 2. use read_excel() function to read in data/csss_tweets.xlsx
 csss_tweets &lt;- 
+  
 # 3. use head() function to read 
 head()
 ```
 ]]
 
-.panel[.panel-name[readxl]
+.panel[.panel-name[ANSWER]
 # read in excel files
 
 Read in with `readxl` package
+
 .code60.remark-code[
 
 ```r
 #Install and read in the readxl Package 
 library(readxl)
+
 #use read_excel() function to read in data/csss_tweets.xlsx
 *csss_tweets &lt;- read_excel("data/csss_tweets.xlsx")
+
 #use head() function to read 
 head(csss_tweets, n = 5)
 ```
@@ -916,7 +956,7 @@ head(csss_tweets, n = 5)
 ```
 ]]
 
-.panel[.panel-name[functions]
+.panel[.panel-name[readxl function]
 
 Check what sheets are included.
 To learn more about functions for this package type: ?read_excel in the script.
@@ -924,7 +964,7 @@ To learn more about functions for this package type: ?read_excel in the script.
 .code60.remark-code[
 
 ```r
-excel_sheets("data/csss_tweets.xlsx") 
+*excel_sheets("data/csss_tweets.xlsx")
 ```
 
 ```
@@ -933,7 +973,6 @@ excel_sheets("data/csss_tweets.xlsx")
 
 ```r
 *csss_tweets &lt;- read_excel("data/csss_tweets.xlsx", sheet = "Sheet1")
-knitr::kable(head(csss_tweets, n = 5),format = 'html')
 ```
 
 &lt;table&gt;
@@ -1520,6 +1559,7 @@ https://t.co/zITD1j1Vbt &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
 ]
 ]
 
@@ -1591,27 +1631,15 @@ Then you can call only that sheet. Our data only includes one sheet so we do not
 
 .panelset[
 
-.panel[.panel-name[path]
-
-Read in from Path
-.code70.remark-code[
-
-```r
-sci_online_classes &lt;- read_csv("data/sci-online-classes.csv") 
-```
-]
-
-]
-
 
 .panel[.panel-name[url]
 
 Read in a url path with `read_csv2` function.
+
 .code70.remark-code[
 
 ```r
 *air_quality &lt;- read_csv2("https://www4.stat.ncsu.edu/~online/datasets/AirQualityUCI.csv")
-knitr::kable(head(air_quality, n=3),format = 'html')
 ```
 
 &lt;table&gt;
@@ -1696,11 +1724,33 @@ knitr::kable(head(air_quality, n=3),format = 'html')
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-]
 
-]
+]]
 
-.panel[.panel-name[.dta file]
+
+.panel[.panel-name[YOUR TURN ]
+# YOUR TURN! Read in STATA
+
+In the corresponding script do the following:
+- load in the `haven` package, 
+- load in "data/GPA3.dta" file save to a  new object called gpa_dt
+- inspect the data with function of your choice
+- explain what you see
+
+.code60.remark-code[
+
+```r
+# 1. Install and read in the haven function 
+
+# 2. use read_excel() function to read in data/GPA3.dta
+csss_tweets &lt;- 
+  
+# 3. Inspect the data
+head()
+```
+]]
+
+.panel[.panel-name[ANSWER]
 
 Read in a Stata file with `read_dta` function
 .code70.remark-code[
@@ -1744,6 +1794,7 @@ Let's learn about settings.
 .pull-right[
 &lt;img src="img/global.png" height="425px"/&gt;
 ]
+
 
 ---
 
