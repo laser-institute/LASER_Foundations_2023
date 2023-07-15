@@ -503,8 +503,8 @@ library(tidyverse)
 
 #load with read_csv package
 time_spent &lt;- read_csv("data/log-data.csv")
-gradebook &lt;- read_csv("data", "gradebook-summary.csv")
-survey &lt;- read_csv("data", "survey.csv")
+gradebook &lt;- read_csv("data/gradebook-summary.csv")
+survey &lt;- read_csv("data/survey.csv")
 ```
 ]
 
@@ -519,7 +519,7 @@ survey &lt;- read_csv("data", "survey.csv")
 
 
 ---
-#Tidy
+#dplyr
 
 .center[
 &lt;img src="img/dplyr.png" height="425px"/&gt;
@@ -591,33 +591,110 @@ In your corresponding script mutate the time from minute to hours.
 ```
 ]
 
-.panel[.panel-name[answer]
+.panel[.panel-name[ANSWER]
 .code70.remark-code[
 
 ```r
 # mutate minutes to hours on time spent and save as new variable.
 time_spent &lt;- time_spent %&gt;% 
   mutate(time_spent_hours = time_spent / 60)
-time_spent_2
+time_spent
 ```
 ]
 ]
 ]
-
----
-#Join
-
-.center[
-&lt;img src="img/join.png" height="425px"/&gt;
-]
-
 ---
 #Janitor Package
 
-{[Janitor](packagehttps://cran.r-project.org/web/packages/janitor/vignettes/janitor.html)}
+{[Janitor](packagehttps://cran.r-project.org/web/packages/janitor/vignettes/janitor.html)} has simple functions for examining and cleaning dirty data.
+
+There is also a handy function called `clean_names()`
+in the {janitor} package for standardizing variable names.
+
 .center[
 &lt;img src="img/janitor.png" height="425px"/&gt;
 ]
+---
+#Join
+.panelset[
+.panel[.panel-name[function]
+
+.pull-left[
+&lt;img src="img/join.png" height="425px"/&gt;
+]
+
+.pull-right[
+&lt;img src="img/multiple_join.png" height="425px"/&gt;
+]
+
+
+.pull-down[.font50[
+Want to know about joins? Check out [Hadley Wickham's chapter](https://r4ds.hadley.nz/joins.html) on it!
+
+]
+
+]
+]
+.panel[.panel-name[full_join]
+
+`full_join()` returns all columns from x and y. Where there are not matching values, returns NA for the one missing.
+
+
+```r
+fullJoinDF &lt;- full_join(tableA, tableB, by="studentID")
+View(fullJoinDF)
+```
+]
+
+.panel[.panel-name[YOUR TURN]
+.font70[
+- `full_join()` tables:
+    - gradebook
+    - time_spent
+    
+- join by "student_id", "subject", "semester", "section"
+- save to a new object called `joined_data`
+- inspect new object
+]
+
+.code70.remark-code[
+
+```r
+#
+#
+#
+```
+]
+]
+
+.panel[.panel-name[ANSWER]
+
+.font70[
+- `full_join() tables:
+    - gradebook
+    - time_spent
+    
+- join by "student_id", "subject", "semester", "section"
+- save to a new object called `joined_data`
+- inspect new object
+]
+
+
+
+.code70.remark-code[
+
+```r
+joined_data &lt;- full_join(gradebook1, time_spent, 
+                         by = c("student_id", "subject", "semester", "section"))
+
+joined_data
+```
+]
+]
+
+
+---
+
 
 
 ???
@@ -756,9 +833,10 @@ class: inverse, clear, center
 &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
 
 .pull-left-wide[.left[.font100[
--  Make sure to complete the R Programming primers:  [Tidy your Data](https://rstudio.cloud/learn/primers/4)
-
--  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources](https://github.com/laser-institute/foundational-skills/blob/master/foundation_lab_2/foundationlab2_badge.Rmd).
+- Complete **Wrangle part of the Case Study**
+- Make sure to complete the R Programming primers:  [Tidy your Data](https://rstudio.cloud/learn/primers/4)
+-  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab2/found-lab-2-badge.html).
+- Do pre readings for tomorrow.
 ]]
 ]
 

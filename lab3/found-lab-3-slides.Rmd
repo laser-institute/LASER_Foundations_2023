@@ -762,9 +762,10 @@ class: inverse, clear, center
 <br/><br/><br/><br/><br/>
 
 .pull-left-wide[.left[.font100[
--  Make sure to complete the R Programming primer: [Introduction to data visualization](https://rstudio.cloud/learn/primers/3).
-
+- Complete **Explore part of the Case Study**
+- Make sure to complete the R Programming primer: [Introduction to data visualization](https://rstudio.cloud/learn/primers/3).
 -  Complete the badge requirement document: [foudationlab3_badge- Data Visualization](https://github.com/laser-institute/foundational-skills/blob/master/foundation_lab_3/foundationlab3_badge.Rmd).
+- Do pre readings for tomorrow.
 ]]
 ]
 
