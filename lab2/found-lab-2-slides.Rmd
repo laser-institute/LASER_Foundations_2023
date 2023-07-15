@@ -189,14 +189,21 @@ Methods used in LA: Conceptual Overview
 .panel[.panel-name[Research Scholars]
 
 
-- George Siemens
-- Shane Dawson
-- Matt Bernacki 
-- Rene Kizilcec
-- Ken Koedinger(Cogntitive tutors)
-
-
+.center[
+<img src="img/PRED_SCHOLA.png" height="350px"/>
 ]
+
+
+
+
+
+
+.pull-down[.font50[
+[Predictive Scholars document with links]()
+]
+]
+]
+
 ]
 ???
 **Predictive Analytics**
@@ -259,13 +266,15 @@ Ensemble Methods: Ensemble methods combine multiple predictive models to improve
 ]
 .panel[.panel-name[Research Scholars]
 
-.left-column[
-*Pdf with links to each scholar is in the "Readings" folder*
-]
-.right-column[
+
+.center[
 <img src="img/SNA_SCHOLAR.png" height="350px"/>
 ]
 
+.pull-down[.font50[
+[Social Network Scholars document with links]()
+]
+]
 ]
 ]
 
@@ -325,18 +334,16 @@ Community Detection: Community detection methods identify groups or communities 
 
 .panel[.panel-name[Research Scholars]
 
-- Carolyn Penstein Rosé
-- Arthur C. Graesser
-- Gijsbert Erkens
-- Nia Dowell
-- JR Martin (linguist)
-- Dan Jurafsky (linguist)
 
-
-
-
+.center[
+<img src="img/discourse_SCHOLAR.png" height="350px"/>
 ]
 
+.pull-down[.font50[
+[Discourse Scholar document with links]()
+]
+]
+]
 ]
 ???
 
@@ -380,13 +387,15 @@ Discursive Psychology: Discursive psychology explores how language is used to co
 ]
 .panel[.panel-name[Research Scholars]
 
-- Srećko Joksimović
-- Shiyan Jiang
-- Ryan Baker
-- Alyssa Wise
-- Danielle S. McNamara
 
+.center[
+<img src="img/textmin_SCHOLAR.png" height="350px"/>
+]
 
+.pull-down[.font50[
+[Text Mining Scholars document with links]()
+]
+]
 ]
 ]
 
@@ -443,14 +452,14 @@ Text-based Social Network Analysis: Text-based social network analysis involves 
 ]
 .panel[.panel-name[Research Scholars]
 
-- Xavier Ochoa
-- Dragan Gasevic
-- Paulo Blikstein
-- Susanne P. Lajoie
-- Katrien Verbert
-- Marcelo Worsley
-- Cynthia D'Angelo
+.center[
+<img src="img/multimodal_SCHOLAR.png" height="350px"/>
+]
 
+.pull-down[.font50[
+[Multimodal Scholars document with links]()
+]
+]
 ]
 
 ]
