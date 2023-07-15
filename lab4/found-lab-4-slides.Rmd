@@ -97,9 +97,9 @@ Again we finished our last session in the Explore phase of our LA Cycle. Using G
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Model/Communicate Ch. 3, pp. 49 - 59) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
+1. [Learning Analytics Goes to School, (Model/Communicate Ch. 3, pp. 49 - 59) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://laser-institute.github.io/LASER_Foundations_2023/lab4/Readings/Learning%20Analytics%20Goes%20to%20School.pdf)
 2. [R for Data Science, (Ch. 28 & 29) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/graphics-for-communication.html)
-3. [OPTIONAL: Communicating data to an audience. By Drucker, Huron, Kosara, Schwabish & Diakopoulos]()
+3. [OPTIONAL: Communicating data to an audience. By Drucker, Huron, Kosara, Schwabish & Diakopoulos](https://laser-institute.github.io/LASER_Foundations_2023/lab4/Readings/Communicating%20Data%20to%20an%20Audience%20-%20preprint%20copy.pdf)
 
 ]
 ???

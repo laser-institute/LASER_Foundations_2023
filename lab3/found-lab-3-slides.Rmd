@@ -98,9 +98,9 @@ xaringanExtra::use_tile_view()
 ]
 
 .footnote[Pre-Readings
-1. [Learning Analytics Goes to School, (Explore Ch. 3, pp. 43 - 49) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
-2. [Data Visualization: A practical Introduction (Ch. 1 & 3) by Kieren Healy](https://socviz.co/)
-3. [R for Data Science, (Ch. 3 & 7) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/index.html)
+1.[Learning Analytics Goes to School, (Explore, Ch. 3, pp. 43 - 49) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://laser-institute.github.io/LASER_Foundations_2023/lab3/Readings/Learning Analytics Goes to School.pdf)
+2.[R for Data Science, (Ch. 3 & 7) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/index.html)
+3.[SKIM: Data Visualization: A practical Introduction (Ch. 1 & 3) by Kieren Healy](https://socviz.co/)
 ]
 
 ---

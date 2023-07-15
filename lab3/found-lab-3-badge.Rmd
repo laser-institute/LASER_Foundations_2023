@@ -101,19 +101,45 @@ Exercise 2:
 
 ### Knit & Submit
 
-Congratulations, you've completed your Foundation Badge on Learning Analytics Workflow! Complete the following steps to submit your work for review by:
+Congratulations, you've completed your FOundations badge 3 - Data Viz!
 
+*Complete the following steps to submit your work for review by:*
 
-1. Change the name of the author: in the [YAML header](https://monashdatafluency.github.io/r-rep-res/yaml-header.html) at the very top of this document to your name. As noted in [Reproducible Research in R](https://monashdatafluency.github.io/r-rep-res/index.html), The YAML header controls the style and feel for knitted document but doesn’t actually display in the final output.
+Complete the following steps to knit and publish your work:
 
-2. Click the yarn icon above to “knit” your data product to a [HTML](https://bookdown.org/yihui/rmarkdown/html-document.html) file that will be saved in your R Project folder.
+1.  First, change the name of the `author:` in the [YAML
+    header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html#yaml-metadata)
+    at the very top of this document to your name. The YAML header
+    controls the style and feel for knitted document but doesn't
+    actually display in the final output.
 
-3. Commit your changes in GitHub Desktop and push them to your online GitHub repository.
+2.  Next, click the knit button in the toolbar above to "knit" your R
+    Markdown document to a
+    [HTML](https://bookdown.org/yihui/rmarkdown/html-document.html) file
+    that will be saved in your R Project folder. You should see a
+    formatted webpage appear in your Viewer tab in the lower right pan
+    or in a new browser window. Let's us know if you run into any issues
+    with knitting.
 
-4. Publish your HTML page the web using one of the following [publishing methods](https://rpubs.com/cathydatascience/518692):
-Publish on [RPubs](https://rpubs.com/) by clicking the “Publish” button located in the Viewer Pane when you knit your document. Note, you will need to quickly create a RPubs account. Publishing on GitHub using either [GitHub Pages](https://pages.github.com/) or the [HTML previewer](http://htmlpreview.github.io/).
+3.  Finally, publish your webpage on on Posit Cloud by clicking the
+    "Publish" button located in the Viewer Pane after you knit your
+    document. See screenshot below.
 
-5. Post a new discussion on GitHub to our [Foundations Badges forum](https://github.com/orgs/laser-institute/teams/foundations/discussions/2). In your post, include a link to your published web page and `write` a short reflection highlighting one thing you learned from this lab and one thing you’d like to explore further.
+![](img/knit-publish.png){width="80%"}
 
+### Foundations Learning Badge 3
 
+Congratulations, you've completed Foundations Learning Badge 3 - Data Viz! 
 
+To receive
+credit for this assignment and earn the an official Foundations LASER Badge,
+share the link to published webpage under an empty **Badge Artifact**
+column on the 2023 LASER Scholar Information and Documents spreadsheet:
+<https://go.ncsu.edu/laser-sheet>. We recommend bookmarking this
+spreadsheet as we'll be using it throughout the year to keep track of
+your progress.
+
+![](img/share-link.png){width="80%"}
+
+Once your instructor has checked your link, you will be provided a
+physical version of the badge below!

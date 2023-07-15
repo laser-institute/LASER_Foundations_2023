@@ -76,7 +76,7 @@ xaringanExtra::use_tile_view()
 Before we go on lets take just a few minutes, how are you all feeling so far?
 On a quick recap from our data structures presentation we discussed the different types of data found commonly in Learning Analytics. 
 
-**Types of Data** included:
+**Types of Data**:
 
 - Digital Learning Environments
   + games 
@@ -103,7 +103,7 @@ On a quick recap from our data structures presentation we discussed the differen
 
   
 ---
-# Learning Analytics Workflow Agenda
+# Learning Analytics LA Methods Agenda
 
 
 .pull-left[**Part-1  Conceptual Overview**
@@ -122,8 +122,8 @@ On a quick recap from our data structures presentation we discussed the differen
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Wrangle Ch. 3, pp. 39 - 43) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
-2. [The journey of learning analytics. By Joksimović, Kovanović & Dawson]()
+1. [Learning Analytics Goes to School, (Wrangle Ch. 3, pp. 39 - 43) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://laser-institute.github.io/LASER_Foundations_2023//lab2/Readings/Learning%20Analytics%20Goes%20to%20School.pdf)
+2. [The journey of learning analytics. By Joksimović, Kovanović & Dawson](https://laser-institute.github.io/LASER_Foundations_2023/lab2/Readings/The_Journey_of_Learning_Analytics.pdf)
 3.  [OPTIONAL: R for Data Science, (Ch. 3) by Hadley Wickham & Garrett Grolemund](https://r4ds.had.co.nz/transform.html)
 ]
 ---
