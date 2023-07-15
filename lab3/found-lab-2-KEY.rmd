@@ -2,27 +2,13 @@
 title: "Narrated: Foundations Case Study" 
 subtitle: "Independent/Group work"
 author: "The LASER Team"
-date: last-modified
-format:
-  html:
-    toc: true
-    toc-title: Contents
-    toc-location: left
-    theme: 
-      - united
-      - "css/quarto-laser-html.scss"
-resources:
-  - demo.pdf
-editor: 
-  markdown: 
-    wrap: 72
+date: "`r format(Sys.Date(),'%B %e, %Y')`"
+output: html_document
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 
 ## 0. INTRODUCTION
 
@@ -104,16 +90,17 @@ Finally, a linear multiple regression analysis was conducted in order to
 develop a predictive model in which a student final grade was the
 continuous dependent variable.
 
-**Research Questions**
-In this study, exploratory research was undertaken to identify the data
-variables that would inform the development of a data visualization tool
-for instructors. This involved the extraction of all LMS tracking
-variables for selected course sections at The University of British
-Columbia, Canada. In so doing, the study aimed to address the following
-research questions:
+**Research Questions** In this study, exploratory research was
+undertaken to identify the data variables that would inform the
+development of a data visualization tool for instructors. This involved
+the extraction of all LMS tracking variables for selected course
+sections at The University of British Columbia, Canada. In so doing, the
+study aimed to address the following research questions:
 
-1. Which LMS tracking data variables correlate significantly with student 2. achievement?
-2. How accurately can measures of student online activity in an online course site predict student achievement in the course under study?
+1.  Which LMS tracking data variables correlate significantly with
+    student 2. achievement?
+2.  How accurately can measures of student online activity in an online
+    course site predict student achievement in the course under study?
 3.  Can tracking data recording online student communication patterns
     offer pedagogically meaningful insights into development of a
     student learning community?
@@ -167,7 +154,7 @@ this analysis:
 time_spent <- read_csv("data/log-data.csv")
 
 #inspect data
-View(time_spent)
+time_spent
 
 ```
 
@@ -181,9 +168,9 @@ Load the file from data folder.
 We'll load the data in the same way as earlier.
 
 Let's use the `read_csv()` function from {readr} to import our
-`gradebook-summary.csv` file directly from our data folder and name
-this data set `time_spent`, to help us to quickly recollect what
-function it serves in this analysis:
+`gradebook-summary.csv` file directly from our data folder and name this
+data set `time_spent`, to help us to quickly recollect what function it
+serves in this analysis:
 
 ```{r}
 # load grade book data from data folder
@@ -287,8 +274,12 @@ time_spent
 
 ##### Data 2: GRADEBOOK
 
-Now, we will work on the Gradebook dataset.Like the previous dataset, we
-will seperate course_id variable again.
+Now, we will work on the `gradebook` dataset. Like the previous dataset,
+we will separate course_id variable again.
+
+- save as `gradebook1` object
+
+- inspect the data
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # separate the course_id variable and save to 'gradebook' object
@@ -299,12 +290,13 @@ gradebook1 <- gradebook %>%
 gradebook1
 ```
 
-As you can see in the gradebook our grade is in points. We want it in a proportion
-- Create a new variable call it: `proportion_earned`
-- take 'total points earned' divide by 'total points possible and multiple by 100
-- save it as a new object `gradebook1`
+As you can see in the gradebook our grade is in points. We want it in a
+proportion - Create a new variable call it: `proportion_earned`
 
+- take 'total points earned' divide by 'total points possible and
+multiple by 100
 
+- save `gradebook1` object
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # Mutate to a proportion_earned, take 'total points earned' divide by 'total points possible.' Save as new variable proportion_earned.
@@ -313,13 +305,14 @@ gradebook1 <- gradebook1 %>%
   mutate(proportion_earned = total_points_earned / total_points_possible * 100)
 
 gradebook1
+write.csv(gradebook1, file = "lab2/data/gradebook1.csv")
 ```
 
 ##### Data 3: SURVEY
 
-Let's process our data. First
-though, take a quick look again by typing `survey` into the console or
-using a preferred viewing method to take a look at the data.
+Let's process our data. First though, take a quick look again by typing
+`survey` into the console or using a preferred viewing method to take a
+look at the data.
 
 Does it appear to be the correct file? What do the variables seem to be
 about? What wrangling steps do we need to take? Taking a quick peak at
@@ -329,11 +322,13 @@ we are going to do.
 
 Add one or more of the things you notice or wonder about the data here:
 
--  
-- 
+-   
 
-Now, we will work on third data source to clean out data using the [janitor](https://garthtarr.github.io/meatR/janitor.html package which has
-simple functions for examining and cleaning dirty data. 
+-   
+
+Now, we will work on third data source to clean out data using the
+\[janitor\](https://garthtarr.github.io/meatR/janitor.html package which
+has simple functions for examining and cleaning dirty data.
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 #inspect data to view the column names
@@ -390,12 +385,16 @@ Datasets cannot be joined because the type of "student_id" is different.
 We need same types of variables to join the datasets. To turn a
 numerical variable into a character variable.
 
-Check out what class student_id is in `joined_data` compared to `survey` data. What class are they?
+Check out what class student_id is in `joined_data` compared to `survey`
+data. What class are they?
 
--
--
+-   
 
-Now change `student_id in `joined_data` to a character class. Do this with the `as.character()` function.
+-   
+
+Now change
+`student_id in`joined_data`to a character class. Do this with the`as.character()`
+function.
 
 ```{r eval= FALSE}
 #mutate to change variable class from double or numeric to character
@@ -406,11 +405,22 @@ joined_data <- joined_data %>%
 joined_data
 ```
 
+
+NOW: 
+- full join
+  -   joined_data
+  -   survey
+  -   save as a new object called `data_to_explore` 
+  -   inspect the data object
+  
 ```{r eval = FALSE}
 #try again to together the grade_book and log_wrangled
-data_to_explore <- full_join(joined_data, survey, by = c())
+data_to_explore <- full_join(joined_data, survey, 
+                             by = c("student_id", "subject", "semester", "section"))
 
 # inspect data
+data_to_explore
+
 ```
 
 Now let's write the file to our data folder using the `write_csv()` to
@@ -418,7 +428,7 @@ save for later or download.
 
 ```{r eval=FALSE}
 # add the function to write data to file to use later
-(data_to_explore, "data/data_to_explore.csv")
+write_csv(data_to_explore, "data/data_to_explore.csv")
 
 ```
 
@@ -454,14 +464,14 @@ Second, use the `skim()` function to view the data
 
 ```{r}
 #skim the data by adding the skim function infront of the data
-skim(data_to_viz)
+skim(data_to_explore)
 ```
 
 In the code chunck below skim `subject` variable using group_by
 function.
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
   group_by(subject) %>% 
   skim() 
 ```

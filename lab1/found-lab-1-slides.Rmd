@@ -722,7 +722,7 @@ class: inverse, clear, center
 .pull-left-wide[.left[.font100[
 - Complete **Prepare part of the Case Study**
 - Complete the R Programming primer:  [Work with Data](https://rstudio.cloud/learn/primers/2)
-- Complete the Badge requirement document [Foundations badge - Data Sources]().
+- Complete the Badge requirement document [Foundations badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab1/found-lab-1-badge.html).
 - Do pre readings for tomorrow.
 ]]
 ]

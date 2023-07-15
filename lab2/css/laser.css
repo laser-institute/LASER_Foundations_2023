@@ -398,5 +398,11 @@ hr, .mline h1::after {
   width: 75%;
 }
 
+/* use to position text at the bottom */
+.pull-down {
+  position: absolute;
+  bottom: 50px;
+}
+
 /* Clear floats after the columns */
 .pull-right-wide + * { clear: both; }

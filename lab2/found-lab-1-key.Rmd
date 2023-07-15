@@ -1,21 +1,9 @@
 ---
-title: "Narrated: Foundations Case Study" 
+title: "Narrated: Foundations Case Study - Lab - 1KEY" 
 subtitle: "Independent/Group work"
 author: "The LASER Team"
-date: last-modified
-format:
-  html:
-    toc: true
-    toc-title: Contents
-    toc-location: left
-    theme: 
-      - united
-      - "css/quarto-laser-html.scss"
-resources:
-  - demo.pdf
-editor: 
-  markdown: 
-    wrap: 72
+date: "`r format(Sys.Date(),'%B %e, %Y')`"
+output: html_document
 ---
 
 
@@ -288,7 +276,7 @@ time_spent
 ##### Data 2: GRADEBOOK
 
 Now, we will work on the Gradebook dataset.Like the previous dataset, we
-will seperate course_id variable again.
+will separate course_id variable again.
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # separate the course_id variable and save to 'gradebook' object
@@ -425,14 +413,14 @@ Second, use the `skim()` function to view the data
 
 ```{r}
 #skim the data by adding the skim function infront of the data
-skim(data_to_viz)
+skim(data_to_explore)
 ```
 
 In the code chunck below skim `subject` variable using group_by
 function.
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
   group_by(subject) %>% 
   skim() 
 ```
@@ -503,7 +491,7 @@ Includes:
 ```{r}
 #layer 1: add data 
 # layer 2: add aesthetics mapping
-ggplot(data_to_viz, aes(x = subject)) +
+ggplot(data_to_explore, aes(x = subject)) +
 #layer 3: add geom 
   geom_bar() +
 
@@ -521,7 +509,7 @@ ggplot(data_to_viz, aes(x = subject)) +
 ```{r}
 #layer 1: add data 
 # layer 2: add aesthetics mapping and #layer 5 scale
-ggplot(data_to_viz, aes(x = subject, fill = gender)) +
+ggplot(data_to_explore, aes(x = subject, fill = gender)) +
 #layer 3: add geom 
   geom_bar() +
 
@@ -533,7 +521,7 @@ ggplot(data_to_viz, aes(x = subject, fill = gender)) +
 
 #### Histogram - You try
 
--   **data**: data_to_viz
+-   **data**: data_to_explore
 -   **`aes()` function** - one continuous variables:
     -   `tv` variable mapped to x position
 -   **Geom**: geom_histogram() *this code is already there you just need
@@ -563,7 +551,7 @@ STHDA](http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guid
 Yours could look like something below...
 
 ```{r}
-ggplot(data_to_viz, aes(x = tv)) + 
+ggplot(data_to_explore, aes(x = tv)) + 
   geom_histogram(bins = 5) +
   labs(title = "Number of Hours Students Watch TV per Day", 
        caption = "Approximately how many students watch 4+ hours of TV per day?")
@@ -572,7 +560,7 @@ ggplot(data_to_viz, aes(x = tv)) +
 or
 
 ```{r}
-data_to_viz%>%
+data_to_explore%>%
   ggplot(aes(x= tv))+
 # layer 2: add histogram geom 
 # layer 3a: add bin size
@@ -592,7 +580,7 @@ categorical variables.
 
 #### Heatmap
 
--   \***data**: data_to_viz
+-   \***data**: data_to_explore
 -   use `count()` function for `subject`, `enrollment` then,
 -   `ggplot()` function
 -   **`aes()` function** - one continuous variables
@@ -604,7 +592,7 @@ categorical variables.
     least available at local schools?"
 
 ```{r}
-data_to_viz %>% 
+data_to_explore %>% 
   count(subject, enrollment_reason) %>% 
   ggplot() + 
   geom_tile(mapping = aes(x = subject, 
@@ -642,7 +630,7 @@ Includes:
 
 ```{r}
 #layer 1: add data and aesthetics mapping 
-ggplot(data_to_viz,
+ggplot(data_to_explore,
        aes(x = time_spent_hours, 
            y = proportion_earned)) +
 #layer 2: +  geom function type
@@ -659,7 +647,7 @@ ggplot(data_to_viz,
 ```{r}
 #layer 1: add data and aesthetics mapping 
 #layer 3: add color scale by type
-ggplot(data_to_viz, 
+ggplot(data_to_explore, 
        aes(x = time_spent_hours, 
            y = proportion_earned,
            color = enrollment_status)) +
@@ -680,7 +668,7 @@ ggplot(data_to_viz,
 ```{r}
 #layer 1: add data and aesthetics mapping 
 #layer 4: add color scale by type
-ggplot(data_to_viz, 
+ggplot(data_to_explore, 
        aes(x = time_spent_hours, 
            y = proportion_earned,
            color = enrollment_status)) +
@@ -699,7 +687,7 @@ ggplot(data_to_viz,
 ```{r}
 #layer 1: add data and aesthetics mapping 
 #layer 3: add color scale by type
-ggplot(data_to_viz, aes(x = time_spent_hours, y = proportion_earned, color = enrollment_status)) +
+ggplot(data_to_explore, aes(x = time_spent_hours, y = proportion_earned, color = enrollment_status)) +
 #layer 2: +  geom function type
   geom_point() +
 #layer 4: add labels
@@ -712,12 +700,12 @@ ggplot(data_to_viz, aes(x = time_spent_hours, y = proportion_earned, color = enr
 
 #### Level e. How can we remove NA's from plot? and What will the code look like without the comments?
 
--   use \***data** then,
+-   use **data** then,
 -   use `drop_na` function to remove na's from enrollment status then,
 -   add `ggplot` function like above
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
   drop_na(enrollment_status) %>%
   ggplot(aes(x = time_spent_hours, 
              y = proportion_earned, 

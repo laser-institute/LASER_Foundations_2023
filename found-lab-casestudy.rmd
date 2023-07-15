@@ -2,20 +2,8 @@
 title: "Narrated: Foundations Case Study" 
 subtitle: "Independent/Group work"
 author: "The LASER Team"
-date: last-modified
-format:
-  html:
-    toc: true
-    toc-title: Contents
-    toc-location: left
-    theme: 
-      - united
-      - "css/quarto-laser-html.scss"
-resources:
-  - demo.pdf
-editor: 
-  markdown: 
-    wrap: 72
+date: "`r format(Sys.Date(),'%B %e, %Y')`"
+output: html_document
 ---
 
 ## 0. INTRODUCTION
@@ -155,7 +143,7 @@ Load the file from data folder.
 We'll load the data in the same way as earlier.
 
 Let's use the `read_csv()` function from {readr} to import our
-`sci-online-classes.csv` file directly from our data folder and name
+`gradebook-summary.csv` file directly from our data folder and name
 this data set `time_spent`, to help us to quickly recollect what
 function it serves in this analysis:
 
@@ -268,7 +256,10 @@ gradebook <- gradebook %>%
 gradebook
 ```
 
-We will create a new variable: `proportion_earned.`
+As you can see in the gradebook our grade is in points. We want it in a proportion
+- Create a new variable call it: `proportion_earned`
+- take 'total points earned' divide by 'total points possible and multiple by 100
+- save it as a new object `gradebook1`
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # Mutate to a proportion_earned, take 'total points earned' divide by 'total points possible.' Save as new variable proportion_earned.
@@ -282,7 +273,23 @@ gradebook <- gradebook %>%
 
 ##### Data 3: SURVEY
 
-Now, we will work on third data source.
+Let's process our data. First
+though, take a quick look again by typing `survey` into the console or
+using a preferred viewing method to take a look at the data.
+
+Does it appear to be the correct file? What do the variables seem to be
+about? What wrangling steps do we need to take? Taking a quick peak at
+the data helps us to begin to formulate answers to these and is an
+important step in any data analysis, especially as we *prepare* for what
+we are going to do.
+
+Add one or more of the things you notice or wonder about the data here:
+
+-  
+- 
+
+Now, we will work on third data source to clean out data using the [janitor](https://garthtarr.github.io/meatR/janitor.html package which has
+simple functions for examining and cleaning dirty data. 
 
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 #inspect data to view the column names
@@ -309,13 +316,13 @@ matches on either the left or right tables. If the table rows match,
 then a join will be executed, otherwise it will return NULL in places
 where a matching row does not exist.
 
-When we are combining `gradebook` and `time_spent` datasets, we should
+When we are combining `gradebook1` and `time_spent` datasets, we should
 identify column names. In this case, we will use `student_id,`
 `subject,` `semester,` and `section` for the match.
 
 ```{r eval = FALSE}
 # use single join to join data sets by student_id, subject, semester and section.
-joined_data <- full_join(gradebook, time_spent, 
+joined_data <- full_join(gradebook1, time_spent, 
                          by = c("student_id", "subject", "semester", "section"))
 
 joined_data
@@ -333,15 +340,24 @@ data_to_explore  <- full_join(joined_data, survey, by = c("student_id",
 data_to_explore
 ```
 
+**DON"T PANIC if you are getting an error - read below!!**
+
 Datasets cannot be joined because the type of "student_id" is different.
 We need same types of variables to join the datasets. To turn a
-numerical variable into a character variable, we are using
-"as.character()" function.
+numerical variable into a character variable.
+
+Check out what class student_id is in `joined_data` compared to `survey` data. What class are they?
+
+-
+-
+
+- Now change `student_id in `joined_data` to a character class. Do this with the `as.character()` function.
+- save variable to `student_id` variable so you can join with the same class.
 
 ```{r eval= FALSE}
 #mutate to change variable class from double or numeric to character
 joined_data <- joined_data %>%
-  mutate(student_id = as.character(student_id))
+  mutate()
 
 #inspect data
 joined_data
@@ -359,11 +375,12 @@ save for later or download.
 
 ```{r eval=FALSE}
 # add the function to write data to file to use later
-(data_to_explore, "data/data_to_explore.csv")
+write_csv(data_to_explore, "data/data_to_explore.csv")
 
 ```
 
 ------------------------------------------------------------------------
+## 3. EXPLORE
 
 We've already wrangled out data - but let's look at the data frame to
 make sure it is still correct. A quick way to look at the data frame is
@@ -699,7 +716,7 @@ data_to_viz %>%
   facet_wrap(~ subject) 
 ```
 
-## Model
+## 4. Model
 
 Quantify the insights using mathematical models. As highlighted
 in.[Chapter 3 of Data Science in Education Using
