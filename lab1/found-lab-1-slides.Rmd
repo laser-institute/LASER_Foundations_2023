@@ -109,9 +109,8 @@ behind the open data movement is that anyone can access or use a data set, and k
 ]
 
 .footnote[Pre-Reading:
-1. [Learning Analytics Goes to School, (Ch. 2, pp 16 - 21 ) By Andrew Krumm, Barbara Means, Marie Bienkowski]()
-2. [Educational data mining and learning analytics: An updated survey, By Romero & Ventura]()
-
+1. [Learning Analytics Goes to School, (Ch. 2, pp 16 - 21 ) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://laser-institute.github.io/LASER_Foundations_2023/lab1/Readings/Learning%20Analytics%20Goes%20to%20School.pdf)
+2. [Educational data mining and learning analytics: An updated survey, By Romero & Ventura](https://laser-institute.github.io/LASER_Foundations_2023/lab1/Readings/Educational_data_mining_and_learning_analytics.pdf)
 
 ]
 
@@ -620,10 +619,7 @@ Then you can call only that sheet. Our data only includes one sheet so we do not
 ]
 ---
 # Read in data cont.
-
-
 .panelset[
-
 
 .panel[.panel-name[url]
 
@@ -717,9 +713,10 @@ class: inverse, clear, center
 <br/><br/><br/><br/><br/>
 
 .pull-left-wide[.left[.font100[
-- Complete **Independent work today**
+- Complete **Prepare part of the Case Study**
 - Complete the R Programming primer:  [Work with Data](https://rstudio.cloud/learn/primers/2)
-- Complete the Badge requirement document [Foundations badge - Data Sources](https://github.com/laser-institute/foundational-skills/tree/master/foundation_lab_1/lab1_badge).
+- Complete the Badge requirement document [Foundations badge - Data Sources]().
+- Do pre readings for tomorrow.
 ]]
 ]
 

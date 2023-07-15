@@ -11,7 +11,9 @@ These foundation labs allow for the gentle introduction of conceptual understand
 
 **Required Pre-Reading:**
 
-[Learning Analytics Goes to School, (Ch. 2, pp. 15 - 28) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://github.com/laser-institute/essential-readings/blob/main/foundation_labs/foundlab_1/krumm_2018.pdf)
+[Learning Analytics Goes to School, (Ch. 2, pp. 15 - 28) By Andrew Krumm, Barbara Means, Marie Bienkowski](https://laser-institute.github.io/LASER_Foundations_2023/lab1/Readings/Learning%20Analytics%20Goes%20to%20School.pdf)
+
+[Educational data mining and learning analytics: An updated survey. By Romero, C., & Ventura, S.](https://laser-institute.github.io/LASER_Foundations_2023/lab1/Readings/Educational_data_mining_and_learning_analytics.pdf)
 
 
 **[Foundation Presentation - One](https://laser-institute.github.io/foundational-skills/foundation_lab_1/index.html) and code-along:**
