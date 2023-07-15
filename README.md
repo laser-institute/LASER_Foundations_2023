@@ -5,6 +5,8 @@
  Foundation knowledge is the base knowledge of which new knowledge is built. Learning Analytics is the measurement, collection, analysis and reporting of data about learners and their contexts, for purposes of understanding and optimizing learning and the environments in which it occurs (Siemens, 2011).
 
  These foundation labs allow for the gentle introduction of conceptual understanding of foundation of learning analytics along with R programming basics for STEM Education Research. 
+ 
+[Foundations (view Only) check list with links](https://docs.google.com/presentation/d/e/2PACX-1vTZPRGE-JEer6yh7PNUCORTNYdT0U9gvjMeecIOgspJrCNyT1hCI9KAM-6NOBnQdEnzShQ3JOCroiU5/pub?start=false&loop=false&delayms=3000)
 
 
 ## **Foundation lab 1** - Data types and Characteristics
