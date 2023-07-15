@@ -199,7 +199,7 @@ Methods used in LA: Conceptual Overview
 
 
 .pull-down[.font50[
-[Predictive Scholars document with links]()
+[Predictive Scholars document with links](https://laser-institute.github.io/LASER_Foundations_2023/resources/pred_SCHOLA.pdf)
 ]
 ]
 ]
@@ -272,7 +272,7 @@ Ensemble Methods: Ensemble methods combine multiple predictive models to improve
 ]
 
 .pull-down[.font50[
-[Social Network Scholars document with links]()
+[Social Network Scholars document with links](https://laser-institute.github.io/LASER_Foundations_2023/resources/SNA_SCHOLAR.pdf)
 ]
 ]
 ]
@@ -340,7 +340,7 @@ Community Detection: Community detection methods identify groups or communities 
 ]
 
 .pull-down[.font50[
-[Discourse Scholar document with links]()
+[Discourse Scholar document with links](https://laser-institute.github.io/LASER_Foundations_2023/resources/discourse_SCHOLAR.pdf)
 ]
 ]
 ]
@@ -393,7 +393,7 @@ Discursive Psychology: Discursive psychology explores how language is used to co
 ]
 
 .pull-down[.font50[
-[Text Mining Scholars document with links]()
+[Text Mining Scholars document with links](https://laser-institute.github.io/LASER_Foundations_2023/resources/textmin_SCHOLAR.pdf)
 ]
 ]
 ]
@@ -431,6 +431,7 @@ Text-based Social Network Analysis: Text-based social network analysis involves 
 # Multimodal
 
 .panelset[
+
 .panel[.panel-name[Highlights]
 .pull-left[
 - Multiple modalities
@@ -457,7 +458,7 @@ Text-based Social Network Analysis: Text-based social network analysis involves 
 ]
 
 .pull-down[.font50[
-[Multimodal Scholars document with links]()
+[Multimodal Scholars document with links](https://laser-institute.github.io/LASER_Foundations_2023/resources/multimodal_SCHOLAR.pdf)
 ]
 ]
 ]
