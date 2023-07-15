@@ -433,6 +433,7 @@ write_csv(data_to_explore, "data/data_to_explore.csv")
 ```
 
 ------------------------------------------------------------------------
+## 3. EXPLORE
 
 We've already wrangled out data - but let's look at the data frame to
 make sure it is still correct. A quick way to look at the data frame is
@@ -456,24 +457,25 @@ functions.
 #install.packages("skimr")
 
 #load library by adding skimr as the package name
-library(skimr)
+
 
 ```
 
-Second, use the `skim()` function to view the data
+Second:
+- use the `skim()` function to view the `data_to explore`
 
 ```{r}
-#skim the data by adding the skim function infront of the data
-skim(data_to_explore)
+#skim the data by adding the skim function in front of the data
+
 ```
 
-In the code chunck below skim `subject` variable using group_by
-function.
+In the code chunk below:
+- use `data_to_explore`
+- `group_by` `subject` variable 
+- then `skim()`
 
 ```{r}
 data_to_explore %>%
-  group_by(subject) %>% 
-  skim() 
 ```
 
 GGplot is designed to work iteratively. You start with a layer that

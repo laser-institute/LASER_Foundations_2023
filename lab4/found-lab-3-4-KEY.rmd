@@ -2,20 +2,8 @@
 title: "Narrated: Foundations Case Study" 
 subtitle: "Independent/Group work"
 author: "The LASER Team"
-date: last-modified
-format:
-  html:
-    toc: true
-    toc-title: Contents
-    toc-location: left
-    theme: 
-      - united
-      - "css/quarto-laser-html.scss"
-resources:
-  - demo.pdf
-editor: 
-  markdown: 
-    wrap: 72
+date: "`r format(Sys.Date(),'%B %e, %Y')`"
+output: html_document
 ---
 
 ## 0. INTRODUCTION
@@ -131,6 +119,8 @@ the course. While this data type is fairly straightforward, there are
 even more complex sources of log-trace data out there (e.g., time stamps
 associated with when students started and stopped accessing the course).
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
+
 Let's use the `read_csv()` function from {readr} to import our
 `log-data.csv` file directly from our data folder and name this data set
 `time_spent`, to help us to quickly recollect what function it serves in
@@ -147,6 +137,7 @@ time_spent <- read_csv("data/log-data.csv")
 
 #### Data Source #2: Academic Achievement Data
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 Load the file from data folder.
 
 -   `gradebook-summary.csv` save object as `gradebook`
@@ -198,10 +189,12 @@ and utility value).
     (Utility value)
 10. I've always wanted to learn more about this subject. (Interest)
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 Let's use the `read_csv()` function from {readr} to import our
 `survey.csv` file directly from our data folder and name this data set
 `time_spent`, to help us to quickly recollect what function it serves in
 this analysis:
+
 
 ```{r}
 # load survey data from data folder
@@ -260,6 +253,7 @@ time_spent
 Now, we will work on the Gradebook dataset.Like the previous dataset, we
 will seperate course_id variable again.
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # separate the course_id variable and save to 'gradebook' object
 gradebook <- gradebook %>% 
@@ -268,8 +262,9 @@ gradebook <- gradebook %>%
 gradebook
 ```
 
-We will create a new variable: `proportion_earned.`
+We will create a new variable: `proportion_earned`.
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 # Mutate to a proportion_earned, take 'total points earned' divide by 'total points possible.' Save as new variable proportion_earned.
 gradebook <- gradebook %>% 
@@ -284,6 +279,7 @@ gradebook <- gradebook %>%
 
 Now, we will work on third data source.
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 ```{r eval=FALSE, warning=FALSE, message=FALSE}
 #inspect data to view the column names
 survey
@@ -338,6 +334,7 @@ We need same types of variables to join the datasets. To turn a
 numerical variable into a character variable, we are using
 "as.character()" function.
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 ```{r eval= FALSE}
 #mutate to change variable class from double or numeric to character
 joined_data <- joined_data %>%
@@ -347,6 +344,7 @@ joined_data <- joined_data %>%
 joined_data
 ```
 
+#### [**Your Turn**]{style="color: green;"} **⤵**
 ```{r eval = FALSE}
 #try again to together the grade_book and log_wrangled
 data_to_explore <- full_join(joined_data, survey, by = c())
@@ -364,6 +362,7 @@ save for later or download.
 ```
 
 ------------------------------------------------------------------------
+## 3. EXPLORE
 
 We've already wrangled out data - but let's look at the data frame to
 make sure it is still correct. A quick way to look at the data frame is
@@ -391,18 +390,20 @@ library(skimr)
 
 ```
 
-Second, use the `skim()` function to view the data
+Second:
+- use the `skim()` function to view the `data_to explore`
 
 ```{r}
-#skim the data by adding the skim function infront of the data
-skim(data_to_viz)
+#skim the data by adding the skim function in front of the data
+skim(data_to_explore)
 ```
 
-In the code chunck below skim `subject` variable using group_by
-function.
+In the code chunk below:
+- `group_by` `subject` variable 
+- then `skim()`
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
   group_by(subject) %>% 
   skim() 
 ```
@@ -442,8 +443,8 @@ interest.
 Which variable should we be looking at?
 
 ```{r}
-#look at the data frame
-
+#inspect at the data frame
+data_to_explore
 ```
 
 #### Level a. The most basic level for a plot
@@ -451,16 +452,14 @@ Which variable should we be looking at?
 Includes:
 
 -   **data**: data_to_explore.csv
--   \***`aes()` function** - one continuous variable:
+-   **`aes` function**: one continuous variable:
     -   subject mapped to x position
 -   **Geom**:`geom_bar()` function - bar graph
 
-```{r}
-#layer 1: add data 
-# layer 2: add aesthetics mapping
-#ggplot(data_to_viz, aes(x = subject)) +
-#layer 3: add geom 
-#  geom_bar() +
+```{r warning=FALSE, message=FALSE}
+
+ggplot(data_to_viz, aes(x = subject)) +
+  geom_bar()  
 
 ```
 
@@ -471,14 +470,10 @@ Includes:
     numbers?"
 
 ```{r}
-#layer 1: add data 
-# layer 2: add aesthetics mapping
-ggplot(data_to_viz, aes(x = subject)) +
-#layer 3: add geom 
-  geom_bar() +
 
-#layer 4: add labels
-    labs(title = "Number of Student Enrollments per Subject",
+ggplot(data_to_viz, aes(x = subject)) +
+  geom_bar() +
+  labs(title = "Number of Student Enrollments per Subject",
        caption = "Which online courses have had the largest enrollment numbers?")
 ```
 
@@ -489,14 +484,9 @@ ggplot(data_to_viz, aes(x = subject)) +
 ##### What can we notice about gender?
 
 ```{r}
-#layer 1: add data 
-# layer 2: add aesthetics mapping and #layer 5 scale
 ggplot(data_to_viz, aes(x = subject, fill = gender)) +
-#layer 3: add geom 
   geom_bar() +
-
-#layer 4: add labels
-    labs(title = "Gender Distribution of Students Across Subjects",
+  labs(title = "Gender Distribution of Students Across Subjects",
        caption = "Which subjects enroll more female students?")
 
 ```
@@ -515,38 +505,20 @@ ggplot(data_to_viz, aes(x = subject, fill = gender)) +
 **NEED HELP? [TRY
 STHDA](http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization)**
 
-```{r}
-#add data
-
-# add the geom
-
-#add geom
-#geom_histogram(bins = 5) +
-
-#add the labs
-
-
-
-
-```
-
 Yours could look like something below...
 
 ```{r}
-ggplot(data_to_viz, aes(x = tv)) + 
+ggplot(data_to_explore, aes(x = tv)) + 
   geom_histogram(bins = 5) +
   labs(title = "Number of Hours Students Watch TV per Day", 
        caption = "Approximately how many students watch 4+ hours of TV per day?")
 ```
 
-or
+or maybe you added a `theme()`
 
 ```{r}
-data_to_viz%>%
+data_to_explore%>%
   ggplot(aes(x= tv))+
-# layer 2: add histogram geom 
-# layer 3a: add bin size
-# layer 3b: add color
   geom_histogram(bins = 5, fill = "red", colour = "black")+
   labs(title = "Number of Hours Students Watch TV per Day", 
        caption = "Approximately how many students watch 4+ hours of TV per day?") +
@@ -558,11 +530,11 @@ data_to_viz%>%
 Create a basic visualization that examines the relationship between two
 categorical variables.
 
-##### What do you wonder about the reasons for enrollment in various courses?
+##### RESEARCH QUESTION:  What do you wonder about the reasons for enrollment in various courses?
 
 #### Heatmap
 
--   \***data**: data_to_viz
+-   **data**: data_to_explore
 -   use `count()` function for `subject`, `enrollment` then,
 -   `ggplot()` function
 -   **`aes()` function** - one continuous variables
@@ -570,11 +542,11 @@ categorical variables.
     -   `enrollment reason` variable mapped to x position
 -   **Geom**: `geom_tile()` function
 -   Add a **title** "Reasons for Enrollment by Subject"
--   Add a \***caption** that poses the question "Which subjects were the
+-   Add a **caption**: "Which subjects were the
     least available at local schools?"
 
 ```{r}
-data_to_viz %>% 
+data_to_explore %>% 
   count(subject, enrollment_reason) %>% 
   ggplot() + 
   geom_tile(mapping = aes(x = subject, 
@@ -591,13 +563,13 @@ continuous variables.
 
 #### Scatter plot
 
-##### Can we predict the grade on a course from the time spent in the course LMS?
+##### REASERCH QUESTION: Can we predict the grade on a course from the time spent in the course LMS?
 
 Which variables should we be looking at?
 
 ```{r}
 #look at the data frame
-
+data_to_explore
 ```
 
 #### Level a. The most basic level for a plot
@@ -612,7 +584,7 @@ Includes:
 
 ```{r}
 #layer 1: add data and aesthetics mapping 
-ggplot(data_to_viz,
+ggplot(data_to_explore,
        aes(x = time_spent_hours, 
            y = proportion_earned)) +
 #layer 2: +  geom function type
@@ -643,14 +615,14 @@ ggplot(data_to_viz,
 
 #### Level c. Add **Scale** with a different color.
 
-##### Can we notice anything about enrollment status?
+##### RESEARCH QUESTION: Can we notice anything about enrollment status?
 
 -   Add **scale**: color = enrollment_status
 
 ```{r}
 #layer 1: add data and aesthetics mapping 
 #layer 4: add color scale by type
-ggplot(data_to_viz, 
+ggplot(data_to_explore, 
        aes(x = time_spent_hours, 
            y = proportion_earned,
            color = enrollment_status)) +
@@ -682,12 +654,14 @@ ggplot(data_to_viz, aes(x = time_spent_hours, y = proportion_earned, color = enr
 
 #### Level e. How can we remove NA's from plot? and What will the code look like without the comments?
 
--   use \***data** then,
+You can pipe the data with the dataframe and use `drop_na()` function.
+
+-   use **data** then,
 -   use `drop_na` function to remove na's from enrollment status then,
 -   add `ggplot` function like above
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
   drop_na(enrollment_status) %>%
   ggplot(aes(x = time_spent_hours, 
              y = proportion_earned, 
@@ -782,7 +756,7 @@ then create a correlation table using `apa.cor.table()`.
 #install if this is your first time
 
 # read in apatables library
-library()
+library(apaTables)
 
 data_to_explore_subset <- data_to_explore %>% 
   select(time_spent_hours, proportion_earned, int)
@@ -834,8 +808,9 @@ lm(proportion_earned ~ time_spent_hours,
 
 The following code estimates a model in which `proportion_earned`, the
 proportion of points students earned, is the dependent variable. It is
-predicted by one independent variable, `int`, students' self-reported
-interest in science.
+predicted by one independent variable.
+
+- Add  + `int`, after `time_spent_hours` for students' self-reported interest in science.
 
 ```{r messages=FALSE, warning=FALSE}
 # Add predictor variable for science
@@ -863,7 +838,7 @@ Run a summary model for the model you just created called, `m1.`
 
 ```{r messages=FALSE, warning=FALSE}
 #run the summary
-summary(m1)
+summary()
 
 ```
 
@@ -899,11 +874,12 @@ Let's save this as a nice APA table for possible publication
 apa.reg.table(m1, filename = "lm-table.doc")
 ```
 
+- load `apaTables` library
+
 ```{r messages=FALSE, warning=FALSE}
-#install apaTables if this is your first time - do you remember how?
 
 #load packages
-library(apaTables)
+
 # use the {apaTables} package to create a nice regression table that could be used for later publication.
 apa.reg.table(m1, filename = "lm-table.doc")
 
@@ -913,7 +889,5 @@ apa.reg.table(m1, filename = "lm-table.doc")
 
 For your final Your Turn, your goal is to distill our analysis from
 above into a FLEXBOARD "data product" designed to illustrate key
-findings about . For the purposes of this task, imagine that your
-audience consists of the developers and facilitators of the DLT MOOC-Eds
-who have limited background in SNA and adapt the following steps
-accordingly:
+findings about.
+
