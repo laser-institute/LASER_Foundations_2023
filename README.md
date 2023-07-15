@@ -35,7 +35,7 @@ Case Study work includes:
 
 **Badge Requirement**
 
-- Complete the Badge requirement document[Foundations badge - Data Sources](https://laser-institute.github.io/foundational-skills/foundation_lab_1/lab1_badge/foundationlab1_badge.html).
+- Complete the Badge requirement document[Foundations badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab1/found-lab-1-badge.html).
 
 
 
@@ -77,7 +77,7 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources]().
+-  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab2/found-lab-2-badge.html).
 
 
 ## **Foundation-lab 3** - Power of Data Viz
@@ -114,7 +114,7 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 3 folder [foundationlab3_badge- Data Visualization]().
+-  Complete the badge requirement document from your lab 3 folder [foundationlab3_badge- Data Visualization](https://laser-institute.github.io/LASER_Foundations_2023/lab3/found-lab-3-badge.html).
 
 
 ## **Foundation-lab 4** - Data Products
@@ -156,8 +156,6 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 4 folder [foudationlab4_badge - Data Products](https://laser-institute.github.io/foundational-skills/foundation_lab_4/foundationlab4_badge.html).
-
-
+-  Complete the badge requirement document from your lab 4 folder [foudationlab4_badge - Data Products](https://laser-institute.github.io/LASER_Foundations_2023/lab4/found-lab-4-badge.html).
 
 THANK YOU!! 

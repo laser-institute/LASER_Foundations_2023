@@ -29,4 +29,4 @@ Case Study work includes:
 
 **Badge Requirement**
 
-- Complete the Badge requirement document[Foundations badge - Data Sources](https://laser-institute.github.io/foundational-skills/foundation_lab_1/lab1_badge/foundationlab1_badge.html).
+- Complete the Badge requirement document[Foundations badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab1/found-lab-1-badge.html).

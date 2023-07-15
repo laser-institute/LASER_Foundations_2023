@@ -35,4 +35,4 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 3 folder [foundationlab3_badge- Data Visualization]().
+-  Complete the badge requirement document from your lab 3 folder [foundationlab3_badge- Data Visualization](https://laser-institute.github.io/LASER_Foundations_2023/lab3/found-lab-3-badge.html).

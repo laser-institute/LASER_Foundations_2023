@@ -39,6 +39,6 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 4 folder [foudationlab4_badge - Data Products](https://laser-institute.github.io/foundational-skills/foundation_lab_4/foundationlab4_badge.html).
+-  Complete the badge requirement document from your lab 4 folder [foudationlab4_badge - Data Products](https://laser-institute.github.io/LASER_Foundations_2023/lab4/found-lab-4-badge.html).
 
 

@@ -39,4 +39,4 @@ Case Study work includes:
 
 **Badge Requirement**
 
--  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources]().
+-  Complete the badge requirement document from your lab 2 folder [foudationlab2_badge - Data Sources](https://laser-institute.github.io/LASER_Foundations_2023/lab2/found-lab-2-badge.html).
