@@ -305,7 +305,7 @@ gradebook1 <- gradebook1 %>%
   mutate(proportion_earned = total_points_earned / total_points_possible * 100)
 
 gradebook1
-write.csv(gradebook1, file = "lab2/data/gradebook1.csv")
+
 ```
 
 ##### Data 3: SURVEY

@@ -63,14 +63,6 @@ Draft a new research question of guided by the the phases of the Learning Anlyti
 
 We have completed the phases of the Learning Analytics Workflow but really have only scratched the surface with the power of tidyverse in each of these phases.
 
-Using one of the data sets provided in the data folder, your goal for this lab is to complete a data product. 
-You have two options for completing the Data Product portion:
-
-- Create a data product of your choice using a data set from the data folder 
-- Create a data product using your own data.
-
-Exercise:
-- You will create a data product to share with stakeholders.
 
 1.  **Select**. Communicating what one has learned involves selecting
     among those analyses that are most important and most useful to an
@@ -89,12 +81,34 @@ Exercise:
     product, and explaining the ways in which the data product helps
     answer the research question.
 
+Using one of the data sets provided in the data folder, your goal for this lab is to complete a data product. 
 
-I highly recommend creating a new R script in your lab-3 folder to complete this task. When your code is ready to share, use the code chunk below to share the final code for your model and answer the questions that follow.
+You have two options for completing the Data Product portion:
 
-```{r, my-data-product}
-# YOUR FINAL CODE HERE
+- Create a Data Story with our current data set 
+  - Develop a research question
+  - Add ggplot visualizations 
+  - Modeling visualizations
+  - add a short write up for the intended stakeholders
+  - `flexdashboard_template.rmd` in lab4 folder if needed.
+  - Create a data product using your own data.
+
+
+- Make sure to publish the dashboard and share that link in here
+
+FLEX DASHBOARD published link below:
+
+or
+
+Share code:
+```{r echo=TRUE}
+
+#
+#
+#
+
 ```
+
 
 ### Knit & Submit
 
