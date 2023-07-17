@@ -97,6 +97,10 @@ behind the open data movement is that anyone can access or use a data set, and k
 - Types of Learning Environments 
 - Characteristics of Data (Format)
 
+
+.font60[
+[CHECKLIST LINK - https://go.ncsu.edu/found_checklist](https://go.ncsu.edu/found_checklist)
+]
 ]
 
 .pull-right[**Part-2  Code-Along**

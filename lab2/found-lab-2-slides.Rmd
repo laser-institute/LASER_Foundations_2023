@@ -110,6 +110,10 @@ On a quick recap from our data structures presentation we discussed the differen
 
 - Methods in Learning Analytics
 
+
+.font60[
+[CHECKLIST LINK - https://go.ncsu.edu/found_checklist](https://go.ncsu.edu/found_checklist)
+]
 ]
 
 .pull-right[**Part-2  Code-Along**
