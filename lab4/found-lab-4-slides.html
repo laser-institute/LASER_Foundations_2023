@@ -4,7 +4,7 @@
     <title>Foundation Lab 4 - Data Products</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-15" />
+    <meta name="date" content="2023-07-16" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -37,7 +37,7 @@ class: clear, title-slide, inverse, center, top, middle
 # Foundation Lab 4 - Data Products
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 15, 2023
+### July 16, 2023
 
 
 ---
@@ -412,6 +412,71 @@ Lastly, you can change the style of your citations and your bibliography with a 
 Given our time constraints today we don't have time to talk about everything that R markdown can do. Not by any means. But I did just want to let you know that there are other output formats that R markdown is capable of and I've listed them here. And you can feel free to do investigation on your own to learn more if you're interested. The one that I wanted to mention specifically though, was the rticles package because if you are engaged in scholarship and you're trying to get your scholarship published this could be very helpful. The rticles package allows you to format articles for specific journals. So, if you are fairly advanced in your R markdown skills, and some of the information presented in this module is old hat for you, one of your afternoon activities today could be exploring the rticles package a little bit more.
 
 ---
+# Ethical Considerations in Learning Analytics
+
+- **Data Privacy**
+--
+
+- **Bias in Data Analysis**
+--
+
+- **Student Consent**
+--
+
+- **Responsible Data Usage**
+--
+
+- **Inclusive Practices**
+--
+
+- **Transparent Communication**
+--
+
+- **Continuous Evaluation**
+
+
+
+???
+Data Privacy:
+
+Challenge: Protecting sensitive student data from unauthorized access or misuse.
+Initiative: Adoption of robust data encryption and secure storage protocols to safeguard privacy.
+
+Bias in Data Analysis:
+Challenge: Unintentional bias in algorithms leading to unfair outcomes.
+Initiative: Implementing algorithmic transparency and regular audits to identify and correct biases.
+
+Student Consent:
+Challenge: Ensuring students are fully informed and consent to data collection and analysis.
+Initiative: Implementing clear consent processes and providing students with opt-out options.
+
+Responsible Data Usage:
+Challenge: Balancing data-driven insights with ethical responsibilities.
+Initiative: Establishing ethical review boards to oversee learning analytics projects and decision-making.
+
+Inclusive Practices:
+Challenge: Ensuring learning analytics benefit all students, regardless of background.
+Initiative: Encouraging inclusive data collection and analysis practices to address disparities.
+
+
+Transparent Communication:
+Challenge: Effectively communicating learning analytics goals and methods to all stakeholders.
+Initiative: Promoting transparency through clear communication and accessible documentation.
+
+Continuous Evaluation:
+
+Challenge: Keeping up with evolving ethical standards and challenges.
+Initiative: Engaging in ongoing evaluation and adaptation of ethical guidelines.
+--
+
+
+
+--
+
+
+???
+Learning analytics offers tremendous benefits, but we must navigate ethical challenges to ensure responsible and fair implementation. Let's explore key ethical considerations and the initiatives taken to address them.
+
 
 
 
@@ -523,17 +588,17 @@ summary(model1)
 ## lm(formula = proportion_earned ~ time_spent_hours, data = data_to_explore)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.64671 -0.07841  0.05427  0.15419  0.33743 
+##     Min      1Q  Median      3Q     Max 
+## -64.671  -7.841   5.427  15.419  33.743 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)      0.6243061  0.0151073   41.33   &lt;2e-16 ***
-## time_spent_hours 0.0047921  0.0004025   11.91   &lt;2e-16 ***
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      62.43061    1.51073   41.33   &lt;2e-16 ***
+## time_spent_hours  0.47921    0.04025   11.91   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.2221 on 596 degrees of freedom
+## Residual standard error: 22.21 on 596 degrees of freedom
 ##   (345 observations deleted due to missingness)
 ## Multiple R-squared:  0.1921,	Adjusted R-squared:  0.1908 
 ## F-statistic: 141.8 on 1 and 596 DF,  p-value: &lt; 2.2e-16
@@ -615,7 +680,6 @@ The code on the left estimates a model in which `proportion_earned`, the proport
 The code on the right regresses more than one variable on the dependent variable.
 
 The following code estimates a model in which `proportion_earned`, the proportion of points students earned, is the dependent variable. It is predicted by one independent variable, `int`, students' self-reported interest in science.
-
 
 ---
 class: no-logo
@@ -741,10 +805,13 @@ class: inverse, clear, center
 
 
 ---
-&lt;img src="img/teams_2023.png" height="550px"/&gt;
+&lt;img src="img/LA_team_2023.png" height="550px"/&gt;
 
 ---
-&lt;img src="img/supportteam_2023.png" height="550px"/&gt;
+&lt;img src="img/TAteam_2023.JPG" height="550px"/&gt;
+
+---
+&lt;img src="img/supportteam_2023.JPG" height="550px"/&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -15,12 +15,12 @@ editor_options:
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
-library(here)
 
 
-data_to_viz <- read_csv(here("part3-dataviz-quarto", "data", "data_to_explore.csv")) 
 
-data_to_viz <- data_to_viz |>
+data_to_explore <- read_csv( "data/data_to_explore.csv")
+
+data_to_explore <- data_to_explore |>
   mutate(final_grade = proportion_earned*100)|>
   mutate(subject = recode(subject, 
                           "AnPhA" = "Anatomy",
@@ -40,7 +40,7 @@ Column {data-width=600}
 ### Relationship Between Final grade and Gender
 
 ```{r}
-data_to_viz %>%
+data_to_explore %>%
 select(subject, final_grade, gender) %>%
 
 ggplot() +
@@ -67,7 +67,7 @@ Column {data-width=350}
 ### Overview of Time Spent on Different Subjects
 
 ```{r}
-data_to_viz  %>% 
+data_to_explore  %>% 
   ggplot() +
   geom_freqpoly(mapping = aes(x = time_spent_hours, color = subject), binwidth = 25, boundary = 0) +
   labs(title = "How long do most of students spend on each subject?") +
@@ -77,7 +77,7 @@ data_to_viz  %>%
 ### Relationship Between Time Spent and Interest
 
 ```{r}
-data_to_viz  %>% 
+data_to_explore  %>% 
   ggplot() +
   geom_point(mapping = aes(x = int, 
                        y = time_spent_hours,

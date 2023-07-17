@@ -389,19 +389,19 @@ with an arrow on it to expand your output in a separate window.
 
 
 .panel[.panel-name[Grammar 101]
-.center[
-<img src="img/grammar.png" height="400px"/>
-]
-
-]
-
-.panel[.panel-name[Geoms]
 .pull-left[
-<img src="img/geoms.png" height="400px"/>
-
+<img src="img/grammar.png" height="400px"/>
 ]
 .pull-right[Do you need all of these things to create a graph?
 ]
+]
+
+.panel[.panel-name[Geoms]
+.center[
+<img src="img/geoms.png" height="400px"/>
+
+]
+
 ]
 
 .panel[.panel-name[Basic graph]
@@ -414,12 +414,27 @@ library(tidyverse)
 data_to_explore <- read_csv("data/data_to_explore.csv")
 ```
 
+.code70.remark-code[.pull-left[
+```{r echo=TRUE, eval=FALSE}
+ggplot(data_to_explore, aes(x=subject)) + #<<
+  geom_bar()
+```
+]]
+
+
+.code70.remark-code[.pull-left[
+```{r echo=TRUE, eval=FALSE}
+ggplot(data_to_explore)+
+  geom_bar(aes(x=subject))#<<
+```
+]]
+
 
 .code70.remark-code[.pull-left[
 ```{r bar1, echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
 
 data_to_explore %>% 
-  ggplot(aes(x = subject)) +
+  ggplot(aes(x = subject)) + #<<
   geom_bar()
 ```
 ]]
@@ -430,6 +445,10 @@ data_to_explore %>%
   ggplot(aes(x = subject)) +
   geom_bar()
 ```
+]
+
+.pull-down[
+[R Software Handbook](https://bookdown.org/aschmi11/RESMHandbook/)
 ]
 ]
 ]
@@ -774,8 +793,10 @@ class: inverse, clear, center
 
 ---
 
-<img src="img/teams_2023.png" height="550px"/>
+<img src="img/LA_team_2023.png" height="550px"/>
 
 ---
+<img src="img/TAteam_2023.JPG" height="550px"/>
 
-<img src="img/supportteam_2023.png" height="550px"/>
+---
+<img src="img/supportteam_2023.JPG" height="550px"/>

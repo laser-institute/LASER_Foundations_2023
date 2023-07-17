@@ -15,12 +15,12 @@ editor_options:
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
-library(here)
 
 
-data_to_viz <- read_csv(here("part3-dataviz-quarto", "data", "data_to_explore.csv")) 
 
-data_to_viz <- data_to_viz |>
+data_to_explore <- read_csv("data/data_to_explore.csv")
+
+data_to_explore <- data_to_explore |>
   mutate(final_grade = proportion_earned*100)|>
   mutate(subject = recode(subject, 
                           "AnPhA" = "Anatomy",

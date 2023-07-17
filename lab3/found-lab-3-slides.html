@@ -4,7 +4,7 @@
     <title>The power of Data Viz</title>
     <meta charset="utf-8" />
     <meta name="author" content="Jeanne McClure, Melinda Whitford, Doreen Mushi" />
-    <meta name="date" content="2023-07-15" />
+    <meta name="date" content="2023-07-16" />
     <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
@@ -37,7 +37,7 @@ class: clear, title-slide, inverse, center, top, middle
 # The power of Data Viz
 ----
 ### Jeanne McClure, Melinda Whitford, Doreen Mushi
-### July 15, 2023
+### July 16, 2023
 
 ---
 # Recap from Lab 2 - LA Methods
@@ -370,19 +370,19 @@ with an arrow on it to expand your output in a separate window.
 
 
 .panel[.panel-name[Grammar 101]
-.center[
-&lt;img src="img/grammar.png" height="400px"/&gt;
-]
-
-]
-
-.panel[.panel-name[Geoms]
 .pull-left[
-&lt;img src="img/geoms.png" height="400px"/&gt;
-
+&lt;img src="img/grammar.png" height="400px"/&gt;
 ]
 .pull-right[Do you need all of these things to create a graph?
 ]
+]
+
+.panel[.panel-name[Geoms]
+.center[
+&lt;img src="img/geoms.png" height="400px"/&gt;
+
+]
+
 ]
 
 .panel[.panel-name[Basic graph]
@@ -391,18 +391,39 @@ with an arrow on it to expand your output in a separate window.
 
 
 
+.code70.remark-code[.pull-left[
+
+```r
+*ggplot(data_to_explore, aes(x=subject)) +
+  geom_bar()
+```
+]]
+
+
+.code70.remark-code[.pull-left[
+
+```r
+ggplot(data_to_explore)+
+* geom_bar(aes(x=subject))
+```
+]]
+
 
 .code70.remark-code[.pull-left[
 
 ```r
 data_to_explore %&gt;% 
-  ggplot(aes(x = subject)) +
+* ggplot(aes(x = subject)) +
   geom_bar()
 ```
 ]]
 .pull-right[
 
-&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-6-1.png" width="300px" /&gt;
+&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-8-1.png" width="300px" /&gt;
+]
+
+.pull-down[
+[R Software Handbook](https://bookdown.org/aschmi11/RESMHandbook/)
 ]
 ]
 ]
@@ -471,7 +492,7 @@ In the corresponding code script add the code for a basic histogram for 'time_sp
 ]]
 .pull-right[
 
-&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-9-1.png" width="300px" /&gt;
+&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-11-1.png" width="300px" /&gt;
 
 ]
 
@@ -493,7 +514,7 @@ data_to_explore %&gt;%
 In your script change the bin size, what happens?
 
 .pull-right[
-&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-10-1.png" width="300px" /&gt;
+&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-12-1.png" width="300px" /&gt;
 ]
 ]
 
@@ -514,7 +535,7 @@ data_to_explore %&gt;%
 ]]
 
 .pull-right[
-&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-11-1.png" width="300px" /&gt;
+&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-13-1.png" width="300px" /&gt;
 ]
 ]
 
@@ -537,7 +558,7 @@ data_to_explore %&gt;%
 ]]
 
 .pull-right[
-&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-12-1.png" width="300px" /&gt;
+&lt;img src="found-lab-3-slides_files/figure-html/unnamed-chunk-14-1.png" width="300px" /&gt;
 
 How would we interpret this graph?
 ]
@@ -698,7 +719,7 @@ class: inverse, clear, center
 .pull-left-wide[.left[.font100[
 - Complete **Explore part of the Case Study**
 - Make sure to complete the R Programming primer: [Introduction to data visualization](https://rstudio.cloud/learn/primers/3).
--  Complete the badge requirement document: [foudationlab3_badge- Data Visualization](https://github.com/laser-institute/foundational-skills/blob/master/foundation_lab_3/foundationlab3_badge.Rmd).
+- Complete the badge requirement document: [foudationlab3_badge- Data Visualization](https://laser-institute.github.io/LASER_Foundations_2023/lab3/found-lab-3-badge.html).
 - Do pre readings for tomorrow.
 ]]
 ]
@@ -708,11 +729,13 @@ class: inverse, clear, center
 
 ---
 
-&lt;img src="img/teams_2023.png" height="550px"/&gt;
+&lt;img src="img/LA_team_2023.png" height="550px"/&gt;
 
 ---
+&lt;img src="img/TAteam_2023.JPG" height="550px"/&gt;
 
-&lt;img src="img/supportteam_2023.png" height="550px"/&gt;
+---
+&lt;img src="img/supportteam_2023.JPG" height="550px"/&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

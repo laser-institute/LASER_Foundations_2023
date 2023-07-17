@@ -868,7 +868,10 @@ class: inverse, clear, center
 
 ---
 
-<img src="img/team_2022.png" height="550px"/>
+<img src="img/LA_team_2023.png" height="550px"/>
 
 ---
-<img src="img/supportteam_2023.png" height="550px"/>
+<img src="img/TAteam_2023.JPG" height="550px"/>
+
+---
+<img src="img/supportteam_2023.JPG" height="550px"/>
