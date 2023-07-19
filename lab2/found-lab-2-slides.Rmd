@@ -194,7 +194,7 @@ Methods used in LA: Conceptual Overview
 
 
 .center[
-<img src="img/PRED_SCHOLA.png" height="350px"/>
+<img src="img/pred_SCHOLA.png" height="350px"/>
 ]
 
 
